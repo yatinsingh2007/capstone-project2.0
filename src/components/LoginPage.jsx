@@ -48,7 +48,7 @@ const LoginPage = () => {
             <h1 className='font-semibold text-white mb-1 text-xl md:text-4xl'>Welcome Back</h1>
             <p className='text-neutral-200 font-extralight mb-5 text-xs md:text-base'>Continue With Google</p>
             <button onClick={handleGoogleSignIn} className='rounded-lg bg-white p-1 flex items-center justify-around'>
-            <img class="image" data-alt-override="false" alt="G" srcset="
+            <img data-alt-override="false" alt="G" srcSet="
             https://www.gstatic.com/marketing-cms/assets/images/d5/dc/cfe9ce8b4425b410b49b7f2dd3f3/g.webp=s48-fcrop64=1,00000000ffffffff-rw 1x,
             https://www.gstatic.com/marketing-cms/assets/images/d5/dc/cfe9ce8b4425b410b49b7f2dd3f3/g.webp=s96-fcrop64=1,00000000ffffffff-rw 2x
           " width="48" height="48" loading="lazy" src="https://www.gstatic.com/marketing-cms/assets/images/d5/dc/cfe9ce8b4425b410b49b7f2dd3f3/g.webp=s48-fcrop64=1,00000000ffffffff-rw" className='h-4 w-4 ml-3'/>
