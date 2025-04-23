@@ -43,7 +43,7 @@ const LoginPage = () => {
   return (
     <>
     <div>
-      <div className='flex flex-col items-center justify-center h-screen bg-gray-700'>
+      <div className='flex flex-col items-center justify-center h-screen bg-cyan-950'>
         <div className='flex flex-col border-2 border-gray-300 rounded-lg shadow-slate-400 shadow-lg p-6'>
             <h1 className='font-semibold text-white mb-1 text-xl md:text-4xl'>Welcome Back</h1>
             <p className='text-neutral-200 font-extralight mb-5 text-xs md:text-base'>Continue With Google</p>
@@ -54,15 +54,19 @@ const LoginPage = () => {
           " width="48" height="48" loading="lazy" src="https://www.gstatic.com/marketing-cms/assets/images/d5/dc/cfe9ce8b4425b410b49b7f2dd3f3/g.webp=s48-fcrop64=1,00000000ffffffff-rw" className='h-4 w-4 ml-3'/>
             <span className='text-black text-sm md:text-base'>Sign in with Google</span>
             </button>
-            <p className='text-sm mt-2 text-slate-100 font-extralight'>------------Or Continue With------------</p>
-          <form>
+            <div className="flex items-center gap-4 mt-4">
+              <hr className="flex-grow border-t border-slate-300" />
+              <p className="text-sm text-slate-100 font-extralight whitespace-nowrap">Or Continue With</p>
+              <hr className="flex-grow border-t border-slate-300" />
+            </div>
+          <form className='text-left flex flex-col justify-around'>
               <label className='text-white'>Email:</label>
               <br/>
               <input
                 type="email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                className='rounded-lg bg-gray-800 p-1 mt-2 mb-2 text-white border-2 border-stone-100 text-center'
+                className='rounded-lg bg-gray-800 p-1 mb-2 text-white border-2 border-stone-100 text-center'
                 placeholder='Enter your email'
               />
               <br/>
@@ -72,17 +76,19 @@ const LoginPage = () => {
                 type="password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
-                className='rounded-lg bg-gray-800 p-1 mt-2 mb-2 text-white border-2 border-stone-100 text-center'
+                className='rounded-lg bg-gray-800 p-1 mb-2 text-white border-2 border-stone-100 text-center'
                 placeholder='Enter your password'
               />
               <br/>
-              <button
-                onClick={handleEmailSignIn}
-                className='rounded-lg bg-white p-1 mt-2 mb-2'
-              >
-                Sign In
-              </button>
-              <p className='text-sm mt-2 text-slate-100 font-extralight'>Don't have an account? <a href="/signup" className='text-blue-500'>Sign Up</a></p>
+              <div className='flex flex-col items-center justify-between'>
+                <button
+                  onClick={handleEmailSignIn}
+                  className='rounded-lg bg-white p-1 mt-2 mb-2 w-[98%]'
+                >
+                  Sign In
+                </button>
+                <p className='text-sm mt-2 text-slate-100 font-extralight flex gap-7'>Don't have an account?<a href="/signup" className='text-blue-500'>Sign Up</a></p>
+              </div>
           </form>
         </div>
       </div>
