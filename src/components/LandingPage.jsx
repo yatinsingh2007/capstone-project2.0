@@ -30,7 +30,11 @@ const LandingPage = () => {
             </div>
 
           <div className="md:pl-12 pb-8 flex md:gap-28 gap-48 md:pt-0 pt-28">
-            <button className="rounded-lg bg-[#090DFF] p-2 text-white text-xl">
+            <button className="rounded-lg bg-[#090DFF] p-2 text-white text-xl font-semibold"
+            onClick={(e) => {
+              e.preventDefault();
+              navigate('/signup');
+            }}>
               SignUp
             </button>
             <button
@@ -38,7 +42,7 @@ const LandingPage = () => {
                 e.preventDefault();
                 navigate('/login');
               }}
-              className="rounded-lg bg-[#090DFF] p-2 text-white text-xl"
+              className="rounded-lg bg-[#090DFF] p-2 text-white text-xl font-semibold"
             >
               Login
             </button>
