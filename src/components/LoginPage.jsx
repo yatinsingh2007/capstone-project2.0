@@ -1,25 +1,11 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { signInWithPopup, signInWithEmailAndPassword } from 'firebase/auth';
-import { auth, provider } from '../fireBase/fireBaseConfig.js';
-
+import { auth, provider } from '../fireBase/fireBaseConfig';
+import { toast } from 'react-toastify';
+import { Link } from 'react-router-dom';
 const LoginPage = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  useEffect(() => {
-    fetch(`https://496115492955378:bG20cdKCbB3pT-oLj1I3pngiEBY@api.cloudinary.com/v1_1/drelh1bvn/resources/image`)
-      .then((response) => {
-        if (!response.ok) {
-          throw new Error('Network response was not ok');
-        }
-        return response.json();
-      })
-      .then((data) => {
-        console.log(data);
-      })
-      .catch((error) => {
-        console.error('There was a problem with the fetch operation:', error);
-      });
-  }, []);
 
   const handleGoogleSignIn = async () => {
     try {
@@ -29,72 +15,90 @@ const LoginPage = () => {
       console.error("Google Sign-In Error:", error.message);
     }
   };
-
   const handleEmailSignIn = async (e) => {
     e.preventDefault();
     try {
-      const result = await signInWithEmailAndPassword(auth, email, password);
-      console.log("User Info:", result.user);
+      const userCredential = await signInWithEmailAndPassword(auth, email, password);
+      const user = userCredential.user;
+      console.log(user);
+      toast.success('Logged in successfully!');
     } catch (error) {
       console.error("Email Sign-In Error:", error.message);
     }
   };
-
   return (
-    <>
-    <div>
-      <div className='flex flex-col items-center justify-center h-screen bg-cyan-950'>
-        <div className='flex flex-col border-2 border-gray-300 rounded-lg shadow-slate-400 shadow-lg p-6'>
-            <h1 className='font-semibold text-white mb-1 text-xl md:text-4xl'>Welcome Back</h1>
-            <p className='text-neutral-200 font-extralight mb-5 text-xs md:text-base'>Continue With Google</p>
-            <button onClick={handleGoogleSignIn} className='rounded-lg bg-white p-1 flex items-center justify-around'>
-            <img data-alt-override="false" alt="G" srcSet="
-            https://www.gstatic.com/marketing-cms/assets/images/d5/dc/cfe9ce8b4425b410b49b7f2dd3f3/g.webp=s48-fcrop64=1,00000000ffffffff-rw 1x,
-            https://www.gstatic.com/marketing-cms/assets/images/d5/dc/cfe9ce8b4425b410b49b7f2dd3f3/g.webp=s96-fcrop64=1,00000000ffffffff-rw 2x
-          " width="48" height="48" loading="lazy" src="https://www.gstatic.com/marketing-cms/assets/images/d5/dc/cfe9ce8b4425b410b49b7f2dd3f3/g.webp=s48-fcrop64=1,00000000ffffffff-rw" className='h-4 w-4 ml-3'/>
-            <span className='text-black text-sm md:text-base'>Sign in with Google</span>
-            </button>
-            <div className="flex items-center gap-4 mt-4">
-              <hr className="flex-grow border-t border-slate-300" />
-              <p className="text-sm text-slate-100 font-extralight whitespace-nowrap">Or Continue With</p>
-              <hr className="flex-grow border-t border-slate-300" />
-            </div>
-          <form className='text-left flex flex-col justify-around'>
-              <label className='text-white'>Email:</label>
-              <br/>
-              <input
-                type="email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                className='rounded-lg bg-gray-800 p-1 mb-2 text-white border-2 border-stone-100 text-center'
-                placeholder='Enter your email'
-              />
-              <br/>
-              <label className='text-white'>Password:</label>
-              <br/>
-              <input
-                type="password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                className='rounded-lg bg-gray-800 p-1 mb-2 text-white border-2 border-stone-100 text-center'
-                placeholder='Enter your password'
-              />
-              <br/>
-              <div className='flex flex-col items-center justify-between'>
-                <button
-                  onClick={handleEmailSignIn}
-                  className='rounded-lg bg-white p-1 mt-2 mb-2 w-[98%]'
-                >
-                  Sign In
-                </button>
-                <p className='text-sm mt-2 text-slate-100 font-extralight flex gap-7'>Don't have an account?<a href="/signup" className='text-blue-500'>Sign Up</a></p>
-              </div>
-          </form>
+    <div className="flex flex-col items-center justify-center h-screen bg-white">
+      <div className="flex flex-col border-2 border-gray-300 rounded-2xl shadow-lg p-8 md:p-20">
+        <h1 className="font-bold text-black text-2xl md:text-4xl mb-2" style={{ fontFamily: '"Lexend Zetta"' }}>
+          Welcome Back
+        </h1>
+        <p className="text-gray-600 font-light mb-6 text-sm md:text-base" style={{ fontFamily: '"Nunito Sans"' }}>
+          Continue with Google
+        </p>
+
+        <button 
+          onClick={handleGoogleSignIn}
+          className="rounded-lg bg-white border border-black p-2 flex items-center justify-center gap-3 hover:bg-gray-100 transition-all mb-6 w-full"
+        >
+          <img
+            src="https://www.gstatic.com/marketing-cms/assets/images/d5/dc/cfe9ce8b4425b410b49b7f2dd3f3/g.webp=s48-fcrop64=1,00000000ffffffff-rw"
+            alt="Google Logo"
+            className="h-5 w-5"
+          />
+          <span className="text-black text-sm md:text-base" style={{ fontFamily: '"Nunito Sans"' }}>
+            Sign in with Google
+          </span>
+        </button>
+
+        <div className="flex items-center gap-4 mb-6">
+          <hr className="flex-grow border-t border-gray-400" />
+          <p className="text-sm text-gray-500 font-light" style={{ fontFamily: '"Nunito Sans"' }}>
+            or
+          </p>
+          <hr className="flex-grow border-t border-gray-400" />
         </div>
+
+        <form onSubmit={handleEmailSignIn} className="flex flex-col gap-4 w-full">
+  <div className="flex flex-col">
+    <label className="text-black text-sm mb-1">Email:</label>
+    <input
+      type="email"
+      value={email}
+      onChange={(e) => setEmail(e.target.value)}
+      className="rounded-lg bg-gray-100 p-2 text-black border border-gray-300 text-center w-full" 
+      placeholder="Enter your email"
+      required
+    />
+  </div>
+
+  <div className="flex flex-col">
+    <label className="text-black text-sm mb-1">Password:</label>
+    <input
+      type="password"
+      value={password}
+      onChange={(e) => setPassword(e.target.value)}
+      className="rounded-lg bg-gray-100 p-2 text-black border border-gray-300 text-center w-full" 
+      placeholder="Enter your password"
+      required
+    />
+  </div>
+
+  <button
+    type="submit"
+    className="rounded-lg bg-[#090DFF] p-2 text-white font-semibold mt-4 hover:opacity-90 transition-all w-full"
+  >
+    Sign In
+  </button>
+
+  <p className="text-sm text-gray-600 font-light mt-4 text-center" style={{ fontFamily: '"Nunito Sans"' }}>
+    Don't have an account?{' '}
+    <Link to="/signup" className="text-blue-600 hover:underline">
+      Sign Up
+    </Link>
+  </p>
+</form>
       </div>
     </div>
-    </>
-  )
+  );
 };
-
 export default LoginPage;
