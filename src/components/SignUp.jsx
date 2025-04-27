@@ -1,5 +1,8 @@
 import React, { useRef, useState } from 'react';
-import {Eye , EyeOff} from 'lucide-react'
+import { Eye, EyeOff } from 'lucide-react';
+import { auth } from '../fireBase/fireBaseConfig';  // ✅ Import auth
+import { createUserWithEmailAndPassword } from 'firebase/auth'; // ✅ Import method
+import { toast } from 'react-toastify';
 
 const SignUp = () => {
   const [email, setEmail] = useState('');
@@ -7,11 +10,19 @@ const SignUp = () => {
   const [togglePassword, setTogglePassword] = useState(false);
   const [enterEmail, setEnterEmail] = useState(true);
   const [enterPassword, setEnterPassword] = useState(true);
-  const emailRef = useRef()
-  const passwordRef = useRef()
-  const handleSignUp = (e) => {
+  const emailRef = useRef();
+  const passwordRef = useRef();
+
+  const handleSignUp = async (e) => {
     e.preventDefault();
-    console.log("Signup details:", { email, password });
+    try {
+      const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+      console.log('User created:', userCredential.user);
+      toast.success('Account created successfully!');
+    } catch (error) {
+      console.error('Error signing up:', error.message);
+        toast.error('Error creating account. Please try again.');
+    }
   };
 
   return (

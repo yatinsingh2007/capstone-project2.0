@@ -34,7 +34,8 @@ const LandingPage = () => {
             onClick={(e) => {
               e.preventDefault();
               navigate('/signup');
-            }}>
+            }}
+            style={{fontFamily: '"Karla", sans-serif'}}>
               SignUp
             </button>
             <button
@@ -43,6 +44,7 @@ const LandingPage = () => {
                 navigate('/login');
               }}
               className="rounded-lg bg-[#090DFF] p-2 text-white text-xl font-semibold"
+              style={{fontFamily: '"Karla", sans-serif'}}
             >
               Login
             </button>

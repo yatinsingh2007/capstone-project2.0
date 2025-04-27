@@ -14,7 +14,6 @@ function App() {
             <Route path='/signup' element = {<SignUp />} />
           </Routes>
       </BrowserRouter>
-      {/* <LoginPage /> */}
       <ToastContainer
         position="top-right"
         autoClose={5000}
