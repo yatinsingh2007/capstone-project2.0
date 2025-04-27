@@ -1,12 +1,15 @@
-# React + Vite
+# NextHorizon
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+NextHorizon is a modern professional networking platform where individuals can connect, showcase their skills, and grow their careers.
+Whether you’re a student, a professional, or a recruiter, NextHorizon provides a vibrant space to make meaningful connections, discover hiring opportunities, and stay updated within your professional domain.
 
-Currently, two official plugins are available:
+✨ Features
+	•	🔗 Build professional connections across various industries.
+	•	🛠 Showcase your skills, achievements, and portfolio.
+	•	📰 Stay updated on the latest hiring opportunities.
+	•	🧭 Explore different professions and career growth paths.
+	•	🎯 Promote your personal brand with a polished, professional profile.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+🛠 Tech Stack
+	•	Frontend: React.js, Tailwind CSS
+	•	Database & Backend: Firebase (Authentication, Firestore Database, Hosting)
