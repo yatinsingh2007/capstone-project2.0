@@ -3,11 +3,13 @@ import { signInWithPopup, signInWithEmailAndPassword } from 'firebase/auth';
 import { auth, provider } from '../fireBase/fireBaseConfig';
 import { toast } from 'react-toastify';
 import { Link } from 'react-router-dom';
+import {Eye , EyeOff} from 'lucide-react'
 const LoginPage = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [enterEmail, setEnterEmail] = useState(true);
   const [enterPassword, setEnterPassword] = useState(true);
+  const [togglePassword , setTogglePassword] = useState(false);
   const emailRef = useRef();
   const passwordRef = useRef();
   const handleGoogleSignIn = async () => {
@@ -78,16 +80,18 @@ const LoginPage = () => {
 
         } else {
           setEnterEmail(true);
+          emailRef.current.style.border = '';
         }
       }}
       ref = {emailRef}
     />
     {!enterEmail && <p className="text-red-500 text-sm">Please enter a valid email</p>}
   </div>
-  <div className="flex flex-col">
+  <div>
+`  <div className="flex flex-col">
     <label className="text-black text-sm mb-1">Password:</label>
     <input
-      type="password"
+      type={!togglePassword ? "text" : "password"}
       value={password}
       onChange={(e) => setPassword(e.target.value)}
       className="rounded-lg bg-gray-100 p-2 text-black border border-gray-300 text-center w-full" 
@@ -100,10 +104,21 @@ const LoginPage = () => {
           passwordRef.current.style.border = '1px solid red';
         } else {
           setEnterPassword(true);
+          passwordRef.current.style.border = '';
         }
       }}
     />
     {!enterPassword && <p className="text-red-500 text-sm">Please enter a valid password</p>}
+  </div>
+  {!togglePassword ? (
+    <div onClick={() => setTogglePassword(!togglePassword)}>
+      <Eye size={20} />
+    </div>
+  ) : (
+    <div onClick={() => setTogglePassword(!togglePassword)}>
+      <EyeOff size={20} />
+    </div>
+  )}
   </div>
   <button
     type="submit"
