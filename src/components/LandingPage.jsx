@@ -25,7 +25,7 @@ const LandingPage = () => {
                 initial={{ opacity: 0, x: -100 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.5 }}>
-                Discover your next big opportunity. At NextHorizon, we connect talent with the future. Whether you’re starting your career or looking for your next leap, our platform is built to help you explore, grow, and succeed. Join us today and take the first step toward your Next Horizon.
+                Discover your next big opportunity. At NextHorizon, we connect talent with the future. Whether you're starting your career or looking for your next leap, our platform is built to help you explore, grow, and succeed. Join us today and take the first step toward your Next Horizon.
             </motion.p>
             </div>
 
