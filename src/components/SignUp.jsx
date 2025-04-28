@@ -1,7 +1,7 @@
 import React, { useRef, useState } from 'react';
 import { Eye, EyeOff } from 'lucide-react';
-import { auth } from '../fireBase/fireBaseConfig';  // ✅ Import auth
-import { createUserWithEmailAndPassword } from 'firebase/auth'; // ✅ Import method
+import { auth } from '../fireBase/fireBaseConfig';  
+import { createUserWithEmailAndPassword } from 'firebase/auth'; 
 import { toast } from 'react-toastify';
 
 const SignUp = () => {
