@@ -3,8 +3,10 @@ import { signInWithPopup, signInWithEmailAndPassword } from 'firebase/auth';
 import { auth, provider } from '../fireBase/fireBaseConfig';
 import { toast } from 'react-toastify';
 import { Link } from 'react-router-dom';
-import {Eye , EyeOff} from 'lucide-react'
+import {Eye , EyeOff} from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
 const LoginPage = () => {
+  const navigate = useNavigate();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [enterEmail, setEnterEmail] = useState(true);
@@ -16,6 +18,8 @@ const LoginPage = () => {
     try {
       const result = await signInWithPopup(auth, provider);
       console.log("User Info:", result.user);
+      toast.success('Logged in successfully!');
+      navigate('/name');
     } catch (error) {
       console.error("Google Sign-In Error:", error.message);
     }
@@ -123,6 +127,16 @@ const LoginPage = () => {
   <button
     type="submit"
     className="rounded-lg bg-[#090DFF] p-2 text-white font-semibold mt-4 hover:opacity-90 transition-all w-full"
+    onClick={(e) => {
+      e.preventDefault();
+      if (!enterEmail || !enterPassword) {
+        toast.error('Please fill in all fields');
+      }
+      else {
+        handleEmailSignIn(e);
+        navigate('/name');
+      }
+    }}
   >
     Sign In
   </button>

@@ -3,8 +3,10 @@ import { Eye, EyeOff } from 'lucide-react';
 import { auth } from '../fireBase/fireBaseConfig';  
 import { createUserWithEmailAndPassword } from 'firebase/auth'; 
 import { toast } from 'react-toastify';
+import { useNavigate } from 'react-router-dom';
 
 const SignUp = () => {
+  const navigate = useNavigate();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [togglePassword, setTogglePassword] = useState(false);
@@ -19,6 +21,8 @@ const SignUp = () => {
       const userCredential = await createUserWithEmailAndPassword(auth, email, password);
       console.log('User created:', userCredential.user);
       toast.success('Account created successfully!');
+      navigate('/name')
+
     } catch (error) {
       console.error('Error signing up:', error.message);
         toast.error('Error creating account. Please try again.');
@@ -90,6 +94,18 @@ const SignUp = () => {
           <button
             type="submit"
             className="rounded-lg bg-[#090DFF] p-2 text-white font-semibold mt-4 hover:opacity-90 transition-all w-full"
+            onClick = {() => {
+              if (!enterEmail) {
+                emailRef.current.style.border = '1px solid red';
+              }
+              if (!enterPassword) {
+                passwordRef.current.style.border = '1px solid red';
+              }
+              if (enterEmail && enterPassword) {
+                handleSignUp();
+
+              }
+            }}
           >
             Sign Up
           </button>
