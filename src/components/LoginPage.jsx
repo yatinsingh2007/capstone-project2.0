@@ -19,7 +19,7 @@ const LoginPage = () => {
       const result = await signInWithPopup(auth, provider);
       console.log("User Info:", result.user);
       toast.success('Logged in successfully!');
-      navigate('/name');
+      navigate('/profiledetails');
     } catch (error) {
       console.error("Google Sign-In Error:", error.message);
     }
@@ -31,6 +31,7 @@ const LoginPage = () => {
       const user = userCredential.user;
       console.log(user);
       toast.success('Logged in successfully!');
+      navigate('/profiledetails');
     } catch (error) {
       console.error("Email Sign-In Error:", error.message);
     }
@@ -129,12 +130,15 @@ const LoginPage = () => {
     className="rounded-lg bg-[#090DFF] p-2 text-white font-semibold mt-4 hover:opacity-90 transition-all w-full"
     onClick={(e) => {
       e.preventDefault();
-      if (!enterEmail || !enterPassword) {
+      if (emailRef.current.value === '' || passwordRef.current.value === '') {
+        emailRef.current.style.border = '1px solid red';
+        passwordRef.current.style.border = '1px solid red';
         toast.error('Please fill in all fields');
       }
       else {
         handleEmailSignIn(e);
-        navigate('/name');
+        navigate('/profiledetails');
+        toast.success('Logged in successfully!');
       }
     }}
   >

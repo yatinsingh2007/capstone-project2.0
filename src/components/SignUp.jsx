@@ -21,7 +21,7 @@ const SignUp = () => {
       const userCredential = await createUserWithEmailAndPassword(auth, email, password);
       console.log('User created:', userCredential.user);
       toast.success('Account created successfully!');
-      navigate('/name')
+      navigate('/profiledetails');
 
     } catch (error) {
       console.error('Error signing up:', error.message);
@@ -36,7 +36,7 @@ const SignUp = () => {
           Create Account
         </h1>
 
-        <form onSubmit={handleSignUp} className="flex flex-col gap-4 w-full">
+        <form className="flex flex-col gap-4 w-full" onSubmit={handleSignUp}>
           <div className="flex flex-col">
             <label className="text-black text-sm mb-1">Email:</label>
             <input
@@ -102,8 +102,8 @@ const SignUp = () => {
                 passwordRef.current.style.border = '1px solid red';
               }
               if (enterEmail && enterPassword) {
-                handleSignUp();
-
+               navigate('/profiledetails');
+               toast.success('Account created successfully!');
               }
             }}
           >

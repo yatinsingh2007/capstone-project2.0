@@ -3,6 +3,7 @@ import './App.css'
 import LoginPage from './components/LoginPage'
 import LandingPage from './components/LandingPage';
 import Name from './components/Name';
+import ProfileSectionDetails from './components/ProfileSectionDetails';
 import { BrowserRouter , Route , Routes } from 'react-router-dom';
 import SignUp from './components/SignUp';
 function App() {
@@ -13,7 +14,7 @@ function App() {
             <Route path='/' element={<LandingPage />} />
             <Route path='/login' element={<LoginPage />} />
             <Route path='/signup' element = {<SignUp />} />
-            <Route path='/name' element = {<Name />} />
+            <Route path = '/profiledetails' element = {<ProfileSectionDetails />} />
           </Routes>
           <ToastContainer
             position="top-right"
