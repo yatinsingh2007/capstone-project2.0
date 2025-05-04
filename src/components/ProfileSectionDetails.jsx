@@ -1,5 +1,4 @@
-import React from 'react'
-
+import React  from 'react';
 const ProfileSectionDetails = () => {
     const bachelorsDegrees = [
         "Bachelor of Arts (BA)",
@@ -12,6 +11,7 @@ const ProfileSectionDetails = () => {
         "Bachelor of Interior Design (BID)",
         "Bachelor of Science (BSc)",
         "Bachelor of Technology (BTech)",
+        "Bachelor Of Technology in CS & AI",
         "Bachelor of Engineering (BE)",
         "Bachelor of Computer Applications (BCA)",
         "Bachelor of Science in Information Technology (BSc IT)",
@@ -101,17 +101,30 @@ const ProfileSectionDetails = () => {
       ]
   return (
     <>
-        <div className='flex flex-col items-center justify-center h-screen bg-white'>
-            <form className='flex flex-col gap-4 w-50 p-8 md:p-20 border-2 border-gray-300 rounded-2xl shadow-lg justify-center bg-white m-2'>
+        <div className='relative flex flex-col items-center justify-center h-screen bg-white'>
+            <form className='flex flex-col gap-4 w-50 p-8 md:p-20 border-2 border-gray-300 rounded-2xl shadow-lg justify-center bg-white m-2 lg:mt-48'>
                 <h1 className="font-bold text-black text-2xl md:text-4xl mb-6" style={{ fontFamily: '"Lexend Zetta"' }}>
                     Profile Details
                 </h1>
                 <div className="mb-3">
-                    <label htmlFor="name" className="form-label">Name</label>
+                    <label htmlFor="name">Name</label>
                     <input type="text" className="rounded-lg bg-gray-100 p-2 text-black border border-gray-300 text-center w-full" id="name" placeholder="Enter your name" required/>
                 </div>
+                <div className='mb-3'>
+                    <div className='mb-3'>Gender</div>
+                    <div className='flex gap-4'>
+                        <input type = 'radio' name='gender'/>{' '}
+                        <label htmlFor="gender">Male</label>{' '}
+                        <input type = 'radio' name='gender'/>{' '}
+                        <label htmlFor='gender'>Female</label>
+                    </div>
+                </div>
+                <div>
+                    <label>Mobile</label>
+                    <input type='text' minLength={10} min={0} className='rounded-lg bg-gray-100 p-2 text-black border border-gray-300 text-center w-full' placeholder='Enter a Number'/>
+                </div>
                 <div className='flex flex-col gap-3'>
-                    <label htmlFor='masterEducation' className="form-label">Master's Education{' '}<span className='text-sm text-gray-500'>(optional)</span></label>
+                    <label htmlFor='masterEducation'>Master's Education{' '}<span className='text-sm text-gray-500'>(optional)</span></label>
                     <select className="rounded-lg bg-gray-100 p-2 text-black border border-gray-300 text-center w-full" id="masterEducation">
                         <option value="" disabled selected>Select your degree</option>
                         {mastersDegree.map((degree, index) => (
@@ -120,7 +133,7 @@ const ProfileSectionDetails = () => {
                     </select>
                 </div>
                 <div className='flex flex-col gap-3'>
-                    <label htmlFor='education' className="form-label">Bachelor's Education</label>
+                    <label htmlFor='education'>Bachelor's Education</label>
                     <select className="rounded-lg bg-gray-100 p-2 text-black border border-gray-300 text-center w-full" id="education" required>
                         <option value="" disabled selected>Select your degree</option>
                         {bachelorsDegrees.map((degree, index) => (
@@ -129,19 +142,19 @@ const ProfileSectionDetails = () => {
                     </select>
                 </div>
                 <div className='flex flex-col gap-3'>
-                    <label htmlFor="college" className="form-label">College/University</label>
+                    <label htmlFor="college">College/University</label>
                     <input type="text" className="rounded-lg bg-gray-100 p-2 text-black border border-gray-300 text-center w-full" id="college" placeholder="Enter your college/university name" required/>
                 </div>
                 <div className='flex flex-col gap-3'>
-                    <label htmlFor="graduationYear" className="form-label">Graduation Year</label>
+                    <label htmlFor="graduationYear">Graduation Year</label>
                     <input type="number" className="rounded-lg bg-gray-100 p-2 text-black border border-gray-300 text-center w-full" id="graduationYear" placeholder="Enter your graduation year" required maxLength={4} min={1980}/>
                 </div>
                 <div className='flex flex-col gap-3'>
-                    <label htmlFor="location" className="form-label">Location</label>
+                    <label htmlFor="location">Location</label>
                     <input type="text" className="rounded-lg bg-gray-100 p-2 text-black border border-gray-300 text-center w-full" id="location" placeholder="Enter your City Name" required/>
                 </div>
                 <div>
-                    <label htmlFor="bio" className="form-label">Bio</label>
+                    <label htmlFor="bio">Bio</label>
                     <textarea className="rounded-lg bg-gray-100 p-2 text-black border border-gray-300 text-center w-full" id="bio" placeholder="Enter your bio" required></textarea>
                 </div>
             </form>
