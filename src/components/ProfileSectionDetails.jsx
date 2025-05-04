@@ -49,7 +49,7 @@ const ProfileSectionDetails = () => {
         "Bachelor of Education (BEd)",
         "Bachelor of Elementary Education (BElEd)",
         "Bachelor of Physical Education (BPEd)"
-      ];
+      ].sort();
       const mastersDegree = [
         `Master of Science (MSc)`,
         `Master of Technology (MTech)`,
@@ -98,7 +98,7 @@ const ProfileSectionDetails = () => {
         `Master of Financial Management and Investment Management (MFIM)`,
         `Master of Financial Management and Investment Banking (MFIB)`,
         `Master of Financial Management and Investment Analysis (MFIA)`,
-      ]
+      ].sort()
   return (
     <>
         <div className='relative flex flex-col items-center justify-center h-screen bg-white'>
@@ -121,7 +121,7 @@ const ProfileSectionDetails = () => {
                 </div>
                 <div>
                     <label>Mobile</label>
-                    <input type='text' minLength={10} min={0} className='rounded-lg bg-gray-100 p-2 text-black border border-gray-300 text-center w-full' placeholder='Enter a Number'/>
+                    <input type='text' minLength={10} min={0} className='rounded-lg bg-gray-100 p-2 text-black border border-gray-300 text-center w-full' placeholder='Enter Your Mobile Number'/>
                 </div>
                 <div className='flex flex-col gap-3'>
                     <label htmlFor='masterEducation'>Master's Education{' '}<span className='text-sm text-gray-500'>(optional)</span></label>
