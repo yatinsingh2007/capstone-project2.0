@@ -1,7 +1,8 @@
 import React  from 'react';
+import { useNavigate } from 'react-router-dom';
 const ProfileSectionDetails = () => {
+    const navigate = useNavigate()
     const bachelorsDegrees = [
-        // Existing entries (your original list)
         "Bachelor of Arts (BA)",
         "Bachelor of Fine Arts (BFA)",
         "Bachelor of Design (BDes)",
@@ -13,6 +14,7 @@ const ProfileSectionDetails = () => {
         "Bachelor of Science (BSc)",
         "Bachelor of Technology (BTech)",
         "Bachelor Of Technology in CS & AI",
+        "Bachelor of Technology Civil Engineering",
         "Bachelor of Engineering (BE)",
         "Bachelor of Computer Applications (BCA)",
         "Bachelor of Science in Information Technology (BSc IT)",
@@ -173,7 +175,7 @@ const ProfileSectionDetails = () => {
   return (
     <>
         <div className='relative flex flex-col items-center justify-center h-screen bg-white'>
-            <form className='flex flex-col gap-4 w-50 p-8 md:p-20 border-2 border-gray-300 rounded-2xl shadow-lg justify-center bg-white m-2 lg:mt-48'>
+            <form className='flex flex-col w-50 p-8 md:p-20 border-2 border-gray-300 rounded-2xl shadow-lg justify-center bg-white m-2 lg:mt-48'>
                 <h1 className="font-bold text-black text-2xl md:text-4xl mb-6" style={{ fontFamily: '"Lexend Zetta"' }}>
                     Profile Details
                 </h1>
@@ -192,7 +194,7 @@ const ProfileSectionDetails = () => {
                 </div>
                 <div>
                     <label>Mobile</label>
-                    <input type='text' minLength={10} min={0} className='rounded-lg bg-gray-100 p-2 text-black border border-gray-300 text-center w-full' placeholder='Enter Your Mobile Number'/>
+                    <input type='text' minLength={10} maxLength={10} min={0} className='rounded-lg bg-gray-100 p-2 text-black border border-gray-300 text-center w-full' placeholder='Enter Your Mobile Number'/>
                 </div>
                 <div className='flex flex-col gap-3'>
                     <label htmlFor='masterEducation'>Master's Education{' '}<span className='text-sm text-gray-500'>(optional)</span></label>
@@ -227,6 +229,12 @@ const ProfileSectionDetails = () => {
                 <div>
                     <label htmlFor="bio">Bio</label>
                     <textarea className="rounded-lg bg-gray-100 p-2 text-black border border-gray-300 text-center w-full" id="bio" placeholder="Enter your bio" required></textarea>
+                </div>
+                <div>
+                    <button type="submit" className="rounded-lg bg-[#090DFF] p-2 text-white font-semibold mt-4 hover:opacity-90 transition-all w-full" onClick = {(e) => {
+                        e.preventDefault()
+                        navigate('/main')
+                    }}>Submit</button>
                 </div>
             </form>
         </div>

@@ -6,6 +6,7 @@ import Name from './components/Name';
 import ProfileSectionDetails from './components/ProfileSectionDetails';
 import { BrowserRouter , Route , Routes } from 'react-router-dom';
 import SignUp from './components/SignUp';
+import MainPage from './components/MainPage';
 function App() {
   return (
     <>
@@ -15,6 +16,7 @@ function App() {
             <Route path='/login' element={<LoginPage />} />
             <Route path='/signup' element = {<SignUp />} />
             <Route path = '/profiledetails' element = {<ProfileSectionDetails />} />
+            <Route path = '/main' element = {<MainPage/>} />
           </Routes>
           <ToastContainer
             position="top-right"
