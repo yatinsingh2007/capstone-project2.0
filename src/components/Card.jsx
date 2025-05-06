@@ -5,7 +5,7 @@ const Card = ({key , company , title  , image , details , companyLogo}) => {
   const [unlike , setUnlike] = useState(null)
   return (
    <>
-      <div className='p-4 bg-white border-2 border-neutral-600 m-2 rounded-lg md:mx-96 mx-16 w-full md:w-auto' key={key}>
+      <div className='p-4 bg-white border-2 border-neutral-600 m-2 rounded-lg md:mx-56 lg:mx-96 mx-16 w-full md:w-auto mb-8' key={key}>
         <div>
           <img src={companyLogo} className='rounded-full h-10 w-10'/>
           <h1 className='font-semibold p-2 text-xl' style={{fontFamily : "'Nunito Sans'"}}>{company}</h1>
