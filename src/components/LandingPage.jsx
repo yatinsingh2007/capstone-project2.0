@@ -8,7 +8,7 @@ const LandingPage = () => {
   return (
     <>
       <div className="flex min-h-screen items-center justify-center">
-        <div className="md:pl-16 pl-9">
+        <div className="md:pl-16 md:ml-0">
           <h1 style={{ fontFamily: '"Lexend Zetta"' }} className="text-xl p-8">
             <span
               style={{ fontFamily: '"Nothing You Could Do",cursive' }}
@@ -18,9 +18,9 @@ const LandingPage = () => {
             </span>
             Horizon
           </h1>
-          <div className="md:pl-10 p-4 md:pb-0">
+          <div className="md:pl-10 md:pb-0 mr-40 ml-11 md:ml-0">
             <motion.p
-                className="md:m-56 md:mb-48 md:ml-4 mt-32 md:pt-0 text-left md:leading-loose md:text-3xl leading-loose mb-12 border-l-4 border-black pl-4 ml-2"
+                className="md:m-56 md:mb-48 md:ml-4 mt-32 md:pt-0 text-left md:leading-loose md:text-3xl leading-loose mb-12 border-l-4 border-black pl-4 ml-2 text-sm"
                 style={{ fontFamily: '"Nunito Sans"' }}
                 initial={{ opacity: 0, x: -100 }}
                 animate={{ opacity: 1, x: 0 }}
@@ -29,7 +29,7 @@ const LandingPage = () => {
             </motion.p>
             </div>
 
-          <div className="md:pl-12 pb-8 flex md:gap-28 gap-48 md:pt-0 pt-28">
+          <div className="md:pl-12 pb-8 flex md:gap-28 gap-20 md:pt-0 pt-28 pl-8">
             <button className="rounded-lg bg-[#090DFF] p-2 text-white text-xl font-semibold"
             onClick={(e) => {
               e.preventDefault();
