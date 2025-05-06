@@ -38,7 +38,7 @@ const LoginPage = () => {
   };
   return (
     <div className="flex flex-col items-center justify-center h-screen bg-white">
-      <div className="flex flex-col border-2 border-gray-300 rounded-2xl shadow-lg p-8 md:p-20">
+      <div className="flex flex-col border-2 border-gray-300 rounded-2xl shadow-lg p-8 md:p-20 mr-24 md:mr-0">
         <h1 className="font-bold text-black text-2xl md:text-4xl mb-2" style={{ fontFamily: '"Lexend Zetta"' }}>
           Welcome Back
         </h1>

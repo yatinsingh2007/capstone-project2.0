@@ -6,6 +6,7 @@ const Nav = () => {
   const workRef = useRef(null);
   const chatRef = useRef(null);
   const notificationRef = useRef(null);
+  const profileRef = useRef(null)
 
   const clearBorders = () => {
     homeRef.current.style.borderBottom = '';
@@ -13,6 +14,7 @@ const Nav = () => {
     workRef.current.style.borderBottom = '';
     chatRef.current.style.borderBottom = '';
     notificationRef.current.style.borderBottom = '';
+    profileRef.current.style.borderBottom = '';
   };
 
   const handleClick = (ref) => {
@@ -21,8 +23,8 @@ const Nav = () => {
   };
 
   return (
-    <div className=' bg-white p-2 rounded-3xl md:mx-28 lg:mx-48 shadow-xl '>
-      <div className='flex gap-2 justify-between mx-8 md:mx-5 md:gap-9'>
+    <div className=' bg-white p-3 rounded-3xl md:mx-28 lg:mx-48 shadow-xl mr-24'>
+      <div className='flex gap-2 justify-between mx-4 md:mx-5 md:gap-9'>
 
         <a href='#'>
           <div
@@ -91,6 +93,18 @@ const Nav = () => {
           >
             <span className="material-symbols-outlined">notifications</span>
             <p className='md:text-base text-xs' style={{fontFamily : "'Nunito Sans'"}}>Notifications</p>
+          </div>
+        </a>
+
+        <a href='#'>
+          <div ref={profileRef}
+          className='flex flex-col justify-between gap-2 items-center'
+          onClick={(e) => {
+            e.preventDefault();
+            handleClick(profileRef)
+          }}>
+            <span className="material-symbols-outlined">person</span>
+            <p className='md:text-base text-xs'>Profile</p>
           </div>
         </a>
 
