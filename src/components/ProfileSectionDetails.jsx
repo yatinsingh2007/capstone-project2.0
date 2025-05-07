@@ -175,7 +175,7 @@ const ProfileSectionDetails = () => {
   return (
     <>
         <div className='relative flex flex-col items-center justify-center h-screen bg-white'>
-            <form className='flex flex-col w-50 p-8 md:p-20 border-2 border-gray-300 rounded-2xl shadow-lg justify-center bg-white m-2 lg:mt-48 mr-28 md:mr-0'>
+            <form className='flex flex-col w-50 p-8 md:p-20 border-2 border-gray-300 rounded-2xl shadow-lg justify-center bg-white m-2 lg:mt-48 md:mr-0'>
                 <h1 className="font-bold text-black text-2xl md:text-4xl mb-6" style={{ fontFamily: '"Lexend Zetta"' }}>
                     Profile Details
                 </h1>
