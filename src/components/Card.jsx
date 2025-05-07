@@ -37,17 +37,29 @@ const Card = ({key , company , title  , image , details , companyLogo}) => {
             <p className='md:text-base text-sm'>Dislike</p>
           </div>
         </div>
-        {messages.length > 0 && <div className='w-full bg-gray-500'></div>}
+        {messages.length > 0 && (
+  <div className="w-full bg-slate-100 h-40 overflow-y-auto flex flex-col-reverse p-3 space-y-2 space-y-reverse rounded-md mt-4">
+  {messages.map((message, i) => (
+    <div
+      key={i}
+      className='max-w-[70%] px-4 py-2 rounded-lg text-sm break-words shadow bg-white text-gray-800 self-start'>
+      {message}
+    </div>
+  ))}
+</div>
+)}
         <div className='flex justify-center items-center gap-6'>
           <input type='text' placeholder='Enter a message' className='w-full rounded-full p-3 border-2 border-gray-800 text-center' ref={messageRef}/>
-          <LucideShare2 onClick={(e) => {
-            e.preventDefault();
-            if (messageRef.current.value === ''){
-              return;
-            }else{
-              setMessages((messages) => [...messages , messageRef.current.value])
-            }
-          }}/>
+          <div className='hover:cursor-pointer'>
+            <LucideShare2 onClick={(e) => {
+              e.preventDefault();
+              const message = messageRef.current?.value.trim()
+              if(!message)return;
+              setMessages((messages) => [...messages , message]);
+              messageRef.current.value = ``;
+              return
+            }}/>
+          </div>
         </div>
       </div>
    </>
