@@ -1,8 +1,10 @@
-import React , {useState} from 'react'
-import {ThumbsUp , ThumbsDown} from 'lucide-react'
+import React , {useState , useRef} from 'react'
+import {ThumbsUp , ThumbsDown , LucideShare2} from 'lucide-react'
 const Card = ({key , company , title  , image , details , companyLogo}) => {
   const [like , setLike] = useState(null)
   const [unlike , setUnlike] = useState(null)
+  const [messages , setMessages] = useState([])
+  const messageRef = useRef(null)
   return (
    <>
       <div className='p-4 bg-white border-2 border-neutral-600 m-2 rounded-lg md:mx-56 lg:mx-96 mx-16 w-full md:w-auto mb-8' key={key}>
@@ -35,7 +37,18 @@ const Card = ({key , company , title  , image , details , companyLogo}) => {
             <p className='md:text-base text-sm'>Dislike</p>
           </div>
         </div>
-        <input type='text' placeholder='Enter a message' className='w-full rounded-full p-3 border-2 border-gray-800 text-center'/>
+        {messages.length > 0 && <div className='w-full bg-gray-500'></div>}
+        <div className='flex justify-center items-center gap-6'>
+          <input type='text' placeholder='Enter a message' className='w-full rounded-full p-3 border-2 border-gray-800 text-center' ref={messageRef}/>
+          <LucideShare2 onClick={(e) => {
+            e.preventDefault();
+            if (messageRef.current.value === ''){
+              return;
+            }else{
+              setMessages((messages) => [...messages , messageRef.current.value])
+            }
+          }}/>
+        </div>
       </div>
    </>
   )
