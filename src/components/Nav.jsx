@@ -23,7 +23,7 @@ const Nav = () => {
   };
 
   return (
-    <div className=' bg-white p-3 rounded-3xl md:mx-28 lg:mx-48 shadow-xl mr-24'>
+    <div className=' bg-white p-3 rounded-3xl shadow-xl md:mr-0 md:fixed md:left-10 lg:right-56 md:right-14 md:top-2'>
       <div className='flex gap-2 justify-between mx-4 md:mx-5 md:gap-9'>
 
         <a href='#'>
