@@ -1,67 +1,32 @@
-import React, { useRef } from 'react';
-
+import React from 'react';
+import {Link ,  useLocation} from 'react-router-dom'
 const Nav = () => {
-  const homeRef = useRef(null);
-  const groupRef = useRef(null);
-  const workRef = useRef(null);
-  const chatRef = useRef(null);
-  const notificationRef = useRef(null);
-  const profileRef = useRef(null)
-
-  const clearBorders = () => {
-    homeRef.current.style.borderBottom = '';
-    groupRef.current.style.borderBottom = '';
-    workRef.current.style.borderBottom = '';
-    chatRef.current.style.borderBottom = '';
-    notificationRef.current.style.borderBottom = '';
-    profileRef.current.style.borderBottom = '';
-  };
-
-  const handleClick = (ref) => {
-    clearBorders();
-    ref.current.style.borderBottom = '2px solid black';
-  };
-
+  const location = useLocation()
   return (
     <div className=' bg-white p-3 rounded-3xl shadow-xl md:mr-0 fixed md:left-10 lg:left-48 lg:right-56 md:right-14 md:top-2 left-5 right-5'>
       <div className='flex gap-2 justify-between mx-4 md:mx-5 md:gap-9'>
 
-        <a href='#'>
+        <Link to='/main'>
           <div
-            ref={homeRef}
-            className='flex flex-col justify-between gap-2 items-center'
-            onClick={(e) => {
-              e.preventDefault();
-              handleClick(homeRef);
-            }}
+            className={location.pathname === '/main' ? `flex flex-col justify-between gap-2 items-center border-b-2 border-black` : `flex flex-col justify-between gap-2 items-center`}
           >
             <span className="material-symbols-outlined">home</span>
             <p className='md:text-base text-xs' style={{fontFamily : "'Nunito Sans'"}}>Home</p>
           </div>
-        </a>
+        </Link>
 
-        <a href='#'>
+        <Link to='/opper'>
           <div
-            ref={groupRef}
-            className='flex flex-col justify-between gap-2 items-center'
-            onClick={(e) => {
-              e.preventDefault();
-              handleClick(groupRef);
-            }}
+            className={location.pathname === '/opper' ? `flex flex-col justify-between gap-2 items-center border-b-2 border-black`:`flex flex-col justify-between gap-2 items-center`}
           >
             <span className="material-symbols-outlined">groups</span>
             <p className='md:text-base text-xs' style={{fontFamily : '"Nunito Sans"'}}>Opportunities</p>
           </div>
-        </a>
+        </Link>
 
         <a href='#'>
           <div
-            ref={workRef}
-            className='flex flex-col justify-between gap-2 items-center'
-            onClick={(e) => {
-              e.preventDefault();
-              handleClick(workRef);
-            }}
+            className={`flex flex-col justify-between gap-2 items-center`}
           >
             <span className="material-symbols-outlined">work</span>
             <p className='md:text-base text-xs' style={{fontFamily : "'Nunito Sans'"}}>Jobs</p>
@@ -70,12 +35,7 @@ const Nav = () => {
 
         <a href='#'>
           <div
-            ref={chatRef}
             className='flex flex-col justify-between gap-2 items-center'
-            onClick={(e) => {
-              e.preventDefault();
-              handleClick(chatRef);
-            }}
           >
             <span className="material-symbols-outlined">chat</span>
             <p className='md:text-base text-xs' style={{fontFamily : "'Nunito Sans'"}}>Messages</p>
@@ -84,12 +44,7 @@ const Nav = () => {
 
         <a href='#'>
           <div
-            ref={notificationRef}
             className='flex flex-col justify-between gap-2 items-center'
-            onClick={(e) => {
-              e.preventDefault();
-              handleClick(notificationRef);
-            }}
           >
             <span className="material-symbols-outlined">notifications</span>
             <p className='md:text-base text-xs' style={{fontFamily : "'Nunito Sans'"}}>Notifications</p>
@@ -97,12 +52,8 @@ const Nav = () => {
         </a>
 
         <a href='#'>
-          <div ref={profileRef}
-          className='flex flex-col justify-between gap-2 items-center'
-          onClick={(e) => {
-            e.preventDefault();
-            handleClick(profileRef)
-          }}>
+          <div
+          className='flex flex-col justify-between gap-2 items-center'>
             <span className="material-symbols-outlined">person</span>
             <p className='md:text-base text-xs'>Profile</p>
           </div>

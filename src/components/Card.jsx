@@ -7,17 +7,17 @@ const Card = ({key , company , title  , image , details , companyLogo}) => {
   const messageRef = useRef(null)
   return (
    <>
-      <div className='p-4 bg-white border-2 border-blue-500 m-2 rounded-lg md:mx-56 lg:mx-96 mx-16 w-full md:w-auto' key={key}>
+      <div className='p-4 bg-white border-2 shadow-2xl m-2 rounded-lg md:mx-56 lg:mx-96 w-full md:w-auto' key={key}>
         <div>
           <img src={companyLogo} className='rounded-full h-10 w-10'/>
-          <h1 className='font-semibold p-2 text-xl' style={{fontFamily : "'Nunito Sans'"}}>{company}</h1>
+          <h1 className='font-semibold p-2 text-3xl' style={{fontFamily : "'Nunito Sans'"}}>{company}</h1>
         </div>
-          <p className='md:text-base p-2 text-xs sm:mr-5 font-bold' style={{fontFamily : "'MontSerrat'" , letterSpacing : '1px'}}>{title}</p>
+          <p className='md:text-base p-2 text-s sm:mr-5 font-bold' style={{fontFamily : "'MontSerrat'" , letterSpacing : '1px'}}>{title}</p>
           <div>
             <img src = {image} className='w-full rounded-3xl p-2' />
           </div>
           <div className='p-3'>
-            <p style={{fontFamily : "'Jost'"}} className='md:text-3xl text-xl'>{details}</p>
+            <p style={{fontFamily : "'Jost'"}} className='md:text-3xl text-2xl'>{details}</p>
           </div>
         <div className='flex gap-10 p-3'>
           <div className='flex flex-col justify-center items-center'>
