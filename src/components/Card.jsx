@@ -7,7 +7,7 @@ const Card = ({key , company , title  , image , details , companyLogo}) => {
   const messageRef = useRef(null)
   return (
    <>
-      <div className='p-4 bg-white border-2 shadow-2xl m-2 rounded-lg md:mx-28 lg:mx-48 w-full md:w-auto' key={key}>
+      <div className='p-4 bg-white border-2 shadow-2xl m-2 rounded-lg md:mx-16 lg:mx-48 w-full md:w-auto 2xl:mx-96' key={key}>
         <div>
           <img src={companyLogo} className='rounded-full h-10 w-10'/>
           <h1 className='font-semibold p-2 text-3xl' style={{fontFamily : "'Nunito Sans'"}}>{company}</h1>
