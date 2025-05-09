@@ -14,7 +14,7 @@ const MainPage = () => {
     <>
     <div className='bg-slate-100 min-h-screen w-full pt-8'>
       <Nav/>
-      <div className='mt-12 md:mr-32 mr-0 md:ml-10'>
+      <div className='mt-12 md:mr-32 mr-0 md:ml-28'>
         {data.map((ele) => {
           return <Card key = {ele.id} company={ele.company} title = {ele.title} image={ele.postImage} details = {ele.description} companyLogo = {ele.companyLogo}/>
         })}
