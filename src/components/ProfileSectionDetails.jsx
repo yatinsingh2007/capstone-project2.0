@@ -1,5 +1,7 @@
-import React  from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useState } from 'react';
+import { toast } from 'react-toastify';
+import { useForm } from '../context/FormContext'
 const ProfileSectionDetails = () => {
     const navigate = useNavigate()
     const bachelorsDegrees = [
@@ -172,33 +174,94 @@ const ProfileSectionDetails = () => {
         "Master of Theology (MTh)",
         "Master of Linguistics (MLing)"
       ].sort()
+      const [name , setName] = useState('');
+      const [gender , setGender] = useState('');
+      const [mobileNo , setMobileNo] = useState('');
+      const [bachelorsDegree , setBacheloorDegree] = useState('');
+      const [MastersDegree , setMastersDegree] = useState('');
+      const [college , setCollege] = useState('');
+      const [graduationYear , setGraduationYear] = useState('');
+      const [location , setLoaction] = useState('');
+      const [bio , setBio] = useState('')
+      const infoUser = {
+        'name' : '',
+        'gender' : '',
+        'mobileNo' : '',
+        'MastersDegree' : '',
+        'bachelorsDegree' : '',
+        'college' : '',
+        'graduationYear' : '',
+        'location' : '',
+        'bio' : ''
+      }
+      const { setInfoUser } = useForm()
+
   return (
     <>
         <div className='relative flex flex-col items-center justify-center h-screen bg-white'>
-            <form className='flex flex-col w-50 p-8 md:p-20 border-2 border-gray-300 rounded-2xl shadow-lg justify-center bg-white m-2 lg:mt-48 md:mr-0'>
+            <form className='flex flex-col w-50 p-8 md:p-20 border-2 border-gray-300 rounded-2xl shadow-lg justify-center bg-white m-2 lg:mt-48 md:mr-0' onSubmit={(e) => {
+                e.preventDefault();
+                infoUser.name = name;
+                infoUser.gender = gender;
+                infoUser.mobileNo = mobileNo;
+                infoUser.MastersDegree = MastersDegree;
+                infoUser.bachelorsDegree = bachelorsDegree;
+                infoUser.college = college;
+                infoUser.graduationYear = graduationYear;
+                infoUser.location = location;
+                infoUser.bio = bio
+                console.log(infoUser);
+                toast.success('Successfully Stored information.')
+                setInfoUser(infoUser)
+                navigate('/main')
+            }}>
                 <h1 className="font-bold text-black text-2xl md:text-4xl mb-6" style={{ fontFamily: '"Lexend Zetta"' }}>
                     Profile Details
                 </h1>
                 <div className="mb-3">
                     <label htmlFor="name">Name</label>
-                    <input type="text" className="rounded-lg bg-gray-100 p-2 text-black border border-gray-300 text-center w-full" id="name" placeholder="Enter your name" required/>
+                    <input type="text" className="rounded-lg bg-gray-100 p-2 text-black border border-gray-300 text-center w-full" id="name" placeholder="Enter your name" required onChange={(e) => {
+                        e.preventDefault()
+                        setName(e.target.value)
+                    }}/>
                 </div>
                 <div className='mb-3'>
-                    <div className='mb-3'>Gender</div>
+                <div className='mb-3'>Gender</div>
                     <div className='flex gap-4'>
-                        <input type = 'radio' name='gender'/>{' '}
-                        <label htmlFor="gender">Male</label>{' '}
-                        <input type = 'radio' name='gender'/>{' '}
-                        <label htmlFor='gender'>Female</label>
+                        <input
+                        type='radio'
+                        id='male'
+                        name='gender'
+                        value='Male'
+                        checked={gender === 'Male'}
+                        onChange={(e) => setGender(e.target.value)}
+                        />
+                        <label htmlFor='male'>Male</label>{' '}
+
+                        <input
+                        type='radio'
+                        id='female'
+                        name='gender'
+                        value='Female'
+                        checked={gender === 'Female'}
+                        onChange={(e) => setGender(e.target.value)}
+                        />
+                        <label htmlFor='female'>Female</label>
                     </div>
                 </div>
                 <div>
                     <label>Mobile</label>
-                    <input type='text' minLength={10} maxLength={10} min={0} className='rounded-lg bg-gray-100 p-2 text-black border border-gray-300 text-center w-full' placeholder='Enter Your Mobile Number'/>
+                    <input type='text' minLength={10} maxLength={10} min={0} className='rounded-lg bg-gray-100 p-2 text-black border border-gray-300 text-center w-full' placeholder='Enter Your Mobile Number' onChange={(e) => {
+                        e.preventDefault()
+                        setMobileNo(e.target.value)
+                    }}/>
                 </div>
                 <div className='flex flex-col gap-3'>
                     <label htmlFor='masterEducation'>Master's Education{' '}<span className='text-sm text-gray-500'>(optional)</span></label>
-                    <select className="rounded-lg bg-gray-100 p-2 text-black border border-gray-300 text-center w-full" id="masterEducation">
+                    <select className="rounded-lg bg-gray-100 p-2 text-black border border-gray-300 text-center w-full" id="masterEducation" onChange={(e) => {
+                        e.preventDefault()
+                        setMastersDegree(e.target.value)
+                    }}>
                         <option value="" disabled selected>Select your degree</option>
                         {mastersDegree.map((degree, index) => (
                             <option key={index} value={degree}>{degree}</option>
@@ -207,7 +270,10 @@ const ProfileSectionDetails = () => {
                 </div>
                 <div className='flex flex-col gap-3'>
                     <label htmlFor='education'>Bachelor's Education</label>
-                    <select className="rounded-lg bg-gray-100 p-2 text-black border border-gray-300 text-center w-full" id="education" required>
+                    <select className="rounded-lg bg-gray-100 p-2 text-black border border-gray-300 text-center w-full" id="education" required onChange={(e) => {
+                        e.preventDefault();
+                        setBacheloorDegree(e.target.value)
+                    }}>
                         <option value="" disabled selected>Select your degree</option>
                         {bachelorsDegrees.map((degree, index) => (
                             <option key={index} value={degree}>{degree}</option>
@@ -216,25 +282,34 @@ const ProfileSectionDetails = () => {
                 </div>
                 <div className='flex flex-col gap-3'>
                     <label htmlFor="college">College/University</label>
-                    <input type="text" className="rounded-lg bg-gray-100 p-2 text-black border border-gray-300 text-center w-full" id="college" placeholder="Enter your college/university name" required/>
+                    <input type="text" className="rounded-lg bg-gray-100 p-2 text-black border border-gray-300 text-center w-full" id="college" placeholder="Enter your college/university name" required onChange={(e) => {
+                        e.preventDefault();
+                        setCollege(e.target.value)
+                    }}/>
                 </div>
                 <div className='flex flex-col gap-3'>
                     <label htmlFor="graduationYear">Graduation Year</label>
-                    <input type="number" className="rounded-lg bg-gray-100 p-2 text-black border border-gray-300 text-center w-full" id="graduationYear" placeholder="Enter your graduation year" required maxLength={4} min={1980}/>
+                    <input type="number" className="rounded-lg bg-gray-100 p-2 text-black border border-gray-300 text-center w-full" id="graduationYear" placeholder="Enter your graduation year" required maxLength={4} min={1980} onChange={(e) => {
+                        e.preventDefault()
+                        setGraduationYear(e.target.value)
+                    }}/>
                 </div>
                 <div className='flex flex-col gap-3'>
                     <label htmlFor="location">Location</label>
-                    <input type="text" className="rounded-lg bg-gray-100 p-2 text-black border border-gray-300 text-center w-full" id="location" placeholder="Enter your City Name" required/>
+                    <input type="text" className="rounded-lg bg-gray-100 p-2 text-black border border-gray-300 text-center w-full" id="location" placeholder="Enter your City Name" required onChange={(e) => {
+                        e.preventDefault();
+                        setLoaction(e.target.value)
+                    }}/>
                 </div>
                 <div>
                     <label htmlFor="bio">Bio</label>
-                    <textarea className="rounded-lg bg-gray-100 p-2 text-black border border-gray-300 text-center w-full" id="bio" placeholder="Enter your bio" required></textarea>
+                    <textarea className="rounded-lg bg-gray-100 p-2 text-black border border-gray-300 text-center w-full" id="bio" placeholder="Enter your bio" required onChange={(e) => {
+                        e.preventDefault()
+                        setBio(e.target.value)
+                    }}></textarea>
                 </div>
                 <div>
-                    <button type="submit" className="rounded-lg bg-[#090DFF] p-2 text-white font-semibold mt-4 hover:opacity-90 transition-all w-full" onClick = {(e) => {
-                        e.preventDefault()
-                        navigate('/main')
-                    }}>Submit</button>
+                    <button type="submit" className="rounded-lg bg-[#090DFF] p-2 text-white font-semibold mt-4 hover:opacity-90 transition-all w-full">Submit</button>
                 </div>
             </form>
         </div>

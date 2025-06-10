@@ -24,14 +24,14 @@ const Nav = () => {
           </div>
         </Link>
 
-        <a href='#'>
+        <Link to='/job'>
           <div
             className={`flex flex-col justify-between gap-2 items-center`}
           >
             <span className="material-symbols-outlined">work</span>
             <p className='md:text-base text-xs' style={{fontFamily : "'Nunito Sans'"}}>Jobs</p>
           </div>
-        </a>
+        </Link>
 
         <a href='#'>
           <div

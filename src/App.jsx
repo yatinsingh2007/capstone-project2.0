@@ -7,6 +7,7 @@ import { BrowserRouter , Route , Routes } from 'react-router-dom';
 import SignUp from './components/SignUp';
 import MainPage from './components/MainPage';
 import Oppertunities from './components/Oppertunities';
+import Jobs from './components/Jobs'
 function App() {
   return (
     <>
@@ -18,6 +19,7 @@ function App() {
             <Route path = '/profiledetails' element = {<ProfileSectionDetails />} />
             <Route path = '/main' element = {<MainPage/>} />
             <Route path='/opper' element = {<Oppertunities/>}/>
+            <Route path='/job' element = {<Jobs/>}/>
           </Routes>
           <ToastContainer
             position="top-right"

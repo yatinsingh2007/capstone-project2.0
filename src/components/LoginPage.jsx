@@ -24,18 +24,25 @@ const LoginPage = () => {
       console.error("Google Sign-In Error:", error.message);
     }
   };
-  const handleEmailSignIn = async (e) => {
-    e.preventDefault();
-    try {
-      const userCredential = await signInWithEmailAndPassword(auth, email, password);
-      const user = userCredential.user;
-      console.log(user);
-      toast.success('Logged in successfully!');
-      navigate('/profiledetails');
-    } catch (error) {
-      console.error("Email Sign-In Error:", error.message);
+const handleEmailSignIn = async (e) => {
+  e.preventDefault();
+  try {
+    const userCredential = await signInWithEmailAndPassword(auth, email, password);
+    const user = userCredential.user;
+    console.log(user);
+    toast.success('Logged in successfully!');
+    navigate('/profiledetails');
+  } catch (error) {
+    console.error("Email Sign-In Error:", error.message);
+    if (error.code === 'auth/user-not-found') {
+      toast.error('No user found with this email');
+    } else if (error.code === 'auth/wrong-password') {
+      toast.error('Incorrect password');
+    } else {
+      toast.error('Failed to login. Please try again.');
     }
-  };
+  }
+};
   return (
     <div className="flex flex-col items-center justify-center h-screen bg-white">
       <div className="flex flex-col border-2 border-gray-300 rounded-2xl shadow-lg p-8 md:p-20 md:mr-0">

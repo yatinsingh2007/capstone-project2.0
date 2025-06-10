@@ -4,7 +4,7 @@ import Nav from './Nav'
 const MainPage = () => {
   const [data , setData] = useState([])
   useEffect(() => {
-    fetch(`https://mocki.io/v1/5ed72770-459c-4ad6-a17b-b2185b719ffd`)
+    fetch(`https://mocki.io/v1/75672d1d-baf0-4e14-8ae5-24f2dff346df`)
     .then((resp) => resp.json())
     .then((data) => {
       setData(data);
