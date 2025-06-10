@@ -1,7 +1,9 @@
-import { useState } from "react";
+import { useState , useContext } from "react";
 import { toast } from "react-toastify";
+import cardContext from "../context/CardContext";
 const OpportunityCard = ({ photo , name , job , company ,bio }) => {
   const [connect , setConnect] = useState(false)
+  const { setCardData } = useContext(cardContext);
   return (
     <div className="bg-white shadow-md rounded-2xl p-4 w-full max-w-sm hover:shadow-xl transition">
       <div className="flex flex-col items-center text-center">
@@ -14,8 +16,15 @@ const OpportunityCard = ({ photo , name , job , company ,bio }) => {
           e.preventDefault()
           if(connect){
             toast.warn(`Request sent cannot be retreived.`)
+            setCardData({
+              photo, 
+              name
+            })
           }
           setConnect(true)
+          toast.success(`Request sent to ${name} for connection.`)
+
+
           return
         }}>{connect ? 'Request sent' : '+ connect'}</button>
       </div>

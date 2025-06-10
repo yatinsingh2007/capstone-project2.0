@@ -1,13 +1,33 @@
-import { createContext , useContext , useState } from "react";
+import React, { useState, useEffect } from "react";
+import FormContext from "./FormContext";
 
-const FormContext = createContext()
-export const FormProvider = ({children}) => {
-    const [infoUser , setInfoUser] = useState({});
-    return (
-        <FormContext.Provider value={{infoUser , setInfoUser}}>
-            {children}
-        </FormContext.Provider>
-    );
-}
+const FormProvider = ({ children }) => {
+  const [formData, setFormData] = useState(() => {
 
-export const useForm = () => useContext(FormContext)
+    const storedData = localStorage.getItem("formData");
+    return storedData ? JSON.parse(storedData) : {
+      name: '',
+      gender: '',
+      mobileNo: '',
+      MastersDegree: '',
+      bachelorsDegree: '',
+      college: '',
+      graduationYear: '',
+      location: '',
+      bio: ''
+    };
+  });
+
+
+  useEffect(() => {
+    localStorage.setItem("formData", JSON.stringify(formData));
+  }, [formData]);
+
+  return (
+    <FormContext.Provider value={{ formData, setFormData }}>
+      {children}
+    </FormContext.Provider>
+  );
+};
+
+export default FormProvider;

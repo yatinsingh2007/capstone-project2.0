@@ -42,22 +42,22 @@ const Nav = () => {
           </div>
         </a>
 
-        <a href='#'>
+        <Link to='/notifications'>
           <div
             className='flex flex-col justify-between gap-2 items-center'
           >
             <span className="material-symbols-outlined">notifications</span>
             <p className='md:text-base text-xs' style={{fontFamily : "'Nunito Sans'"}}>Notifications</p>
           </div>
-        </a>
+        </Link>
 
-        <a href='#'>
+        <Link to='/myProfile'>
           <div
           className='flex flex-col justify-between gap-2 items-center'>
             <span className="material-symbols-outlined">person</span>
             <p className='md:text-base text-xs'>Profile</p>
           </div>
-        </a>
+        </Link>
 
       </div>
     </div>
