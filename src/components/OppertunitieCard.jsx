@@ -1,35 +1,52 @@
-import { useState , useContext } from "react";
+import { useState, useContext } from "react";
 import { toast } from "react-toastify";
 import cardContext from "../context/CardContext";
-const OpportunityCard = ({ photo , name , job , company ,bio }) => {
-  const [connect , setConnect] = useState(false)
+
+const OpportunityCard = ({ photo, name, job, company, bio }) => {
+  const [connect, setConnect] = useState(false);
   const { setCardData } = useContext(cardContext);
+
+  const handleConnect = (e) => {
+    e.preventDefault();
+    if (connect) {
+      toast.warn("Request already sent.");
+      return;
+    }
+
+    setConnect(true);
+    setCardData({ photo, name });
+    toast.success(`Request sent to ${name} for connection.`);
+  };
+
   return (
-    <div className="bg-white shadow-md rounded-2xl p-4 w-full max-w-sm hover:shadow-xl transition">
+    <div className="bg-gray-100 rounded-2xl shadow-md p-6 w-full max-w-sm hover:shadow-xl transition-all duration-300">
       <div className="flex flex-col items-center text-center">
-        <img src={photo} alt={name} className="w-16 h-16 rounded-full object-cover mx-auto"/>
-        <h2 className="text-xl font-semibold">{name}</h2>
-        <p className="text-sm text-gray-500">{job}</p>
-        <p className="text-sm font-medium text-gray-600">{company}</p>
-        <p className="mt-2 text-sm text-gray-700">{bio}</p>
-        <button className={ connect ? `bg-slate-400 text-zinc-800 p-2 rounded-full mt-3 font-bold` : `bg-blue-600 text-white p-2 rounded-full mt-3 font-bold`} onClick={(e) => {
-          e.preventDefault()
-          if(connect){
-            toast.warn(`Request sent cannot be retreived.`)
-            setCardData({
-              photo, 
-              name
-            })
-          }
-          setConnect(true)
-          toast.success(`Request sent to ${name} for connection.`)
+        <img
+          src={photo}
+          alt={name}
+          className="w-20 h-20 rounded-full object-cover mb-4 border-4 border-white shadow-sm"
+        />
+        <h2 className="text-xl font-bold text-gray-900" style={{ fontFamily: "'Lexend Zetta'" }}>
+          {name}
+        </h2>
+        <p className="text-sm text-blue-600 font-medium">{job}</p>
+        <p className="text-sm text-gray-700 font-semibold mb-2">{company}</p>
+        <p className="text-sm text-gray-600 mb-4">{bio}</p>
 
-
-          return
-        }}>{connect ? 'Request sent' : '+ connect'}</button>
+        <button
+          onClick={handleConnect}
+          className={`px-5 py-2 rounded-full font-semibold transition-all ${
+            connect
+              ? "bg-slate-400 text-white cursor-not-allowed"
+              : "bg-[#090DFF] text-white hover:opacity-90"
+          }`}
+          disabled={connect}
+        >
+          {connect ? "Request Sent" : "+ Connect"}
+        </button>
       </div>
     </div>
   );
 };
 
-export default OpportunityCard;  
+export default OpportunityCard;

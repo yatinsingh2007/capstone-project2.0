@@ -12,25 +12,28 @@ import ProfileSection from './components/ProfileSection';
 import FormProvider from './context/FormContext.jsx'
 import CardContextProvider from './context/CardContextProvider.jsx';
 import Notifications from './components/Notifications.jsx';
+import ConnectionsProvider from './context/Connecitons.jsx';
 function App() {
   return (
     <>
       <BrowserRouter>
-        <FormProvider>
-          <CardContextProvider>
-            <Routes>
-              <Route path='/' element={<LandingPage />} />
-              <Route path='/login' element={<LoginPage />} />
-              <Route path='/signup' element={<SignUp />} />
-              <Route path='/profiledetails' element={<ProfileSectionDetails />} />
-              <Route path='/main' element={<MainPage />} />
-              <Route path='/opper' element={<Oppertunities />} />
-              <Route path='/job' element={<Jobs />} />
-              <Route path='/myProfile' element={<ProfileSection />} />
-              <Route path = '/notifications' element = {<Notifications />} />
-            </Routes>
-          </CardContextProvider>
-        </FormProvider>
+        <ConnectionsProvider>
+          <FormProvider>
+            <CardContextProvider>
+              <Routes>
+                <Route path='/' element={<LandingPage />} />
+                <Route path='/login' element={<LoginPage />} />
+                <Route path='/signup' element={<SignUp />} />
+                <Route path='/profiledetails' element={<ProfileSectionDetails />} />
+                <Route path='/main' element={<MainPage />} />
+                <Route path='/opper' element={<Oppertunities />} />
+                <Route path='/job' element={<Jobs />} />
+                <Route path='/myProfile' element={<ProfileSection />} />
+                <Route path = '/notifications' element = {<Notifications />} />
+              </Routes>
+            </CardContextProvider>
+          </FormProvider>
+        </ConnectionsProvider>
         <ToastContainer
           position="top-right"
           autoClose={5000}

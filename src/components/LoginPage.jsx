@@ -16,8 +16,7 @@ const LoginPage = () => {
   const passwordRef = useRef();
   const handleGoogleSignIn = async () => {
     try {
-      const result = await signInWithPopup(auth, provider);
-      console.log("User Info:", result.user);
+      await signInWithPopup(auth, provider);
       toast.success('Logged in successfully!');
       navigate('/profiledetails');
     } catch (error) {
