@@ -26,7 +26,7 @@ const Nav = () => {
 
         <Link to='/job'>
           <div
-            className={`flex flex-col justify-between gap-2 items-center`}
+            className={location.pathname === '/job' ? `flex flex-col justify-between gap-2 items-center border-b-2 border-black` : `flex flex-col justify-between gap-2 items-center`}
           >
             <span className="material-symbols-outlined">work</span>
             <p className='md:text-base text-xs' style={{fontFamily : "'Nunito Sans'"}}>Jobs</p>
@@ -44,7 +44,7 @@ const Nav = () => {
 
         <Link to='/notifications'>
           <div
-            className='flex flex-col justify-between gap-2 items-center'
+            className={location.pathname === '/notifications' ? `flex flex-col justify-between gap-2 items-center border-b-2 border-black` : `flex flex-col justify-between gap-2 items-center`}
           >
             <span className="material-symbols-outlined">notifications</span>
             <p className='md:text-base text-xs' style={{fontFamily : "'Nunito Sans'"}}>Notifications</p>
@@ -53,7 +53,7 @@ const Nav = () => {
 
         <Link to='/myProfile'>
           <div
-          className='flex flex-col justify-between gap-2 items-center'>
+          className={location.pathname === '/myProfile' ? `flex flex-col justify-between gap-2 items-center border-b-2 border-black` : `flex flex-col justify-between gap-2 items-center`}>
             <span className="material-symbols-outlined">person</span>
             <p className='md:text-base text-xs'>Profile</p>
           </div>
