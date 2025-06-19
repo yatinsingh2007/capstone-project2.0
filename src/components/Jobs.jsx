@@ -21,21 +21,23 @@ const Jobs = () => {
         {jobs.map((job) => (
           <div
             key={job.id}
-            className="bg-gray-100 shadow-md rounded-2xl p-6 flex flex-col justify-between hover:shadow-xl transition-all duration-300"
+            className="p-4 bg-white border-2 shadow-2xl m-2 rounded-lg md:mx-16 lg:mx-48 w-full md:w-auto 2xl:mx-96 transition-all hover:shadow-3xl hover:scale-[1.01] flex flex-col justify-between"
           >
-            <div className="flex items-center gap-4 mb-4">
+            <div className="flex items-center gap-4 mb-6">
               <img
                 src={job.logo}
                 alt={`${job.company} logo`}
-                className="w-12 h-12 object-contain rounded-full bg-white p-1"
+                className="rounded-full h-10 w-10 object-cover border-2 border-blue-500 shadow-md"
               />
               <div>
-                <h2 className="text-xl font-semibold">{job.title}</h2>
+                <h2 className="md:text-base p-2 text-s sm:mr-5 font-bold text-gray-800" style={{fontFamily : "'MontSerrat'", letterSpacing : '1px'}}>{job.title}</h2>
                 <p className="text-sm text-gray-500">{job.company}</p>
               </div>
             </div>
 
-            <p className="text-gray-700 text-sm mb-4">{job.description}</p>
+            <img src={job.image} alt={`${job.title} visual`} className="w-full rounded-3xl p-2 object-cover max-h-[400px] shadow-sm mb-4" />
+
+            <p className="text-gray-700 text-sm mb-6">{job.description}</p>
 
             <div className="flex flex-col gap-1 text-sm text-gray-600">
               <p><strong>📍 Location:</strong> {job.location}</p>
@@ -43,7 +45,7 @@ const Jobs = () => {
               <p><strong>📅 Posted:</strong> {job.postedAt}</p>
             </div>
 
-            <button className="mt-4 bg-[#090DFF] text-white py-2 px-4 rounded-lg font-semibold hover:opacity-90 transition-all">
+            <button className="mt-6 bg-[#090DFF] text-white py-3 px-6 rounded-lg font-semibold hover:opacity-90 transition-all">
               Apply Now
             </button>
           </div>

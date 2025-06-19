@@ -1,14 +1,17 @@
-import React from 'react';
+import { useContext } from 'react';
 import {Link ,  useLocation} from 'react-router-dom'
+import { ThemeContext } from '../context/ThemeProvider';
+
 const Nav = () => {
   const location = useLocation()
+  const { theme } = useContext(ThemeContext);
   return (
-    <div className=' bg-white p-3 rounded-3xl shadow-xl md:mr-0 fixed md:left-10 lg:left-48 lg:right-56 md:right-14 md:top-2 left-5 right-5'>
+    <div className={`p-3 rounded-3xl shadow-xl md:mr-0 fixed md:left-10 lg:left-48 lg:right-56 md:right-14 md:top-2 left-5 right-5 border ${theme === 'dark' ? 'bg-black border-white' : 'bg-white border-black'} my-auto`}>
       <div className='flex gap-2 justify-between mx-4 md:mx-5 md:gap-9'>
 
         <Link to='/main'>
           <div
-            className={location.pathname === '/main' ? `flex flex-col justify-between gap-2 items-center border-b-2 border-black` : `flex flex-col justify-between gap-2 items-center`}
+            className={`${location.pathname === '/main' ? `flex flex-col justify-between gap-2 items-center border-b-2 ${theme === 'dark' ? 'border-white' : 'border-black'}` : 'flex flex-col justify-between gap-2 items-center'} transition hover:scale-105`}
           >
             <span className="material-symbols-outlined">home</span>
             <p className='md:text-base text-xs' style={{fontFamily : "'Nunito Sans'"}}>Home</p>
@@ -17,16 +20,16 @@ const Nav = () => {
 
         <Link to='/opper'>
           <div
-            className={location.pathname === '/opper' ? `flex flex-col justify-between gap-2 items-center border-b-2 border-black`:`flex flex-col justify-between gap-2 items-center`}
+            className={`${location.pathname === '/opper' ? `flex flex-col justify-between gap-2 items-center border-b-2 ${theme === 'dark' ? 'border-white' : 'border-black'}` : 'flex flex-col justify-between gap-2 items-center'} transition hover:scale-105`}
           >
             <span className="material-symbols-outlined">groups</span>
-            <p className='md:text-base text-xs' style={{fontFamily : '"Nunito Sans"'}}>Opportunities</p>
+            <p className='md:text-base text-xs' style={{fontFamily : "'Nunito Sans'"}}>Opportunities</p>
           </div>
         </Link>
 
         <Link to='/job'>
           <div
-            className={location.pathname === '/job' ? `flex flex-col justify-between gap-2 items-center border-b-2 border-black` : `flex flex-col justify-between gap-2 items-center`}
+            className={`${location.pathname === '/job' ? `flex flex-col justify-between gap-2 items-center border-b-2 ${theme === 'dark' ? 'border-white' : 'border-black'}` : 'flex flex-col justify-between gap-2 items-center'} transition hover:scale-105`}
           >
             <span className="material-symbols-outlined">work</span>
             <p className='md:text-base text-xs' style={{fontFamily : "'Nunito Sans'"}}>Jobs</p>
@@ -35,7 +38,7 @@ const Nav = () => {
 
         <a href='#'>
           <div
-            className='flex flex-col justify-between gap-2 items-center'
+            className='flex flex-col justify-between gap-2 items-center transition hover:scale-105'
           >
             <span className="material-symbols-outlined">chat</span>
             <p className='md:text-base text-xs' style={{fontFamily : "'Nunito Sans'"}}>Messages</p>
@@ -44,7 +47,7 @@ const Nav = () => {
 
         <Link to='/notifications'>
           <div
-            className={location.pathname === '/notifications' ? `flex flex-col justify-between gap-2 items-center border-b-2 border-black` : `flex flex-col justify-between gap-2 items-center`}
+            className={`${location.pathname === '/notifications' ? `flex flex-col justify-between gap-2 items-center border-b-2 ${theme === 'dark' ? 'border-white' : 'border-black'}` : 'flex flex-col justify-between gap-2 items-center'} transition hover:scale-105`}
           >
             <span className="material-symbols-outlined">notifications</span>
             <p className='md:text-base text-xs' style={{fontFamily : "'Nunito Sans'"}}>Notifications</p>
@@ -53,9 +56,9 @@ const Nav = () => {
 
         <Link to='/myProfile'>
           <div
-          className={location.pathname === '/myProfile' ? `flex flex-col justify-between gap-2 items-center border-b-2 border-black` : `flex flex-col justify-between gap-2 items-center`}>
+          className={`${location.pathname === '/myProfile' ? `flex flex-col justify-between gap-2 items-center border-b-2 ${theme === 'dark' ? 'border-white' : 'border-black'}` : 'flex flex-col justify-between gap-2 items-center'} transition hover:scale-105`}>
             <span className="material-symbols-outlined">person</span>
-            <p className='md:text-base text-xs'>Profile</p>
+            <p className='md:text-base text-xs' style={{fontFamily : "'Nunito Sans'"}}>Profile</p>
           </div>
         </Link>
 

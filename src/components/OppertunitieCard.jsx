@@ -1,10 +1,10 @@
 import { useState, useContext } from "react";
 import { toast } from "react-toastify";
-import cardContext from "../context/CardContext";
+import {CardContext} from "../context/CardContextProvider";
 
 const OpportunityCard = ({ photo, name, job, company, bio }) => {
   const [connect, setConnect] = useState(false);
-  const { setCardData } = useContext(cardContext);
+  const { setCardData } = useContext(CardContext);
 
   const handleConnect = (e) => {
     e.preventDefault();

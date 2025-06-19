@@ -1,5 +1,7 @@
 import React from 'react'
-import CardContext from './CardContext'
+import { createContext } from "react";
+
+const CardContext = createContext(null)
 
 const CardContextProvider = ({children}) => {
     const [cardData , setCardData] = React.useState({
@@ -13,4 +15,4 @@ const CardContextProvider = ({children}) => {
     )
 }
 
-export default CardContextProvider
+export { CardContextProvider , CardContext }
