@@ -11,10 +11,10 @@ const Nav = () => {
 
         <Link to='/main'>
           <div
-            className={`${location.pathname === '/main' ? `flex flex-col justify-between gap-2 items-center border-b-2 ${theme === 'dark' ? 'border-white' : 'border-black'}` : 'flex flex-col justify-between gap-2 items-center'} transition hover:scale-105`}
+            className={`${location.pathname === '/main' ? `flex flex-col justify-between gap-2 items-center border-b-2 ${theme === 'dark' ? 'border-white text-white' : 'border-black text-black'}` : 'flex flex-col justify-between gap-2 items-center'} transition hover:scale-105`}
           >
-            <span className="material-symbols-outlined">home</span>
-            <p className='md:text-base text-xs' style={{fontFamily : "'Nunito Sans'"}}>Home</p>
+            <span className={`material-symbols-outlined ${theme === 'light' ? 'text-black' : 'text-white'}`}>home</span>
+            <p className={`md:text-base text-xs ${theme === 'light' ? 'text-black' : 'text-white'}`} style={{fontFamily : "'Nunito Sans'"}}>Home</p>
           </div>
         </Link>
 
@@ -22,8 +22,8 @@ const Nav = () => {
           <div
             className={`${location.pathname === '/opper' ? `flex flex-col justify-between gap-2 items-center border-b-2 ${theme === 'dark' ? 'border-white' : 'border-black'}` : 'flex flex-col justify-between gap-2 items-center'} transition hover:scale-105`}
           >
-            <span className="material-symbols-outlined">groups</span>
-            <p className='md:text-base text-xs' style={{fontFamily : "'Nunito Sans'"}}>Opportunities</p>
+            <span className={`material-symbols-outlined ${theme === 'light' ? 'text-black' : 'text-white'}`}>groups</span>
+            <p className={`md:text-base text-xs ${theme === 'light' ? 'text-black' : 'text-white'}`} style={{fontFamily : "'Nunito Sans'"}}>Opportunities</p>
           </div>
         </Link>
 
@@ -31,8 +31,8 @@ const Nav = () => {
           <div
             className={`${location.pathname === '/job' ? `flex flex-col justify-between gap-2 items-center border-b-2 ${theme === 'dark' ? 'border-white' : 'border-black'}` : 'flex flex-col justify-between gap-2 items-center'} transition hover:scale-105`}
           >
-            <span className="material-symbols-outlined">work</span>
-            <p className='md:text-base text-xs' style={{fontFamily : "'Nunito Sans'"}}>Jobs</p>
+            <span className={`material-symbols-outlined ${theme === 'light' ? 'text-black' : 'text-white'}`}>work</span>
+            <p className={`md:text-base text-xs ${theme === 'light' ? 'text-black' : 'text-white'}`} style={{fontFamily : "'Nunito Sans'"}}>Jobs</p>
           </div>
         </Link>
 
@@ -40,8 +40,8 @@ const Nav = () => {
           <div
             className='flex flex-col justify-between gap-2 items-center transition hover:scale-105'
           >
-            <span className="material-symbols-outlined">chat</span>
-            <p className='md:text-base text-xs' style={{fontFamily : "'Nunito Sans'"}}>Messages</p>
+            <span className={`material-symbols-outlined ${theme === 'light' ? 'text-black' : 'text-white'}`}>chat</span>
+            <p className={`md:text-base text-xs ${theme === 'light' ? 'text-black' : 'text-white'}`} style={{fontFamily : "'Nunito Sans'"}}>Messages</p>
           </div>
         </a>
 
@@ -49,16 +49,16 @@ const Nav = () => {
           <div
             className={`${location.pathname === '/notifications' ? `flex flex-col justify-between gap-2 items-center border-b-2 ${theme === 'dark' ? 'border-white' : 'border-black'}` : 'flex flex-col justify-between gap-2 items-center'} transition hover:scale-105`}
           >
-            <span className="material-symbols-outlined">notifications</span>
-            <p className='md:text-base text-xs' style={{fontFamily : "'Nunito Sans'"}}>Notifications</p>
+            <span className={`material-symbols-outlined ${theme === 'light' ? 'text-black' : 'text-white'}`}>notifications</span>
+            <p className={`md:text-base text-xs ${theme === 'light' ? 'text-black' : 'text-white'}`} style={{fontFamily : "'Nunito Sans'"}}>Notifications</p>
           </div>
         </Link>
 
         <Link to='/myProfile'>
           <div
           className={`${location.pathname === '/myProfile' ? `flex flex-col justify-between gap-2 items-center border-b-2 ${theme === 'dark' ? 'border-white' : 'border-black'}` : 'flex flex-col justify-between gap-2 items-center'} transition hover:scale-105`}>
-            <span className="material-symbols-outlined">person</span>
-            <p className='md:text-base text-xs' style={{fontFamily : "'Nunito Sans'"}}>Profile</p>
+            <span className={`material-symbols-outlined ${theme === 'light' ? 'text-black' : 'text-white'}`}>person</span>
+            <p className={`md:text-base text-xs ${theme === 'light' ? 'text-black' : 'text-white'}`} style={{fontFamily : "'Nunito Sans'"}}>Profile</p>
           </div>
         </Link>
 
