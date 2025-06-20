@@ -13,6 +13,7 @@ const ThemeProvider = ({children}) => {
 
     useEffect(() => {
       localStorage.setItem('theme', theme);
+      document.body.style.backgroundColor = theme === "light" ? "white" : "black"
     }, [theme]);
 
     const toggleTheme = () => {

@@ -10,7 +10,7 @@ import Jobs from './components/Jobs';
 import { CardContextProvider } from './context/CardContextProvider.jsx';
 import Notifications from './components/Notifications.jsx';
 import ConnectionsProvider from './context/Connecitons.jsx';
-import { ThemeProvider, ThemeContext } from './context/ThemeProvider.jsx';
+import { ThemeProvider } from './context/ThemeProvider.jsx';
 import { AuthProvider } from './context/AuthProvider.jsx';
 
 function AppContent() {
