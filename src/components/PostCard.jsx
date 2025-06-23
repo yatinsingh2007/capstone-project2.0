@@ -1,6 +1,10 @@
 import { ThumbsUp, ThumbsDown, ExternalLink, Tag } from 'lucide-react';
+import { useState } from 'react';
 
 const PostCard = ({ post }) => {
+  const [isLikeClicked , setisLikeClicked] = useState(null)
+  const [like , setLike] = useState(post.likes)
+  const [disLike , setDislike] = useState(post.dislikes)
   return (
     <div className="bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 rounded-2xl p-5 shadow-md hover:shadow-xl transition duration-300">
       <img
@@ -39,10 +43,50 @@ const PostCard = ({ post }) => {
       <div className="flex items-center justify-between text-sm text-gray-600 dark:text-gray-300">
         <div className="flex items-center gap-4">
           <span className="flex items-center gap-1">
-            <ThumbsUp size={14} /> {post.likes}
+            <ThumbsUp size={14} onClick={(e) => {
+              e.preventDefault();
+              const newLikeState = isLikeClicked === true ? null : true;
+              setisLikeClicked(newLikeState);
+              fetch(`http://localhost:7777/feed/like` , {
+                method : 'PATCH',
+                credentials : 'include',
+                headers : {
+                  'content-type' : 'application/json' 
+                },
+                body : JSON.stringify({
+                  _id : post._id,
+                  isLikeClicked : newLikeState
+                })
+              }).then((resp) => resp.json())
+                .then((data) => {
+                  setLike(data.likes)
+                }).catch((err) => {
+                  throw new Error(`Error Occured ${err.message}`)
+                })
+            }} className={`${isLikeClicked === true ? 'bg-blue-500 cursor-pointer rounded-full' : 'cursor-pointer'}`}/> {like}
           </span>
           <span className="flex items-center gap-1">
-            <ThumbsDown size={14} /> {post.dislikes}
+            <ThumbsDown size={14} onClick={(e) => {
+              e.preventDefault()
+              const newLikeState = isLikeClicked === false ? null : false;
+              setisLikeClicked(newLikeState)
+              fetch(`http://localhost:7777/feed/dislike` , {
+                method : 'PATCH',
+                credentials : 'include',
+                headers : {
+                  'content-type' : 'application/json'
+                },
+                body : JSON.stringify({
+                  _id : post._id,
+                  isLikeClicked : newLikeState
+                })
+              }).then((resp) => resp.json())
+                .then((data) => {
+                  setDislike(data.dislikes)
+                }).catch((err) => {
+                  throw new Error(`Error Occured ${err.message}`)
+                })
+            }} className={`${isLikeClicked === false ? 'bg-blue-500 cursor-pointer rounded-full' : 'cursor-pointer'}`}/> {disLike}
           </span>
         </div>
         <a
