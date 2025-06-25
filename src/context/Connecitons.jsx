@@ -1,5 +1,9 @@
-import ConnectionsContext from "./Connections";
 import { useState , useEffect } from "react";
+
+import { createContext } from "react";
+
+const ConnectionsContext = createContext(null);
+
 const ConnectionsProvider = ({children}) => {
     const [connectionData , setConnectionData] = useState(() => {
         const storedData = localStorage.getItem('connectionData')
@@ -19,4 +23,4 @@ const ConnectionsProvider = ({children}) => {
         </ConnectionsContext.Provider>
     )
 }
-export default ConnectionsProvider
+export { ConnectionsProvider , ConnectionsContext }

@@ -6,7 +6,7 @@ const AuthProvider = ({children}) => {
     const [user , setUser] = useState(null)
     useEffect(() => {
         fetch(`http://localhost:7777/?${document.cookie}` , {
-            credentials : true
+            credentials : 'include'
         })
         .then((resp) => resp.json())
         .then((data) => {
