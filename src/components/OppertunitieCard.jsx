@@ -2,11 +2,12 @@ import { useState, useContext } from "react";
 import { toast } from "react-toastify";
 import { CardContext } from "../context/CardContextProvider";
 import { ThemeContext } from "../context/ThemeProvider";
-
+import { ConnectionsContext } from "../context/Connecitons";
 const OpportunityCard = ({ photo, name, job, company, bio }) => {
   const { theme } = useContext(ThemeContext);
   const [connect, setConnect] = useState(false);
   const { setCardData } = useContext(CardContext);
+  const { setConnectionData } = useContext(ConnectionsContext)
 
   const handleConnect = (e) => {
     e.preventDefault();
@@ -17,6 +18,7 @@ const OpportunityCard = ({ photo, name, job, company, bio }) => {
 
     setConnect(true);
     setCardData({ photo, name });
+    setConnectionData((prev) => [...prev , {photo , name}])
     toast.success(`Request sent to ${name} for connection.`);
   };
 

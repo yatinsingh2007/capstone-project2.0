@@ -4,6 +4,7 @@ import { ThemeContext } from '../context/ThemeProvider';
 
 const PostCard = ({ post }) => {
   const [isLikeClicked, setisLikeClicked] = useState(null);
+  const [isDisLikeClicked , setIsDislikeClicked] = useState(null);
   const [like, setLike] = useState(post.likes);
   const [disLike, setDislike] = useState(post.dislikes);
   const { theme } = useContext(ThemeContext);
@@ -74,6 +75,7 @@ const PostCard = ({ post }) => {
                 e.preventDefault();
                 const newLikeState = isLikeClicked === true ? null : true;
                 setisLikeClicked(newLikeState);
+                setIsDislikeClicked(null)
                 fetch(`http://localhost:7777/feed/like`, {
                   method: 'PATCH',
                   credentials: 'include',
@@ -83,6 +85,7 @@ const PostCard = ({ post }) => {
                   body: JSON.stringify({
                     _id: post._id,
                     isLikeClicked: newLikeState,
+                    isDisLikeClicked : null
                   }),
                 })
                   .then((resp) => resp.json())
@@ -103,8 +106,9 @@ const PostCard = ({ post }) => {
               size={14}
               onClick={(e) => {
                 e.preventDefault();
-                const newLikeState = isLikeClicked === false ? null : false;
-                setisLikeClicked(newLikeState);
+                const newDisLikeState = isDisLikeClicked === true ? null : true;
+                setIsDislikeClicked(newDisLikeState);
+                setisLikeClicked(null)
                 fetch(`http://localhost:7777/feed/dislike`, {
                   method: 'PATCH',
                   credentials: 'include',
@@ -113,7 +117,8 @@ const PostCard = ({ post }) => {
                   },
                   body: JSON.stringify({
                     _id: post._id,
-                    isLikeClicked: newLikeState,
+                    isLikeClicked: null,
+                    isDisLikeClicked : newDisLikeState
                   }),
                 })
                   .then((resp) => resp.json())
@@ -124,7 +129,7 @@ const PostCard = ({ post }) => {
                     throw new Error(`Error Occurred ${err.message}`);
                   });
               }}
-              className={`${isLikeClicked === false ? likeActive : 'cursor-pointer'} rounded-full p-0.5 transition`}
+              className={`${isDisLikeClicked === true ? likeActive : 'cursor-pointer'} rounded-full p-0.5 transition`}
             />{' '}
             {disLike}
           </span>

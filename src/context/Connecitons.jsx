@@ -9,9 +9,8 @@ const ConnectionsProvider = ({children}) => {
         const storedData = localStorage.getItem('connectionData')
         if (storedData) {
             return JSON.parse(storedData)
-        }
-        return {
-            connections: [],
+        }else{
+            return []
         }
     })
     useEffect(() => {

@@ -39,7 +39,7 @@ function App() {
   return (
     <ThemeProvider>
       <AuthProvider>
-        <AppContent />
+          <AppContent />
       </AuthProvider>
     </ThemeProvider>
   );
