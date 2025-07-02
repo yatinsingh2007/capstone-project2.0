@@ -36,15 +36,6 @@ const Nav = () => {
           </div>
         </Link>
 
-        <a href='#'>
-          <div
-            className='flex flex-col justify-between gap-2 items-center transition hover:scale-105'
-          >
-            <span className={`material-symbols-outlined ${theme === 'light' ? 'text-black' : 'text-white'}`}>chat</span>
-            <p className={`md:text-base text-xs ${theme === 'light' ? 'text-black' : 'text-white'}`} style={{fontFamily : "'Nunito Sans'"}}>Messages</p>
-          </div>
-        </a>
-
         <Link to='/notifications'>
           <div
             className={`${location.pathname === '/notifications' ? `flex flex-col justify-between gap-2 items-center border-b-2 ${theme === 'dark' ? 'border-white' : 'border-black'}` : 'flex flex-col justify-between gap-2 items-center'} transition hover:scale-105`}

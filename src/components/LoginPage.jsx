@@ -2,6 +2,7 @@ import React, { useState,  useContext } from 'react';
 import { Eye, EyeOff, Sun, Moon , MoveLeft } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import  {ThemeContext}  from '../context/ThemeProvider';
+import { toast } from 'react-toastify';
 
 const LoginPage = () => {
   const { theme, setTheme } = useContext(ThemeContext);
@@ -25,11 +26,13 @@ const LoginPage = () => {
 
       const data = await res.json();
       if (!res.ok) throw new Error(data.message || 'Login failed');
+      toast.success(`Login Successfull`)
       
       navigate('/main');
     } catch (err) {
       console.error(err.message);
       setIsSubmitted(false);
+      toast.error('Invalid credentials')
     }
   };
 

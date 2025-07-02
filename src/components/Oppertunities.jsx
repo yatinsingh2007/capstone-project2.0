@@ -15,6 +15,7 @@ const Opportunities = () => {
       });
   }, []);
 
+
   return (
     <>
       <div className={`p-6 ${theme === 'light' ? 'bg-white' : 'bg-black'} min-h-screen px-4 md:px-16 py-10 font-sans`}>

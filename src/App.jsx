@@ -12,7 +12,7 @@ import Notifications from './components/Notifications.jsx';
 import {ConnectionsProvider} from './context/Connecitons.jsx';
 import { ThemeProvider } from './context/ThemeProvider.jsx';
 import { AuthProvider } from './context/AuthProvider.jsx';
-
+import CreatePostForm from './components/CreatePostForm.jsx'
 function AppContent() {
 
   return (
@@ -27,6 +27,7 @@ function AppContent() {
               <Route path='/opper' element={<Oppertunities />} />
               <Route path='/job' element={<Jobs />} />
               <Route path='/notifications' element={<Notifications />} />
+              <Route path='/create-post' element = {<CreatePostForm/>} />
             </Routes>
           </CardContextProvider>
         </ConnectionsProvider>
