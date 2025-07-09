@@ -13,6 +13,7 @@ import {ConnectionsProvider} from './context/Connecitons.jsx';
 import { ThemeProvider } from './context/ThemeProvider.jsx';
 import { AuthProvider } from './context/AuthProvider.jsx';
 import CreatePostForm from './components/CreatePostForm.jsx'
+import ContactForm from './components/ContactForm.jsx';
 function AppContent() {
 
   return (
@@ -28,6 +29,7 @@ function AppContent() {
               <Route path='/job' element={<Jobs />} />
               <Route path='/notifications' element={<Notifications />} />
               <Route path='/create-post' element = {<CreatePostForm/>} />
+              <Route path = '/contact' element = {<ContactForm/>} />
             </Routes>
           </CardContextProvider>
         </ConnectionsProvider>

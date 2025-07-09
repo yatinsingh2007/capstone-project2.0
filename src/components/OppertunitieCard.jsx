@@ -3,23 +3,38 @@ import { toast } from "react-toastify";
 import { CardContext } from "../context/CardContextProvider";
 import { ThemeContext } from "../context/ThemeProvider";
 import { ConnectionsContext } from "../context/Connecitons";
-const OpportunityCard = ({ photo, name, job, company, bio }) => {
+const OpportunityCard = ({ photo, name, job, company, bio , _id }) => {
   const { theme } = useContext(ThemeContext);
   const [connect, setConnect] = useState(false);
   const { setCardData } = useContext(CardContext);
   const { setConnectionData } = useContext(ConnectionsContext)
-
-  const handleConnect = (e) => {
+  const handleConnect = async (e) => {
     e.preventDefault();
     if (connect) {
       toast.warn("Request already sent.");
       return;
     }
-
-    setConnect(true);
-    setCardData({ photo, name });
-    setConnectionData((prev) => [...prev , {photo , name}])
-    toast.success(`Request sent to ${name} for connection.`);
+    try{
+      const resp = await fetch(`http://localhost:7777/connect` , {
+        method : 'POST' ,
+        credentials : 'include',
+        headers : {
+          'content-type' : 'application/json'
+        } , 
+        body : JSON.stringify({
+          to_id  : _id
+        })
+      })
+      const connectionData = await resp.json()
+      console.log(connectionData)
+      setConnect(true);
+      setCardData({photo , name});
+      setConnectionData((prev) => [...prev , {photo , name}])
+      toast.success(`Request Sent to ${name} for connection`)
+    }catch(err){
+      toast.dark(`Request Already Sent`);
+      console.log(err.message)
+    }
   };
 
   return (

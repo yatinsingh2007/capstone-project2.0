@@ -8,14 +8,18 @@ const Opportunities = () => {
   const [persons, setPersons] = useState([]);
   const {theme , setTheme} = useContext(ThemeContext)
   useEffect(() => {
-    fetch(`https://mocki.io/v1/5062a989-533b-42fb-af6f-28d0e1607bf8`)
-      .then((resp) => resp.json())
-      .then((data) => {
-        setPersons(data);
-      });
-  }, []);
-
-
+    (async() => {
+      try{
+        const resp = await fetch(`http://localhost:7777/mypossibleConnections` , {
+          credentials : 'include'
+        })
+        const connectionData = await resp.json()
+        setPersons(connectionData.possibleConnections)
+      }catch(err){
+        console.log(err.message)
+      }
+    })()
+  } , [])
   return (
     <>
       <div className={`p-6 ${theme === 'light' ? 'bg-white' : 'bg-black'} min-h-screen px-4 md:px-16 py-10 font-sans`}>
@@ -30,14 +34,15 @@ const Opportunities = () => {
         </div>
         <div className="max-w-7xl mx-auto w-full pt-32">
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10 place-items-center">
-            {persons.map((person) => (
+            {persons.map((person , i) => (
               <OpportunityCard
-                key={person.id}
+                key={i}
                 photo={person.photo}
                 bio={person.bio}
                 name={person.name}
                 job={person.job}
                 company={person.company}
+                _id = {person._id}
               />
             ))}
           </div>

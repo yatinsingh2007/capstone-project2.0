@@ -6,9 +6,8 @@ const Nav = () => {
   const location = useLocation()
   const { theme } = useContext(ThemeContext);
   return (
-    <div className={`p-3 rounded-3xl shadow-xl md:mr-0 fixed md:left-10 lg:left-48 lg:right-56 md:right-14 md:top-2 left-5 right-5 border ${theme === 'dark' ? 'bg-black border-white' : 'bg-white border-black'} my-auto z-10`}>
+    <nav className={`p-3 rounded-3xl shadow-xl md:mr-0 fixed md:left-10 lg:left-48 lg:right-56 md:right-14 md:top-2 left-5 right-5 border ${theme === 'dark' ? 'bg-black border-white' : 'bg-white border-black'} fixed z-10`}>
       <div className='flex gap-2 justify-between mx-4 md:mx-5 md:gap-9'>
-
         <Link to='/main'>
           <div
             className={`${location.pathname === '/main' ? `flex flex-col justify-between gap-2 items-center border-b-2 ${theme === 'dark' ? 'border-white text-white' : 'border-black text-black'}` : 'flex flex-col justify-between gap-2 items-center'} transition hover:scale-105`}
@@ -54,7 +53,7 @@ const Nav = () => {
         </Link>
 
       </div>
-    </div>
+    </nav>
   );
 };
 
