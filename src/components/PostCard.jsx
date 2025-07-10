@@ -1,6 +1,7 @@
-import { ThumbsUp, ThumbsDown, Tag, MoreVertical } from 'lucide-react';
+import { ThumbsUp, ThumbsDown, Tag } from 'lucide-react';
 import { useState, useContext, useEffect } from 'react';
 import { ThemeContext } from '../context/ThemeProvider';
+import { AuthContext } from '../context/AuthProvider';
 import { toast } from 'react-toastify';
 
 const PostCard = ({ post }) => {
@@ -12,14 +13,14 @@ const PostCard = ({ post }) => {
   const { theme } = useContext(ThemeContext);
   const isDark = theme === 'dark';
 
-  const ourUser = JSON.parse(localStorage.getItem('userData') || '{}')?.user_data || {};
+  const { user } = useContext(AuthContext)
 
 
   useEffect(() => {
-    if (post.interested.includes(ourUser._id)) setInterested(true);
-    if (post.likedBy.includes(ourUser._id)) setisLikeClicked(true);
-    if (post.dislikedBy.includes(ourUser._id)) setIsDislikeClicked(true);
-  }, [post, ourUser]);
+    if (post.interested.includes(user._id)) setInterested(true);
+    if (post.likedBy.includes(user._id)) setisLikeClicked(true);
+    if (post.dislikedBy.includes(user._id)) setIsDislikeClicked(true);
+  }, [post, user]);
 
   return (
     <section
@@ -131,7 +132,7 @@ const PostCard = ({ post }) => {
               const res = await fetch(`http://localhost:7777/post/interested`, {
                 method: 'PATCH',
                 headers: { 'content-type': 'application/json' },
-                body: JSON.stringify({ post_id: post._id, user_id: ourUser._id }),
+                body: JSON.stringify({ post_id: post._id, user_id: user._id }),
               });
               const data = await res.json();
               if (data.message === `Your Interest request has already been sent`) {

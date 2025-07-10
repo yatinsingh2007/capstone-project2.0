@@ -1,6 +1,7 @@
 import { useEffect, useState, useContext } from 'react';
 import { ThemeContext } from '../context/ThemeProvider';
 import Nav from './Nav';
+import MainFooter from './MainFooter';
 
 const Notifications = () => {
   const [connections, setConnections] = useState([]);
@@ -60,6 +61,7 @@ const Notifications = () => {
   };
 
   return (
+    <>
       <section className={`min-h-screen px-4 py-10 ${theme === 'dark' ? 'bg-black text-white' : 'bg-white text-black'}`}>
       <Nav />
       <div className="max-w-2xl mx-auto space-y-4 px-4 mt-32">
@@ -114,6 +116,8 @@ const Notifications = () => {
         )}
       </div>
     </section>
+    <MainFooter />
+  </>
   );
 };
 

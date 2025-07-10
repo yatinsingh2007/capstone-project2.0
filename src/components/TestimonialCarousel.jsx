@@ -2,62 +2,62 @@ const testimonials = [
   {
     name: "Jane Doe",
     text: "NextHorizon transformed my job search experience!",
-    photo: "/customer1.jpg",
+    photo: "https://randomuser.me/api/portraits/women/44.jpg",
   },
   {
     name: "John Smith",
     text: "I connected with amazing mentors through this platform.",
-    photo: "/customer2.jpg",
+    photo: "https://randomuser.me/api/portraits/men/32.jpg",
   },
   {
     name: "Emily Johnson",
     text: "Highly recommend it to anyone serious about their career.",
-    photo: "/customer3.jpg",
+    photo: "https://randomuser.me/api/portraits/women/68.jpg",
   },
   {
     name: "Michael Lee",
     text: "The opportunities listed here helped me land my dream internship.",
-    photo: "/customer4.jpg",
+    photo: "https://randomuser.me/api/portraits/men/76.jpg",
   },
   {
     name: "Sophia Patel",
     text: "A very intuitive and supportive platform for freshers.",
-    photo: "/customer5.jpg",
+    photo: "https://randomuser.me/api/portraits/women/21.jpg",
   },
   {
     name: "Daniel Garcia",
     text: "The UI is clean, and the mentors are amazing!",
-    photo: "/customer6.jpg",
+    photo: "https://randomuser.me/api/portraits/men/45.jpg",
   },
   {
     name: "Priya Verma",
     text: "I never expected such high-quality resources in one place.",
-    photo: "/customer7.jpg",
+    photo: "https://randomuser.me/api/portraits/women/12.jpg",
   },
   {
     name: "Liam Wright",
     text: "From workshops to mentorship, it covers everything I needed.",
-    photo: "/customer8.jpg",
+    photo: "https://randomuser.me/api/portraits/men/53.jpg",
   },
   {
     name: "Aisha Ahmed",
     text: "This platform helped me transition from student to working professional.",
-    photo: "/customer9.jpg",
+    photo: "https://randomuser.me/api/portraits/women/50.jpg",
   },
   {
     name: "Ethan Kim",
     text: "NextHorizon gave me the confidence to approach real-world projects.",
-    photo: "/customer10.jpg",
+    photo: "https://randomuser.me/api/portraits/men/64.jpg",
   },
   {
     name: "Chloe Anderson",
     text: "I love how personalized the experience feels.",
-    photo: "/customer11.jpg",
+    photo: "https://randomuser.me/api/portraits/women/5.jpg",
   },
   {
     name: "Raj Malhotra",
     text: "Game-changer for anyone looking to grow in tech.",
-    photo: "/customer12.jpg",
+    photo: "https://randomuser.me/api/portraits/men/15.jpg",
   },
 ];
 

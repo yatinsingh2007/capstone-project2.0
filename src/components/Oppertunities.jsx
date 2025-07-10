@@ -3,6 +3,7 @@ import OpportunityCard from './OppertunitieCard';
 import Nav from './Nav';
 import { ThemeContext } from '../context/ThemeProvider';
 import { Sun , Moon } from 'lucide-react';
+import MainFooter from './MainFooter';
 
 const Opportunities = () => {
   const [persons, setPersons] = useState([]);
@@ -48,6 +49,7 @@ const Opportunities = () => {
           </div>
         </div>
       </div>
+      <MainFooter />
     </>
   );
 };

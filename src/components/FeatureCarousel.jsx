@@ -1,33 +1,28 @@
 const features = [
   {
-    title: "Resume Review",
-    description: "Get professional feedback on your resume.",
-    image: "https://via.placeholder.com/400x300?text=Resume+Review",
+    title: "Opportunity Feed",
+    description: "Scroll through the latest internships, projects, and networking posts tailored to your goals.",
+    image: "https://images.unsplash.com/photo-1591696205602-2f950c417cb9?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
   },
   {
-    title: "1:1 Mentorship",
-    description: "Book a session with an industry expert.",
-    image: "https://via.placeholder.com/400x300?text=Mentorship",
+  title: "Smart Connect",
+  description: "Send, accept, or reject connect requests with industry professionals and mentors.",
+  image: "https://images.unsplash.com/photo-1591696205602-2f950c417cb9?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+},
+{
+  title: "Filtered Discovery",
+  description: "Use smart filters to discover opportunities by field, location, and interest.",
+  image: "https://images.unsplash.com/photo-1600267165673-0f921f075fa5?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+},
+  {
+    title: "Verified Posts",
+    description: "Know who created each opportunity. Engage only with authentic, verified posts.",
+    image: "https://images.unsplash.com/photo-1573497491208-6b1acb260507?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
   },
   {
-    title: "Job Alerts",
-    description: "Receive curated job alerts in your field.",
-    image: "https://via.placeholder.com/400x300?text=Job+Alerts",
-  },
-  {
-    title: "Interview Preparation",
-    description: "Ace your interviews with expert tips and mock sessions.",
-    image: "https://via.placeholder.com/400x300?text=Interview+Preparation",
-  },
-  {
-    title: "Career Counseling",
-    description: "Get career advice from experienced professionals.",
-    image: "https://via.placeholder.com/400x300?text=Career+Counseling",
-  },
-  {
-    title: "Skill Building Workshops",
-    description: "Enhance your skills with hands-on training.",
-    image: "https://via.placeholder.com/400x300?text=Skill+Workshops",
+    title: "User Testimonials",
+    description: "Real stories from real users. Learn how NextHorizon transformed their careers.",
+    image: "https://images.unsplash.com/photo-1551836022-d5d88e9218df?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
   },
 ];
 

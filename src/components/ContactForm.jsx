@@ -1,5 +1,6 @@
 import { useState } from "react";
-
+import { MoveLeft } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 const ContactForm = () => {
   const [formData, setFormData] = useState({
     name: "",
@@ -13,7 +14,7 @@ const ContactForm = () => {
       [e.target.name]: e.target.value,
     });
   };
-
+  const navigate = useNavigate();
 
   return (
     <section
@@ -22,8 +23,15 @@ const ContactForm = () => {
   style={{
     backgroundImage:
       "url('https://images.unsplash.com/photo-1522202176988-66273c2fd55f?crop=entropy&cs=tinysrgb&fit=crop&h=800&w=1600&q=80')",
+      fontFamily: "'Sora', sans-serif",
   }}
 >
+  <button className="absolute top-2 left-2" onClick={(e) => {
+    e.preventDefault();
+    navigate('/')
+  }}>
+    <MoveLeft className="bg-white rounded-full p-1 h-8 w-8"/>
+  </button>
   <div className="relative max-w-3xl mx-auto px-4">
     <h2 className="text-3xl font-bold mb-6 text-center text-white">
       Contact Us

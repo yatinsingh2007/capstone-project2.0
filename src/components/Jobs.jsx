@@ -2,6 +2,7 @@ import React from "react";
 import Nav from "./Nav";
 import { ThemeContext } from "../context/ThemeProvider";
 import {Sun , Moon} from 'lucide-react'
+import MainFooter from "./MainFooter";
 
 const Jobs = () => {
   const [jobs, setJobs] = React.useState([]);
@@ -91,6 +92,7 @@ const Jobs = () => {
           </div>
         ))}
       </div>
+      <MainFooter />
     </div>
   );
 };

@@ -5,6 +5,7 @@ import { ThemeContext } from "../context/ThemeProvider";
 import Nav from '../components/Nav'
 import {Sun , Moon} from 'lucide-react'
 import { useNavigate } from "react-router-dom";
+import MainFooter from "./MainFooter";
 const MainPage = () => {
   const navigate = useNavigate()
   const { theme , setTheme } = useContext(ThemeContext);
@@ -21,6 +22,7 @@ const MainPage = () => {
   }, []);
 
   return (
+<>
   <section className={`min-h-screen px-4 py-10 ${theme === 'dark' ? 'bg-black text-white' : 'bg-white text-black'}`}>
     <Nav/>
     <div className="fixed md:top-4 md:right-4 z-50 bottom-5 right-5">
@@ -56,6 +58,8 @@ const MainPage = () => {
       )}
     </div>
   </section>
+  <MainFooter />
+</>
   );
 };
 
