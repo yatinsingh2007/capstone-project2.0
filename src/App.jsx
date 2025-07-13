@@ -15,9 +15,13 @@ import { AuthProvider } from './context/AuthProvider.jsx';
 import CreatePostForm from './components/CreatePostForm.jsx'
 import ContactForm from './components/ContactForm.jsx';
 import MyProfile from './components/MyProfile.jsx';
-function AppContent() {
+import FAQSection from './components/FAQSection.jsx';
 
+
+function App() {
   return (
+  <ThemeProvider>
+    <AuthProvider>
       <BrowserRouter>
         <ConnectionsProvider>
           <CardContextProvider>
@@ -32,21 +36,14 @@ function AppContent() {
               <Route path='/create-post' element = {<CreatePostForm/>} />
               <Route path = '/contact' element = {<ContactForm/>} />
               <Route path='/myProfile' element = {<MyProfile/>} />
+              <Route path='/faqs' element={<FAQSection />} />
             </Routes>
           </CardContextProvider>
         </ConnectionsProvider>
         <ToastContainer theme="colored" />
       </BrowserRouter>
-  );
-}
-
-function App() {
-  return (
-    <ThemeProvider>
-      <AuthProvider>
-          <AppContent />
-      </AuthProvider>
-    </ThemeProvider>
+    </AuthProvider>
+  </ThemeProvider>
   );
 }
 

@@ -62,7 +62,7 @@ const testimonials = [
 ];
 
 const TestimonialCarousel = () => (
-  <section className="py-12 bg-gray-50" style={{ fontFamily: "'Sora', sans-serif" }}>
+  <section className="py-12 bg-gray-50" style={{ fontFamily: "'Sora', sans-serif" }} id="testimonials">
     <h2 className="text-3xl font-bold text-center mb-8">What Our Users Say</h2>
     <div className="flex overflow-x-auto space-x-6 px-4 pb-4 snap-x snap-mandatory">
       {testimonials.map((t, idx) => (

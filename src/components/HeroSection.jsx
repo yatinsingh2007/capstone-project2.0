@@ -8,6 +8,7 @@ const HeroSection = () => {
         backgroundImage:
           "url('https://images.unsplash.com/photo-1519389950473-47ba0277781c?crop=entropy&cs=tinysrgb&fit=crop&h=800&w=1600&q=80')",
       }}
+      id = "home"
     >
       <div className="absolute inset-0 bg-gradient-to-b from-black/60 to-black/80"></div>
 

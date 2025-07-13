@@ -27,13 +27,13 @@ const features = [
 ];
 
 const FeatureCarousel = () => (
-  <section className="py-12 bg-gray-100" id="home" style={{ fontFamily: "'Sora', sans-serif" }}>
+  <section className="py-12 bg-gray-100" style={{ fontFamily: "'Sora', sans-serif" }} id = "features">
     <h2 className="text-3xl font-bold text-center mb-8">Our Services</h2>
-    <div className="flex overflow-x-auto space-x-6 px-4 pb-4 snap-x snap-mandatory">
+    <div className="flex flex-col md:flex-row overflow-x-auto md:space-x-6 space-y-6 px-4 pb-4 justify-center items-center">
       {features.map((item, idx) => (
         <div
           key={idx}
-          className="min-w-[250px] bg-white rounded shadow p-4 flex-shrink-0 snap-center"
+          className="bg-white rounded shadow p-4 flex-grow-1 snap-center"
         >
           <img
             src={item.image}
@@ -42,9 +42,6 @@ const FeatureCarousel = () => (
           />
           <h3 className="text-xl font-semibold mb-2">{item.title}</h3>
           <p className="text-gray-600 mb-4">{item.description}</p>
-          <button className="bg-black text-white px-4 py-2 rounded hover:scale-105 transition-all duration-150">
-            Learn More
-          </button>
         </div>
       ))}
     </div>

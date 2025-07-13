@@ -2,6 +2,7 @@ const SellingPoints = () => (
   <section
     className="py-16 bg-white"
     style={{ fontFamily: "'Sora', sans-serif" }}
+    id="benefits"
   >
     <div className="flex flex-col md:flex-row items-center max-w-6xl mx-auto mb-12 px-4">
       <div className="flex-1 mb-6 md:mb-0">
