@@ -16,6 +16,7 @@ const PostCard = ({ post }) => {
   const { user } = useContext(AuthContext)
 
 
+
   useEffect(() => {
     if (post.interested.includes(user._id)) setInterested(true);
     if (post.likedBy.includes(user._id)) setisLikeClicked(true);
@@ -127,21 +128,23 @@ const PostCard = ({ post }) => {
           </button>
         </div>
         <button
-          onClick={async () => {
+          onClick={async (e) => {
+            e.preventDefault();
             try {
               const res = await fetch(`http://localhost:7777/post/interested`, {
                 method: 'PATCH',
-                headers: { 'content-type': 'application/json' },
-                body: JSON.stringify({ post_id: post._id, user_id: user._id }),
+                headers: { 'Content-type': 'application/json' },
+                body: JSON.stringify({ post_id: post._id, user_id: user.user_data[0]._id }),
+                credentials: 'include',
               });
               const data = await res.json();
               if (data.message === `Your Interest request has already been sent`) {
-                toast.dark(`Your interest has already been sent.`);
+                toast.dark(data.message);
               } else {
                 toast.success('Your interest has been recorded.');
               }
             } catch (err) {
-              console.error(err);
+              console.error(err.message);
               toast.error('Error recording interest.');
             }
           }}

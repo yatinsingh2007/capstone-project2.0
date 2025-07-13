@@ -17,7 +17,7 @@ const MyProfile = () => {
         <div className="flex items-center gap-6 mt-20">
           <img
             src={
-              "https://www.citypng.com/public/uploads/preview/transparent-hd-white-male-user-profile-icon-701751695035030pj3izxn7kh.png"
+              userData.profilePic
             }
             alt="Profile"
             className="w-24 h-24 rounded-full object-cover border border-gray-400"

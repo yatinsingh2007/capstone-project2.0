@@ -12,15 +12,16 @@ const MainPage = () => {
   const [cardData, setCardData] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:7777/feed", {
+    setTimeout(() => {
+      (fetch("http://localhost:7777/feed", {
       credentials: 'include'
     })
       .then((resp) => resp.json())
       .then((data) => {setCardData(data)
       })
-      .catch((err) => console.error("Failed to fetch:", err));
+      .catch((err) => console.error("Failed to fetch:", err)))();
+    } , 1000)
   }, []);
-
   return (
 <>
   <section className={`min-h-screen px-4 py-10 ${theme === 'dark' ? 'bg-black text-white' : 'bg-white text-black'}`}>
@@ -44,11 +45,9 @@ const MainPage = () => {
         </span>
       </button>
     </div>
-    <div className="max-w-7xl mx-auto mt-24">
+    <div className="max-w-7xl mx-auto mt-24 flex justify-center">
       {cardData.length === 0 ? (
-        <p className="text-center text-lg mt-20 font-semibold" style={{ fontFamily: "'Nunito Sans'" }}>
-          No posts available at the moment.
-        </p>
+        <div className={`border-2 ${theme === "light" ? 'border-t-black' : 'border-t-white'} animate-spin rounded-full h-4 w-4`}></div>
       ) : (
         <div className="flex flex-col gap-6">
           {cardData.map((post) => (

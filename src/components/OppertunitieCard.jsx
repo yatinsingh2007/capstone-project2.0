@@ -54,11 +54,11 @@ const OpportunityCard = ({ photo, name, job, company, bio , _id }) => {
           className={`text-xl font-bold ${
             theme === "dark" ? "text-white" : "text-black"
           }`}
-          style={{ fontFamily: "'Lexend Zetta'" }}
+          style={{ fontFamily: "'Sora', sans-serif" }}
         >
           {name}
         </h2>
-        <p className={`text-sm ${theme === "dark" ? "text-gray-300" : "text-gray-800"} font-medium`}>
+        <p className={`text-sm ${theme === "dark" ? "text-gray-300" : "text-gray-800"} font-medium`} style={{ fontFamily: "'Sora', sans-serif" }}>
           {job}
         </p>
         <p className={`text-sm ${theme === "dark" ? "text-gray-400" : "text-gray-700"} font-semibold mb-2`}>

@@ -49,8 +49,9 @@ const LoginPage = () => {
       <div className="absolute top-4 left-4 z-10">
         <button
           onClick={() => navigate('/')}
+          className={`${theme === 'light' ? 'bg-black' : 'bg-white'} rounded-full p-2 shadow-md transition`}
         >
-          <MoveLeft className={`${theme === 'light' ? 'text-black' : 'text-white'}`}/>
+          <MoveLeft className={`${theme === 'light' ? 'text-white' : 'text-black'}`}/>
         </button>
       </div>
       <main className="flex flex-col p-6 md:p-10 w-full max-w-lg">
@@ -65,7 +66,7 @@ const LoginPage = () => {
               type="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              className={`rounded-xl p-3 w-full focus:outline-none focus:ring-2 focus:ring-blue-300 ${theme === 'light' ? 'bg-gray-100 text-black' : 'bg-black text-white border-2 border-white'}`}
+              className={`rounded-xl p-3 w-full focus:outline-none focus:ring-2 focus:ring-blue-300 ${theme === 'light' ? 'bg-gray-100 text-black border-2 border-black' : 'bg-black text-white border-2 border-white'}`}
               placeholder="Enter your email"
               required
             />
@@ -78,7 +79,7 @@ const LoginPage = () => {
                 type={!togglePassword ? "text" : "password"}
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
-                className={`rounded-xl p-3 w-full focus:outline-none focus:ring-2 focus:ring-blue-300 ${theme === 'light' ? 'bg-gray-100 text-black' : 'bg-black text-white border-2 border-white'}`}
+                className={`rounded-xl p-3 w-full focus:outline-none focus:ring-2 focus:ring-blue-300 ${theme === 'light' ? 'bg-gray-100 text-black border-2 border-black' : 'bg-black text-white border-2 border-white'}`}
                 placeholder="Enter your password"
                 required
               />

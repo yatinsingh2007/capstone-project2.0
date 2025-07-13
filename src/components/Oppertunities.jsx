@@ -9,6 +9,7 @@ const Opportunities = () => {
   const [persons, setPersons] = useState([]);
   const {theme , setTheme} = useContext(ThemeContext)
   useEffect(() => {
+    setTimeout(() => {
     (async() => {
       try{
         const resp = await fetch(`http://localhost:7777/mypossibleConnections` , {
@@ -19,7 +20,8 @@ const Opportunities = () => {
       }catch(err){
         console.log(err.message)
       }
-    })()
+    })();
+    } , 1000);
   } , [])
   return (
     <>
@@ -35,10 +37,13 @@ const Opportunities = () => {
         </div>
         <div className="max-w-7xl mx-auto w-full pt-32">
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10 place-items-center">
+            {persons.length === 0 && (
+              <div className={`rounded-full w-4 h-4 border-2 ${theme === "light" ? 'border-t-black' : 'border-t-white'} border-2 animate-spin`}></div>
+            )}
             {persons.map((person , i) => (
               <OpportunityCard
                 key={i}
-                photo={person.photo}
+                photo={person.profilePic}
                 bio={person.bio}
                 name={person.name}
                 job={person.job}

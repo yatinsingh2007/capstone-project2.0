@@ -58,8 +58,9 @@ const SignUp = () => {
       <div className='absolute left-4 top-4 z-10'>
         <button
           onClick={() => navigate('/')}
+          className={`${theme === 'light' ? 'bg-black' : 'bg-white'} rounded-full p-2 shadow-md transition`}
         >
-          <MoveLeft className={`${theme === 'light' ? 'text-black' : 'text-white'}`}/>
+          <MoveLeft className={`${theme === 'light' ? 'text-white' : 'text-black'}`}/>
         </button>
       </div>
       <main className="flex flex-col p-6 md:p-10 w-full max-w-lg">
