@@ -4,7 +4,7 @@ const SellingPoints = () => (
     style={{ fontFamily: "'Sora', sans-serif" }}
     id="benefits"
   >
-    <div className="flex flex-col md:flex-row items-center max-w-6xl mx-auto mb-12 px-4">
+    <main className="flex flex-col md:flex-row items-center max-w-6xl mx-auto mb-12 px-4">
       <div className="flex-1 mb-6 md:mb-0">
         <h3 className="text-2xl font-bold mb-4">Personalized Recommendations</h3>
         <p>
@@ -14,13 +14,13 @@ const SellingPoints = () => (
       </div>
       <div className="flex-1">
         <img
-          src="/selling-point1.jpg"
+          src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQspb8JDTwj2XoulelPZ-_CR2MuICXXYY9QvlXE4nQD7dZz4YArxXA927s5RAxchT7ozNA&usqp=CAU"
           alt="Personalized Recommendations"
-          className="rounded shadow"
+          className="rounded shadow w-full h-64 object-cover"
         />
       </div>
-    </div>
-    <div className="flex flex-col md:flex-row-reverse items-center max-w-6xl mx-auto mb-12 px-4">
+    </main>
+    <div className="flex flex-col md:flex-row-reverse items-center max-w-6xl mx-auto mb-12 px-4 gap-2">
       <div className="flex-1 mb-6 md:mb-0">
         <h3 className="text-2xl font-bold mb-4">Expert Community</h3>
         <p>
@@ -29,9 +29,9 @@ const SellingPoints = () => (
       </div>
       <div className="flex-1">
         <img
-          src="/selling-point2.jpg"
+          src="https://www.uscreen.tv/wp-content/uploads/2022/05/online-community-expert-tips-1050x600.jpg"
           alt="Expert Community"
-          className="rounded shadow"
+          className="rounded shadow w-full h-64 object-cover"
         />
       </div>
     </div>
@@ -45,9 +45,9 @@ const SellingPoints = () => (
       </div>
       <div className="flex-1">
         <img
-          src="/selling-point3.jpg"
+          src="https://freshers.jobs/wp-content/uploads/2025/03/Why-Company-Verification-Is-Crucial-for-Freshers-Seeking-Reliable-Job-Opportunities-758x379.webp"
           alt="Verified Opportunities"
-          className="rounded shadow"
+          className="rounded shadow w-full h-64 object-cover"
         />
       </div>
     </div>
@@ -61,9 +61,9 @@ const SellingPoints = () => (
       </div>
       <div className="flex-1">
         <img
-          src="/selling-point4.jpg"
+          src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRnHRRc16V-lK6OSwRz-qSXFaReOEPLKCTCBNP-WhbdWKIRmUUdegBkQByxtowAdVLvUYg&usqp=CAU"
           alt="Continuous Learning"
-          className="rounded shadow"
+          className="rounded shadow w-full h-64 object-cover"
         />
       </div>
     </div>
