@@ -70,10 +70,12 @@ const MyProfile = () => {
 
         {/* Joined */}
         <div className="mt-4 text-xs text-gray-500">
-          Joined on {new Date(userData.createdAt).toLocaleDateString()}
+          Joined on {new Date(userData.createdAt).toLocaleTimeString('en-US', {
+            year: 'numeric',
+            month: 'long',
+            day: 'numeric',
+          })}
         </div>
-
-        {/* Edit Button */}
         <div className="mt-6 flex justify-end">
           <button
             className={`px-5 py-2 rounded-md border ${

@@ -13,13 +13,17 @@ const MainPage = () => {
 
   useEffect(() => {
     setTimeout(() => {
-      (fetch("http://localhost:7777/feed", {
-      credentials: 'include'
-    })
-      .then((resp) => resp.json())
-      .then((data) => {setCardData(data)
-      })
-      .catch((err) => console.error("Failed to fetch:", err)))();
+      (async () => {
+        try{
+          const resp = await fetch("http://localhost:7777/feed", {
+            credentials: 'include'
+          });
+          const data = await resp.json();
+          setCardData(data);
+        }catch (err) {
+          console.error("Failed to fetch:", err);
+        }
+      })();
     } , 1000)
   }, []);
   return (
@@ -47,7 +51,7 @@ const MainPage = () => {
     </div>
     <div className="max-w-7xl mx-auto mt-24 flex justify-center">
       {cardData.length === 0 ? (
-        <div className={`border-2 ${theme === "light" ? 'border-t-black' : 'border-t-white'} animate-spin rounded-full h-4 w-4`}></div>
+        <div className={`border-2 ${theme === "light" ? 'border-t-black border-white' : 'border-t-white border-black'} animate-spin rounded-full h-4 w-4`}></div>
       ) : (
         <div className="flex flex-col gap-6">
           {cardData.map((post) => (
