@@ -4,7 +4,7 @@ import Nav from "./Nav";
 
 const MyProfile = () => {
   const { theme } = useContext(ThemeContext);
-  let userData = JSON.parse(localStorage.getItem("userData"))?.user_data[0]
+  let userData = JSON.parse(localStorage.getItem("userData"))?.user_data?.[0]
   if(!userData) {
     userData = {
       name: "John Doe",
