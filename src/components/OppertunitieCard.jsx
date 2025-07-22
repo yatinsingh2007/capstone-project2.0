@@ -15,7 +15,7 @@ const OpportunityCard = ({ photo, name, job, company, bio , _id }) => {
       return;
     }
     try{
-      const resp = await fetch(`http://localhost:7777/connect` , {
+      const resp = await fetch(`https://nexthorizon-backend-1.onrender.com/connect` , {
         method : 'POST' ,
         credentials : 'include',
         headers : {

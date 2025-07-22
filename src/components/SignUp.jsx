@@ -23,7 +23,7 @@ const SignUp = () => {
     e.preventDefault()
     try {
         setIsSubmited(true)
-        const response = await fetch('http://localhost:7777/auth/register', {
+        const response = await fetch('https://nexthorizon-backend-1.onrender.com/auth/register', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',

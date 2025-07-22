@@ -10,7 +10,7 @@ const Notifications = () => {
   useEffect(() => {
     (async () => {
       try {
-        const resp = await fetch(`http://localhost:7777/connections`, {
+        const resp = await fetch(`https://nexthorizon-backend-1.onrender.com/connections`, {
           credentials: 'include',
           headers: {
             'Content-Type': 'application/json',

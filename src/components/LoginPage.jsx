@@ -17,7 +17,7 @@ const LoginPage = () => {
     setIsSubmitted(true);
 
     try {
-      const res = await fetch('http://localhost:7777/auth/login', {
+      const res = await fetch('https://nexthorizon-backend-1.onrender.com/auth/login', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email, password }),

@@ -5,7 +5,7 @@ const AuthContext = createContext(null)
 const AuthProvider = ({children}) => {
     const [user , setUser] = useState(null)
     useEffect(() => {
-        fetch(`http://localhost:7777/?${document.cookie}` , {
+        fetch(`https://nexthorizon-backend-1.onrender.com/?${document.cookie}` , {
             credentials : 'include'
         })
         .then((resp) => resp.json())

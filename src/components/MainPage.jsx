@@ -15,7 +15,7 @@ const MainPage = () => {
     setTimeout(() => {
       (async () => {
         try{
-          const resp = await fetch("http://localhost:7777/feed", {
+          const resp = await fetch("https://nexthorizon-backend-1.onrender.com/feed", {
             credentials: 'include'
           });
           const data = await resp.json();

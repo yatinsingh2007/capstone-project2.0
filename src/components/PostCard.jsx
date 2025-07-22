@@ -76,7 +76,7 @@ const PostCard = ({ post }) => {
               const newLike = isLikeClicked === true ? null : true;
               setisLikeClicked(newLike);
               setIsDislikeClicked(null);
-              fetch(`http://localhost:7777/feed/like`, {
+              fetch(`https://nexthorizon-backend-1.onrender.com/feed/like`, {
                 method: 'PATCH',
                 credentials: 'include',
                 headers: { 'content-type': 'application/json' },
@@ -104,7 +104,7 @@ const PostCard = ({ post }) => {
               const newDisLike = isDisLikeClicked === true ? null : true;
               setIsDislikeClicked(newDisLike);
               setisLikeClicked(null);
-              fetch(`http://localhost:7777/feed/dislike`, {
+              fetch(`https://nexthorizon-backend-1.onrender.com/feed/dislike`, {
                 method: 'PATCH',
                 credentials: 'include',
                 headers: { 'content-type': 'application/json' },
@@ -131,7 +131,7 @@ const PostCard = ({ post }) => {
           onClick={async (e) => {
             e.preventDefault();
             try {
-              const res = await fetch(`http://localhost:7777/post/interested`, {
+              const res = await fetch(`https://nexthorizon-backend-1.onrender.com/post/interested`, {
                 method: 'PATCH',
                 headers: { 'Content-type': 'application/json' },
                 body: JSON.stringify({ post_id: post._id, user_id: user.user_data[0]._id }),

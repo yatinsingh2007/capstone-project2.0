@@ -12,7 +12,7 @@ const Opportunities = () => {
     setTimeout(() => {
     (async() => {
       try{
-        const resp = await fetch(`http://localhost:7777/mypossibleConnections` , {
+        const resp = await fetch(`https://nexthorizon-backend-1.onrender.com/mypossibleConnections` , {
           credentials : 'include'
         })
         const connectionData = await resp.json()
