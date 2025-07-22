@@ -4,7 +4,21 @@ import Nav from "./Nav";
 
 const MyProfile = () => {
   const { theme } = useContext(ThemeContext);
-  let userData = JSON.parse(localStorage.getItem("userData")).user_data[0]
+  let userData = JSON.parse(localStorage.getItem("userData"))?.user_data[0]
+  if(!userData) {
+    userData = {
+      name: "John Doe",
+      email: "johndoe@gmail.com", 
+      profilePic: "https://via.placeholder.com/150",
+      profession: "Software Engineer",
+      workingAt: "Tech Company",
+      bio: "A passionate software engineer with a love for coding and technology.",
+      education: "Bachelor's in Computer Science",        
+      workExperience: "5 years in software development",
+      createdAt: new Date().toISOString(),
+    };
+  } 
+
 
   return (
     <>
