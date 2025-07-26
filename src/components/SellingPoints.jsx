@@ -20,7 +20,7 @@ const SellingPoints = () => (
         />
       </div>
     </main>
-    <div className="flex flex-col md:flex-row-reverse items-center max-w-6xl mx-auto mb-12 px-4 gap-2">
+    <div className="flex flex-col md:flex-row-reverse items-center max-w-6xl mx-auto mb-12 px-4 gap-12">
       <div className="flex-1 mb-6 md:mb-0">
         <h3 className="text-2xl font-bold mb-4">Expert Community</h3>
         <p>
@@ -35,7 +35,7 @@ const SellingPoints = () => (
         />
       </div>
     </div>
-    <div className="flex flex-col md:flex-row items-center max-w-6xl mx-auto mb-12 px-4">
+    <div className="flex flex-col md:flex-row items-center max-w-6xl mx-auto mb-12 px-4 gap-12">
       <div className="flex-1 mb-6 md:mb-0">
         <h3 className="text-2xl font-bold mb-4">Verified Opportunities</h3>
         <p>
@@ -51,7 +51,7 @@ const SellingPoints = () => (
         />
       </div>
     </div>
-    <div className="flex flex-col md:flex-row-reverse items-center max-w-6xl mx-auto px-4">
+    <div className="flex flex-col md:flex-row-reverse items-center max-w-6xl mx-auto px-4 gap-12">
       <div className="flex-1 mb-6 md:mb-0">
         <h3 className="text-2xl font-bold mb-4">Continuous Learning</h3>
         <p>
