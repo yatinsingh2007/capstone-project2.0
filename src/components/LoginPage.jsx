@@ -3,6 +3,7 @@ import { Eye, EyeOff, Sun, Moon , MoveLeft } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import  {ThemeContext}  from '../context/ThemeProvider';
 import { toast } from 'react-toastify';
+import { Helmet } from 'react-helmet';
 
 const LoginPage = () => {
   const { theme, setTheme } = useContext(ThemeContext);
@@ -37,7 +38,12 @@ const LoginPage = () => {
   };
 
   return (
-    <section className={`flex flex-col items-center justify-center min-h-screen px-4 ${theme === 'dark' ? 'bg-black text-white' : 'bg-white text-black'}`}>
+    <>
+      <Helmet>
+        <title>Login - NextHorizon</title>
+        <meta name="description" content="Login to your NextHorizon account to connect with professionals and explore opportunities." />
+      </Helmet>
+      <section className={`flex flex-col items-center justify-center min-h-screen px-4 ${theme === 'dark' ? 'bg-black text-white' : 'bg-white text-black'}`}>
       <div className="absolute top-4 right-4 z-10">
         <button
           onClick={() => setTheme(theme === 'light' ? 'dark' : 'light')}
@@ -101,6 +107,7 @@ const LoginPage = () => {
         </form>
       </main>
     </section>
+    </>
   );
 };
 

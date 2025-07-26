@@ -28,6 +28,14 @@ const MainPage = () => {
   }, []);
   return (
 <>
+  <Helmet>
+    <title>Main Page - NextHorizon</title>
+    <meta name="description" content="Connect with professionals, share insights, and explore opportunities on NextHorizon." />
+    <meta name="keywords" content="NextHorizon, professional networking, job opportunities, career growth" />
+    <meta name="author" content="NextHorizon Team" />
+    <meta property="og:title" content="Main Page - NextHorizon" />
+    <meta property="og:description" content="Connect with professionals, share insights, and explore opportunities on NextHorizon." />
+  </Helmet>
   <section className={`min-h-screen px-4 py-10 ${theme === 'dark' ? 'bg-black text-white' : 'bg-white text-black'}`}>
     <Nav/>
     <div className="fixed md:top-4 md:right-4 z-50 bottom-5 right-5">

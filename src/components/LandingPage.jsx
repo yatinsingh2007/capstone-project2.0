@@ -6,6 +6,7 @@ import TestimonialCarousel from './TestimonialCarousel'
 import SellingPoints from './SellingPoints'
 import HomeNav from './HomeNav';
 import Hamburg from './Hamburg';
+import { Helmet } from 'react-helmet';
 const LandingPage = () => {
   const [smallScreen, setSmallScreen] = useState(window.innerWidth < 768);
 
@@ -18,14 +19,20 @@ const LandingPage = () => {
   }, []);
 
   return (
-    <main>
-      {smallScreen ? <Hamburg /> : <HomeNav />}
-      <HeroSection />
-      <FeatureCarousel />
-      <SellingPoints />
-      <TestimonialCarousel />
-      <Footer />
-    </main>
+    <>
+      <Helmet>
+        <title>NextHorizon</title>
+        <meta name="description" content="Explore opportunities, connect with professionals, and enhance your career with NextHorizon." />
+      </Helmet>
+      <main>
+        {smallScreen ? <Hamburg /> : <HomeNav />}
+        <HeroSection />
+        <FeatureCarousel />
+        <SellingPoints />
+        <TestimonialCarousel />
+        <Footer />
+      </main>
+    </>
   );
 };
 

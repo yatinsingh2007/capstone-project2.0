@@ -3,6 +3,7 @@ import Nav from "./Nav";
 import { ThemeContext } from "../context/ThemeProvider";
 import {Sun , Moon} from 'lucide-react'
 import MainFooter from "./MainFooter";
+import { Helmet } from "react-helmet";
 
 const Jobs = () => {
   const [jobs, setJobs] = React.useState([]);
@@ -33,9 +34,16 @@ const Jobs = () => {
     : "bg-black text-white hover:bg-gray-900";
 
   return (
-    <div
-      className={`min-h-screen px-4 md:px-16 py-10 font-['Montserrat'] transition-colors duration-300 ${containerClass}`}
-    >
+    <>
+      <Helmet>
+        <title>Job Opportunities - NextHorizon</title>
+        <meta name="description" content="Explore the latest job opportunities available at NextHorizon. Find your dream job today!" />
+        <meta name="keywords" content="jobs, career, opportunities, NextHorizon" />
+        <meta name="author" content="NextHorizon Team" />
+        <meta property="og:title" content="Job Opportunities - NextHorizon" />
+        <meta property="og:description" content="Explore the latest job opportunities available at Next"/>
+      </Helmet>
+      <div className={`min-h-screen px-4 md:px-16 py-10 font-['Montserrat'] transition-colors duration-300 ${containerClass}`}>
       <Nav />
       <div className="fixed md:top-4 md:right-4 md:z-10 bottom-5 right-5">
         <button
@@ -94,6 +102,7 @@ const Jobs = () => {
       </div>
       <MainFooter />
     </div>
+    </>
   );
 };
 

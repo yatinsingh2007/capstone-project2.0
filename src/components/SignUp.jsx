@@ -3,6 +3,7 @@ import { Eye, EyeOff  , Sun , Moon , MoveLeft} from 'lucide-react';
 import { toast } from 'react-toastify';
 import { useNavigate } from 'react-router-dom';
 import  {ThemeContext}  from '../context/ThemeProvider';
+import { Helmet } from 'react-helmet';
 
 const SignUp = () => {
   const navigate = useNavigate();
@@ -46,7 +47,12 @@ const SignUp = () => {
   }
 
   return (
-    <section className={`flex flex-col items-center justify-center min-h-screen px-4 ${theme === 'dark' ? 'bg-black text-white' : 'bg-white text-black'}`}>
+    <>
+      <Helmet>
+        <title>Sign Up - NextHorizon</title>
+        <meta name="description" content="Create your NextHorizon account to connect with professionals and explore opportunities." />
+      </Helmet>
+      <section className={`flex flex-col items-center justify-center min-h-screen px-4 ${theme === 'dark' ? 'bg-black text-white' : 'bg-white text-black'}`}>
       <div className="absolute top-4 right-4 z-10">
         <button
           onClick={() => setTheme(theme === 'light' ? 'dark' : 'light')}
@@ -158,6 +164,7 @@ const SignUp = () => {
         </form>
       </main>
     </section>
+    </>
   );
 };
 
