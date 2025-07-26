@@ -6,7 +6,7 @@ import { useNavigate } from "react-router-dom";
 const MyProfile = () => {
   const { theme } = useContext(ThemeContext);
   const navigate = useNavigate()
-  let userData = JSON.parse(localStorage.getItem("userData"))?.user_data?.[0]
+  let userData = JSON.parse(localStorage.userData)?.user
   if(!userData) {
     let userData = {}
     userData.user = {
