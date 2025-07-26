@@ -1,12 +1,12 @@
 import { useContext } from "react";
 import { ThemeContext } from "../context/ThemeProvider";
 import Nav from "./Nav";
-import { useNavigate } from "react-router-dom";
+// import { useNavigate } from "react-router-dom";
 import { Plus } from 'lucide-react';
 
 const MyProfile = () => {
   const { theme } = useContext(ThemeContext);
-  const navigate = useNavigate()
+  // const navigate = useNavigate()
   let userData = JSON.parse(localStorage.userData)
   if(!userData) {
     let userData = {}
@@ -43,7 +43,9 @@ const MyProfile = () => {
           <div>
             <h2 className="text-2xl font-semibold">{userData.user.name}</h2>
             <p className="text-sm text-gray-500">{userData.user.email}</p>
-            <div className="flex flex-wrap gap-2 mt-2">
+
+            <p className="text-sm text-gray-500">{userData.user.gender}</p>
+            {/* <div className="flex flex-wrap gap-2 mt-2">
               <span
                 className={`px-3 py-1 rounded-full text-xs font-medium border ${
                   theme === "dark"
@@ -62,7 +64,7 @@ const MyProfile = () => {
               >
                 {userData.user.workingAt || "Company not specified"}
               </span>
-            </div>
+            </div> */}
           </div>
         </div>
 
@@ -102,19 +104,13 @@ const MyProfile = () => {
         </div>
 
         
-        <div className="mt-6 flex justify-end">
-          <button
-            className={`px-5 py-2 rounded-md border ${
-              theme === "dark"
-                ? "bg-black text-white hover:bg-neutral-800"
-                : "bg-white text-black hover:bg-neutral-200"
-            } text-sm transition`}
-            onClick={() => navigate('/editProfile')}
-          >
+        {/* <div className="mt-6 flex justify-end">
+          <button className={`px-5 py-2 rounded-md border ${ theme === "dark" ? "bg-black text-white hover:bg-neutral-800": "bg-white text-black hover:bg-neutral-200"} text-sm transition`}
+            onClick={() => navigate('/editProfile')}>
             Edit Profile
           </button>
+        </div> */}
 
-        </div>
       </div>
     </>
   );
