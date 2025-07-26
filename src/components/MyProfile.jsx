@@ -2,6 +2,7 @@ import { useContext } from "react";
 import { ThemeContext } from "../context/ThemeProvider";
 import Nav from "./Nav";
 import { useNavigate } from "react-router-dom";
+import { Plus } from 'lucide-react';
 
 const MyProfile = () => {
   const { theme } = useContext(ThemeContext);
@@ -75,11 +76,18 @@ const MyProfile = () => {
         {/* Education & Experience */}
         <div className="mt-6 grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
           <div>
-            <p className="font-semibold">Education</p>
+            <div className="flex items-center justify-between mb-2">
+              <p className="font-semibold">Education</p>
+              <p> <Plus/> </p>
+            </div>
             <p>{userData.user.education || "Not specified"}</p>
+            
           </div>
           <div>
-            <p className="font-semibold">Work Experience</p>
+            <div className="flex items-center justify-between mb-2">
+              <p className="font-semibold">Work Experience</p>
+              <p> <Plus/> </p>
+            </div>
             <p>{userData.user.workExperience || "Not specified"}</p>
           </div>
         </div>
@@ -92,6 +100,8 @@ const MyProfile = () => {
             day: 'numeric',
           })}
         </div>
+
+        
         <div className="mt-6 flex justify-end">
           <button
             className={`px-5 py-2 rounded-md border ${
@@ -103,6 +113,7 @@ const MyProfile = () => {
           >
             Edit Profile
           </button>
+
         </div>
       </div>
     </>
