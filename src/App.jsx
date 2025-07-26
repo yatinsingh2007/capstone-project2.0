@@ -37,7 +37,6 @@ function App() {
               <Route path = '/contact' element = {<ContactForm/>} />
               <Route path='/myProfile' element = {<MyProfile/>} />
               <Route path='/faqs' element={<FAQSection />} />
-              <Route path='/editProfile' element={<EditProfile/>} />
             </Routes>
           </CardContextProvider>
         </ConnectionsProvider>
