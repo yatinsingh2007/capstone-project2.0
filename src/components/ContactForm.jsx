@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { MoveLeft } from "lucide-react";
 import { useNavigate } from "react-router-dom";
+import { Helmet } from "react-helmet";
 const ContactForm = () => {
   const [formData, setFormData] = useState({
     name: "",
@@ -17,6 +18,15 @@ const ContactForm = () => {
   const navigate = useNavigate();
 
   return (
+  <>
+    <Helmet>
+      <title>Contact Us - NextHorizon</title>
+      <meta name="description" content="Get in touch with us for any queries or support." />
+      <meta name="keywords" content="contact, support, NextHorizon" />
+      <meta name="author" content="NextHorizon Team" />
+      <meta property="og:title" content="Contact Us - NextHorizon" />
+      <meta property="og:description" content="Get in touch with us for any queries or support." />
+    </Helmet>
     <section
   id="contact"
   className="relative w-full py-16 bg-cover bg-center min-h-screen flex items-center justify-center"
@@ -76,6 +86,7 @@ const ContactForm = () => {
     </form>
   </div>
 </section>
+  </>
   );
 };
 
