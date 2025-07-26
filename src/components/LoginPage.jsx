@@ -27,7 +27,7 @@ const LoginPage = () => {
       const data = await res.json();
       if (!res.ok) throw new Error(data.message || 'Login failed');
       toast.success(`Login Successfull`)
-      
+      localStorage.setItem('userData', JSON.stringify(data));
       navigate('/main');
     } catch (err) {
       console.error(err.message);

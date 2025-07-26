@@ -1,9 +1,11 @@
 import { useContext } from "react";
 import { ThemeContext } from "../context/ThemeProvider";
 import Nav from "./Nav";
+import { useNavigate } from "react-router-dom";
 
 const MyProfile = () => {
   const { theme } = useContext(ThemeContext);
+  const navigate = useNavigate()
   let userData = JSON.parse(localStorage.getItem("userData"))?.user_data?.[0]
   if(!userData) {
     userData = {
@@ -34,7 +36,7 @@ const MyProfile = () => {
               userData.profilePic
             }
             alt="Profile"
-            className="w-24 h-24 rounded-full object-cover border border-gray-400"
+            className="w-24 h-24 rounded-full object-cover border border-gray-400 "
           />
           <div>
             <h2 className="text-2xl font-semibold">{userData.name}</h2>
@@ -97,9 +99,7 @@ const MyProfile = () => {
                 ? "bg-black text-white hover:bg-neutral-800"
                 : "bg-white text-black hover:bg-neutral-200"
             } text-sm transition`}
-            onClick={() => {
-              // navigate to edit profile
-            }}
+            onClick={() => navigate('/editProfile')}
           >
             Edit Profile
           </button>

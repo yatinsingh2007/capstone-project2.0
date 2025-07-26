@@ -16,6 +16,7 @@ import CreatePostForm from './components/CreatePostForm.jsx'
 import ContactForm from './components/ContactForm.jsx';
 import MyProfile from './components/MyProfile.jsx';
 import FAQSection from './components/FAQSection.jsx';
+import EditProfile from './components/EditProfile.jsx';
 
 
 function App() {
@@ -37,6 +38,7 @@ function App() {
               <Route path = '/contact' element = {<ContactForm/>} />
               <Route path='/myProfile' element = {<MyProfile/>} />
               <Route path='/faqs' element={<FAQSection />} />
+              <Route path='/editProfile' element={<EditProfile/>} />
             </Routes>
           </CardContextProvider>
         </ConnectionsProvider>
