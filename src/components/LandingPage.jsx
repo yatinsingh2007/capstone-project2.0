@@ -1,11 +1,11 @@
-import { useEffect , useState } from 'react';
-import HeroSection from './HeroSection';
-import Footer from './Footer';
-import FeatureCarousel from './FeatureCarousel'
-import TestimonialCarousel from './TestimonialCarousel'
-import SellingPoints from './SellingPoints'
-import HomeNav from './HomeNav';
-import Hamburg from './Hamburg';
+import React, { useEffect , useState } from 'react';
+const HeroSection = React.lazy(() => import('./HeroSection'));
+const Footer = React.lazy(() => import('./Footer'));
+const FeatureCarousel = React.lazy(() => import('./FeatureCarousel'));
+const TestimonialCarousel = React.lazy(() => import('./TestimonialCarousel'));
+const SellingPoints = React.lazy(() => import('./SellingPoints'));
+const HomeNav = React.lazy(() => import('./HomeNav'));
+const Hamburg = React.lazy(() => import('./Hamburg'));
 import { Helmet } from 'react-helmet';
 const LandingPage = () => {
   const [smallScreen, setSmallScreen] = useState(window.innerWidth < 768);
