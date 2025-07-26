@@ -16,7 +16,6 @@ import CreatePostForm from './components/CreatePostForm.jsx'
 import ContactForm from './components/ContactForm.jsx';
 import MyProfile from './components/MyProfile.jsx';
 import FAQSection from './components/FAQSection.jsx';
-import EditProfile from './components/EditProfile.jsx';
 
 
 function App() {
