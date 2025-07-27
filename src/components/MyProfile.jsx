@@ -90,22 +90,24 @@ const MyProfile = () => {
         </div>
         <div className="flex flex-row-reverse mt-6">
           <button className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-400"
-          onClick = {async (e) => {
+          onClick = {
+          async (e) => {
             e.preventDefault();
             try{
               await fetch(`https://nexthorizon-backend-1.onrender.com/auth/logout`, {
+                method : 'GET',
                 credentials: 'include',
                 headers: {
                   'Content-Type': 'application/json',
                 },
               });
+              localStorage.removeItem("userData");
+              navigate("/login");
               toast.success("Logged out successfully!");
             }catch(err){
               console.log(err.message);
               toast.error("Error logging out. Please try again.");
             }
-            localStorage.removeItem("userData");
-            navigate("/login");
           }}>
             Logout
           </button>
