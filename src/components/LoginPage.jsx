@@ -102,7 +102,7 @@ const LoginPage = () => {
             type="submit"
             className={`rounded-full p-3 font-semibold mt-6 w-full transition ${theme === 'dark' ? 'bg-white text-black' : 'bg-black text-white'} flex justify-center`}
           >
-            {isSubmitted ? <div className={`${theme === 'light' ? 'rounded-full border-2 border-t-white animate-spin w-3 h-3' : 'rounded-full border-2 border-t-black animate-spin w-3 h-3'}`}></div> : 'Login'}
+            {isSubmitted ? <div className={`${theme === 'light' ? 'rounded-full border-2 border-t-white border-black animate-spin w-3 h-3' : 'rounded-full border-2 border-t-black border-white animate-spin w-3 h-3'}`}></div> : 'Login'}
           </button>
         </form>
       </main>
