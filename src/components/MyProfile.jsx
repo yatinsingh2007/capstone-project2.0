@@ -76,6 +76,7 @@ const MyProfile = () => {
               <p className="font-semibold">Work Experience</p>
               <button onClick={(e) => {
                 e.preventDefault();
+                navigate('/addExperience');
               }}> <Plus/> </button>
             </div>
             {userData.user?.work && userData.user?.work.length > 0 ? (
@@ -91,7 +92,7 @@ const MyProfile = () => {
         </div>
 
         {/* Joined */}
-        <div className="mt-4 text-xs text-gray-500">
+        <div className="mt-4 text-xs text-gray-500 ml-3">
           Joined on {new Date(userData.user.createdAt).toLocaleTimeString('en-US', {
             year: 'numeric',
             month: 'long',
