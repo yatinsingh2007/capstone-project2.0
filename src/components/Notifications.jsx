@@ -30,7 +30,7 @@ const Notifications = () => {
 
   const handleAccept = async (userId) => {
     try {
-      await fetch(`http://localhost:7777/connect/accept`, {
+      await fetch(`https://nexthorizon-backend-1.onrender.com/connect/accept`, {
         method: 'PATCH',
         credentials: 'include',
         headers: {
@@ -46,7 +46,7 @@ const Notifications = () => {
 
   const handleReject = async (userId) => {
     try {
-      await fetch(`http://localhost:7777/connect/reject`, {
+      await fetch(`https://nexthorizon-backend-1.onrender.com/connect/reject`, {
         method: 'DELETE',
         credentials: 'include',
         headers: {

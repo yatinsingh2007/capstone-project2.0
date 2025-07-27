@@ -2,7 +2,11 @@ import { useContext } from "react";
 import { ThemeContext } from "../context/ThemeProvider";
 import Nav from "./Nav";
 import { Helmet } from "react-helmet";
+import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
+import MainFooter from "./MainFooter";
 const MyProfile = () => {
+  const navigate = useNavigate();
   const { theme } = useContext(ThemeContext);
   let userData = JSON.parse(localStorage.userData)
   if(!userData) {
@@ -84,6 +88,29 @@ const MyProfile = () => {
             day: 'numeric',
           })}
         </div>
+        <div className="flex flex-row-reverse mt-6">
+          <button className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-400"
+          onClick = {async (e) => {
+            e.preventDefault();
+            try{
+              await fetch(`https://nexthorizon-backend-1.onrender.com/logout`, {
+                credentials: 'include',
+                headers: {
+                  'Content-Type': 'application/json',
+                },
+              });
+              toast.success("Logged out successfully!");
+            }catch(err){
+              console.log(err.message);
+              toast.error("Error logging out. Please try again.");
+            }
+            localStorage.removeItem("userData");
+            navigate("/login");
+          }}>
+            Logout
+          </button>
+        </div>
+      <MainFooter/>
     </>
   );
 };
