@@ -60,13 +60,13 @@ const EducationModel = () => {
       </Helmet>
 
       <div
-        className={`min-h-screen flex items-center justify-center px-4 ${
+        className={`min-h-screen overflow-y-auto flex items-center justify-center px-4 py-10 ${
           theme === "dark" ? "bg-black text-white" : "bg-gray-100 text-black"
         }`}
       >
         <form
           onSubmit={handleAddEducation}
-          className={`w-full max-w-lg p-8 rounded-xl shadow-xl ${
+          className={`w-full max-w-lg p-8 rounded-xl shadow-xl max-h-[90vh] overflow-y-auto ${
             theme === "dark"
               ? "bg-gray-900 text-white border border-gray-700"
               : "bg-white text-black border border-gray-200"

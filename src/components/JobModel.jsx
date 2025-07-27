@@ -73,15 +73,6 @@ const JobModel = () => {
               : "bg-white text-black border border-gray-200"
           }`}
         >
-          <div className="flex justify-end">
-            <button
-              type="button"
-              className="text-gray-500 hover:text-red-600 text-xl font-bold"
-              onClick={() => window.history.back()}
-            >
-              &times;
-            </button>
-          </div>
           <h3 className="text-2xl font-bold mb-6 text-center">Add Work Experience</h3>
 
           <div className="mb-4">
