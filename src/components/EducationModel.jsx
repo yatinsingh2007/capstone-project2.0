@@ -1,6 +1,5 @@
 import React, { useContext, useState } from "react";
 import Calendar from "react-calendar";
-import "react-calendar/dist/Calendar.css";
 import { toast } from "react-toastify";
 import { ThemeContext } from "../context/ThemeProvider";
 import { Helmet } from "react-helmet";
