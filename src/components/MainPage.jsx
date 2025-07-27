@@ -6,6 +6,7 @@ import Nav from '../components/Nav'
 import {Sun , Moon} from 'lucide-react'
 import { useNavigate } from "react-router-dom";
 import MainFooter from "./MainFooter";
+import { Helmet } from "react-helmet";
 const MainPage = () => {
   const navigate = useNavigate()
   const { theme , setTheme } = useContext(ThemeContext);
