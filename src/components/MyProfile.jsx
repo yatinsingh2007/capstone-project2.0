@@ -93,7 +93,7 @@ const MyProfile = () => {
           onClick = {async (e) => {
             e.preventDefault();
             try{
-              await fetch(`https://nexthorizon-backend-1.onrender.com/logout`, {
+              await fetch(`https://nexthorizon-backend-1.onrender.com/auth/logout`, {
                 credentials: 'include',
                 headers: {
                   'Content-Type': 'application/json',
