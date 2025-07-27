@@ -11,7 +11,7 @@ const MyProfile = () => {
   const { theme } = useContext(ThemeContext);
   let userData = JSON.parse(localStorage.userData)
   if(!userData) {
-    let userData = {}
+    userData = {}
     userData.user = {
       name: "John Doe",
       email: "johndoe@gmail.com", 
@@ -54,7 +54,7 @@ const MyProfile = () => {
   return (
     <>
       <Helmet>
-        <title>{userData.user.name}'s Profile</title>
+        <title>{userData.user.name}</title>
         <meta name="description" content="View and edit your profile information." />
       </Helmet>
       <Nav />
