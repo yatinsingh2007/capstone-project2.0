@@ -1,15 +1,12 @@
 import { useContext } from "react";
 import { ThemeContext } from "../context/ThemeProvider";
 import Nav from "./Nav";
-// import { useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { Plus } from 'lucide-react';
-import { useState } from "react";
-import { useRef } from "react";
-import { toast } from "react-toastify";
 import { Helmet } from "react-helmet";
-import Calendar from 'react-calendar';
 import 'react-calendar/dist/Calendar.css';
 const MyProfile = () => {
+  const navigate = useNavigate();
   const { theme } = useContext(ThemeContext);
   let userData = JSON.parse(localStorage.userData)
   if(!userData) {
@@ -26,33 +23,6 @@ const MyProfile = () => {
       createdAt: new Date().toISOString(),
     };
   } 
-  const [educationshow, educationSetShow] = useState(false);
-  const [workshow, workSetShow] = useState(false);
-  const [workData , setWorkData] = useState({
-    position: "",
-    company: "",
-    startDate: "",
-    endDate: ""
-  })
-  const [educationData , setEducationData] = useState({
-    title: "",
-    description: "",
-    date: ""
-  })
-  const educationRef = useRef(null);
-  const workRef = useRef(null);
-  const handleEduToggleClick = (e) => {
-    e.preventDefault();
-    if (educationRef.current && !educationRef.current.contains(e.target)) {
-      educationSetShow(false);
-    }
-  };
-  const workToggleClick = (e) => {
-    e.preventDefault();
-    if (workRef.current && !workRef.current.contains(e.target)) {
-      workSetShow(false);
-    }
-  };
   return (
     <>
       <Helmet>
@@ -94,70 +64,8 @@ const MyProfile = () => {
               <p className="font-semibold">Education</p>
               <button onClick={(e) => {
                 e.preventDefault();
-                educationSetShow(!educationshow);
+                navigate('/education');
               }}> <Plus/></button>
-
-              <div className="flex items-center fixed w-[60%] h-[60%]">
-              {educationshow && (<container ref = {educationRef} className="flex flex-col bg-white text-black shadow-xl" onClick = {handleEduToggleClick}>
-                <label className="mr-2">title:(*)</label><br/>
-                <input type="text" placeholder="Type here..." className="ml-4 p-1 border border-gray-300 rounded" onChange={(e) => {
-                  e.preventDefault();
-                  setEducationData({...educationData, title: e.target.value});
-                }}/>
-                <label className="mr-2">description:(*)</label><br/>
-                <input type="text" placeholder="Type here..." className="ml-4 p-1 border border-gray-300 rounded" onChange={(e) => {
-                  e.preventDefault();
-                  setEducationData({...educationData, description: e.target.value});
-                }}/>
-                <label className="mr-2">date:(*)</label><br/>
-                <Calendar
-                  onChange={(date) => {
-                    setEducationData({...educationData, date: date.toISOString().split('T')[0]});
-                  }}
-                  value={educationData.date ? new Date(educationData.date) : new Date()}
-                  className="ml-4 p-1 border border-gray-300 rounded"
-                />
-                <br/>
-                <button className="bg-white text-black rounded-xl shadow-lg" onClick={async (e) => {
-                  const {title, description, date} = educationData;
-                  if(!title || !description || !date) {
-                    toast.error("Please fill all the fields");
-                    return;
-                  }
-                  e.preventDefault();
-                  try{
-                    const resp = await fetch(`https://nexthorizon-backend-1.onrender.com/user/education/${userData.user._id}`, {
-                      method: "PATCH",
-                      headers: {
-                        "Content-Type": "application/json"
-                      },
-                      body: JSON.stringify({
-                        title,
-                        description,
-                        date
-                      }),
-                      credentials: "include"
-                    });
-                    const data = await resp.json();
-                    if(data.success) {
-                      toast.success("Education added successfully");
-                      userData.user.education = data.education;
-                      localStorage.setItem('userData', JSON.stringify(userData));
-                      educationSetShow(false);
-                      setEducationData({
-                        title: "",
-                        description: "",
-                        date: ""
-                      });
-                    } else {
-                      toast.error(data.message || "Failed to add education");
-                    }
-                  }catch(err){
-                    console.error(err);
-                    toast.error("An error occurred while adding education");
-                  }
-                }}>Add</button>
-              </container>)}
               </div>
             </div>
             <p>{userData.user.education || "Not specified"}</p>
@@ -169,54 +77,6 @@ const MyProfile = () => {
               <button onClick={(e) => {
                 e.preventDefault();
               }}> <Plus/> </button>
-
-
-              {workshow && (<container ref = {workRef} className="flex flex-col" onClick = {workToggleClick}>
-                <label className="mr-2">position:</label><br/>
-                <input type="text" placeholder="Type here..." className="ml-4 p-1 border border-gray-300 rounded"/>
-                <label className="mr-2">company:</label><br/>
-                <input type="text" placeholder="Type here..." className="ml-4 p-1 border border-gray-300 rounded"/>
-                <label className="mr-2">start date:</label><br/>
-                <input type="date" placeholder="Type here..." className="ml-4 p-1 border border-gray-300 rounded"/>
-                <label className="mr-2">end date:</label><br/>
-                <input type="date" placeholder="Type here..." className="ml-4 p-1 border border-gray-300 rounded"/><br/>
-                <button className="bg-white text-black rounded-xl" onClick={(e) => {
-                  e.preventDefault();
-                  const { position, company, startDate, endDate } = workData;
-                  if(!position || !company || !startDate || !endDate) {
-                    toast.error("Please fill all the fields");
-                    return;
-                  }
-                  fetch(`https://nexthorizon-backend-1.onrender.com/user/work/${userData.user._id}`, {
-                    method: "PATCH",
-                    headers: { "Content-Type": "application/json"
-                    },
-                    body: JSON.stringify({ position, company, startDate, endDate }),
-                    credentials: "include"
-                  })
-                  .then((resp) => resp.json())
-                  .then((data) => {
-                    if(data.success) {
-                      toast.success("Work experience added successfully");
-                      userData.user.work = data.work;
-                      localStorage.setItem('userData', JSON.stringify(userData));
-                      workSetShow(false);
-                      setWorkData({
-                        position: "",
-                        company: "",
-                        startDate: "",
-                        endDate: ""
-                      });
-                    } else {
-                      toast.error(data.message || "Failed to add work experience");
-                    }
-                  })
-                  .catch((err) => {
-                    console.error(err);
-                    toast.error("An error occurred while adding work experience");
-                  })
-                }}  >Add</button>
-              </container>)}
             </div>
             {userData.user?.work && userData.user?.work.length > 0 ? (
               userData.user.work.map((work, index) => (
@@ -238,7 +98,6 @@ const MyProfile = () => {
             day: 'numeric',
           })}
         </div>
-      </div>
     </>
   );
 };

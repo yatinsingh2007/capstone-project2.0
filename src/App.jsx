@@ -17,7 +17,8 @@ import CreatePostForm from './components/CreatePostForm.jsx'
 import ContactForm from './components/ContactForm.jsx';
 import MyProfile from './components/MyProfile.jsx';
 import FAQSection from './components/FAQSection.jsx';
-import EducationModal from './components/EducationModel.jsx';
+import EducationModel from './components/EducationModel.jsx';
+import JobModel from "./components/JobModel.jsx"
 
 
 function App() {
@@ -39,7 +40,8 @@ function App() {
               <Route path = '/contact' element = {<ContactForm/>} />
               <Route path='/myProfile' element = {<MyProfile/>} />
               <Route path='/faqs' element={<FAQSection />} />
-              <Route path='/education' element={<EducationModal />} />
+              <Route path='/education' element={<EducationModel />} />
+              <Route path = '/addExperience' element = {<JobModel/>} />
             </Routes>
           </CardContextProvider>
         </ConnectionsProvider>

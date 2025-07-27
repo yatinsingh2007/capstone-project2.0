@@ -5,57 +5,58 @@ import { toast } from "react-toastify";
 import { ThemeContext } from "../context/ThemeProvider";
 import { Helmet } from "react-helmet";
 
-const EducationModel = () => {
+const JobModel = () => {
   const { theme } = useContext(ThemeContext);
 
   const userData = JSON.parse(localStorage.getItem("userData"));
-  const [educationData, setEducationData] = useState({
-    title: "",
-    description: "",
-    date: "",
+  const [workData, setWorkData] = useState({
+    position: "",
+    company: "",
+    startDate: "",
+    endDate: "",
   });
 
-  const handleAddEducation = async (e) => {
+  const handleAddJob = async (e) => {
     e.preventDefault();
-    const { title, description, date } = educationData;
-    if (!title || !description || !date) {
+    const { position, company, startDate, endDate } = workData;
+    if (!position || !company || !startDate || !endDate) {
       toast.error("Please fill all the fields");
       return;
     }
 
     try {
       const resp = await fetch(
-        `https://nexthorizon-backend-1.onrender.com/user/education/${userData.user._id}`,
+        `https://nexthorizon-backend-1.onrender.com/user/work/${userData.user._id}`,
         {
           method: "PATCH",
           headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ title, description, date }),
+          body: JSON.stringify({ position, company, startDate, endDate }),
           credentials: "include",
         }
       );
       const data = await resp.json();
 
       if (data.success) {
-        toast.success("Education added successfully");
-        userData.user.education = data.education;
+        toast.success("Work experience added successfully");
+        userData.user.work = data.work;
         localStorage.setItem("userData", JSON.stringify(userData));
-        setEducationData({ title: "", description: "", date: "" });
+        setWorkData({ position: "", company: "", startDate: "", endDate: "" });
       } else {
-        toast.error(data.message || "Failed to add education");
+        toast.error(data.message || "Failed to add work experience");
       }
     } catch (err) {
       console.error(err);
-      toast.error("An error occurred while adding education");
+      toast.error("An error occurred while adding work experience");
     }
   };
 
   return (
     <>
       <Helmet>
-        <title>Add Education</title>
+        <title>Add Work Experience</title>
         <meta
           name="description"
-          content="Add your education details to your profile."
+          content="Add your job or work experience to your profile."
         />
       </Helmet>
 
@@ -65,7 +66,7 @@ const EducationModel = () => {
         }`}
       >
         <form
-          onSubmit={handleAddEducation}
+          onSubmit={handleAddJob}
           className={`w-full max-w-lg p-8 rounded-xl shadow-xl ${
             theme === "dark"
               ? "bg-gray-900 text-white border border-gray-700"
@@ -81,59 +82,73 @@ const EducationModel = () => {
               &times;
             </button>
           </div>
-          <h3 className="text-2xl font-bold mb-6 text-center">Add Education</h3>
+          <h3 className="text-2xl font-bold mb-6 text-center">Add Work Experience</h3>
 
           <div className="mb-4">
             <label className="block text-sm font-medium mb-1">
-              Title<span className="text-red-500">*</span>
+              Position<span className="text-red-500">*</span>
             </label>
             <input
               type="text"
-              placeholder="e.g. B.Tech in Computer Science"
+              placeholder="e.g. Software Engineer"
               className="w-full p-2 border border-gray-300 rounded"
               onChange={(e) =>
-                setEducationData({
-                  ...educationData,
-                  title: e.target.value,
-                })
+                setWorkData({ ...workData, position: e.target.value })
               }
-              value={educationData.title}
+              value={workData.position}
             />
           </div>
 
           <div className="mb-4">
             <label className="block text-sm font-medium mb-1">
-              Description<span className="text-red-500">*</span>
+              Company<span className="text-red-500">*</span>
             </label>
             <input
               type="text"
-              placeholder="e.g. Studied at NIT"
+              placeholder="e.g. Google"
               className="w-full p-2 border border-gray-300 rounded"
               onChange={(e) =>
-                setEducationData({
-                  ...educationData,
-                  description: e.target.value,
-                })
+                setWorkData({ ...workData, company: e.target.value })
               }
-              value={educationData.description}
+              value={workData.company}
             />
           </div>
 
           <div className="mb-4">
             <label className="block text-sm font-medium mb-1">
-              Date<span className="text-red-500">*</span>
+              Start Date<span className="text-red-500">*</span>
             </label>
             <Calendar
               onChange={(date) =>
-                setEducationData({
-                  ...educationData,
-                  date: date.toISOString().split("T")[0],
+                setWorkData({
+                  ...workData,
+                  startDate: date.toISOString().split("T")[0],
                 })
               }
               value={
-                educationData.date
-                  ? new Date(educationData.date)
-                  : new Date()
+                workData.startDate ? new Date(workData.startDate) : new Date()
+              }
+              className={`rounded-lg border ${
+                theme === "dark"
+                  ? "bg-gray-800 text-white border-gray-600"
+                  : "bg-white text-black border-gray-300"
+              }`}
+            />
+          </div>
+
+          <div className="mb-4">
+            <label className="block text-sm font-medium mb-1">
+              End Date<span className="text-red-500">*</span>
+            </label>
+            <Calendar
+              onChange={(date) =>
+                setWorkData({
+                  ...workData,
+                  endDate: date.toISOString().split("T")[0],
+                })
+              }
+              value={
+                workData.endDate ? new Date(workData.endDate) : new Date()
               }
               className={`rounded-lg border ${
                 theme === "dark"
@@ -147,7 +162,7 @@ const EducationModel = () => {
             type="submit"
             className="w-full bg-blue-600 text-white py-2 px-4 rounded hover:bg-blue-700 mt-4"
           >
-            Add Education
+            Add Work Experience
           </button>
         </form>
       </div>
@@ -155,4 +170,4 @@ const EducationModel = () => {
   );
 };
 
-export default EducationModel;
+export default JobModel;
