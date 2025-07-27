@@ -7,6 +7,7 @@ import { useState } from "react";
 import { useRef } from "react";
 import { toast } from "react-toastify";
 import { Helmet } from "react-helmet";
+import Calendar from 'react-calendar';
 const MyProfile = () => {
   const { theme } = useContext(ThemeContext);
   let userData = JSON.parse(localStorage.userData)
@@ -96,7 +97,7 @@ const MyProfile = () => {
               }}> <Plus/></button>
 
               <div className="flex items-center fixed w-[60%] h-[60%]">
-              {educationshow && (<container ref = {educationRef} className="flex flex-col" onClick = {handleEduToggleClick}>
+              {educationshow && (<container ref = {educationRef} className="flex flex-col bg-white text-black shadow-xl" onClick = {handleEduToggleClick}>
                 <label className="mr-2">title:(*)</label><br/>
                 <input type="text" placeholder="Type here..." className="ml-4 p-1 border border-gray-300 rounded" onChange={(e) => {
                   e.preventDefault();
@@ -108,10 +109,14 @@ const MyProfile = () => {
                   setEducationData({...educationData, description: e.target.value});
                 }}/>
                 <label className="mr-2">date:(*)</label><br/>
-                <input type="date" placeholder="Type here..." className="ml-4 p-1 border border-gray-300 rounded" onChange = {(e) => {
-                  e.preventDefault();
-                  setEducationData({...educationData, date: e.target.value});
-                }}/><br/>
+                <Calendar
+                  onChange={(date) => {
+                    setEducationData({...educationData, date: date.toISOString().split('T')[0]});
+                  }}
+                  value={educationData.date ? new Date(educationData.date) : new Date()}
+                  className="ml-4 p-1 border border-gray-300 rounded"
+                />
+                <br/>
                 <button className="bg-white text-black rounded-xl shadow-lg" onClick={async (e) => {
                   const {title, description, date} = educationData;
                   if(!title || !description || !date) {
@@ -232,15 +237,6 @@ const MyProfile = () => {
             day: 'numeric',
           })}
         </div>
-
-        
-        {/* <div className="mt-6 flex justify-end">
-          <button className={`px-5 py-2 rounded-md border ${ theme === "dark" ? "bg-black text-white hover:bg-neutral-800": "bg-white text-black hover:bg-neutral-200"} text-sm transition`}
-            onClick={() => navigate('/editProfile')}>
-            Edit Profile
-          </button>
-        </div> */}
-
       </div>
     </>
   );
