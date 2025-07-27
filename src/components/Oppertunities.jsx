@@ -4,6 +4,7 @@ import Nav from './Nav';
 import { ThemeContext } from '../context/ThemeProvider';
 import { Sun , Moon } from 'lucide-react';
 import MainFooter from './MainFooter';
+import { Helmet } from 'react-helmet';
 
 const Opportunities = () => {
   const [persons, setPersons] = useState([]);
@@ -25,6 +26,14 @@ const Opportunities = () => {
   } , [])
   return (
     <>
+      <Helmet>
+        <title>Opportunities - NextHorizon</title>
+        <meta name="description" content="Explore professional opportunities and connect with potential collaborators on NextHorizon." />
+        <meta name="keywords" content="NextHorizon, professional opportunities, networking, career growth" />
+        <meta name="author" content="NextHorizon Team" />
+        <meta property="og:title" content="Opportunities - NextHorizon" />
+        <meta property="og:description" content="Explore professional opportunities and connect with potential collaborators on NextHorizon." />
+      </Helmet>
       <div className={`p-6 ${theme === 'light' ? 'bg-white' : 'bg-black'} min-h-screen px-4 md:px-16 py-10 font-sans`}>
         <Nav />
         <div className="fixed md:top-4 md:right-4 md:z-10 bottom-5 right-5">
