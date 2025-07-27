@@ -8,6 +8,7 @@ import { useRef } from "react";
 import { toast } from "react-toastify";
 import { Helmet } from "react-helmet";
 import Calendar from 'react-calendar';
+import 'react-calendar/dist/Calendar.css';
 const MyProfile = () => {
   const { theme } = useContext(ThemeContext);
   let userData = JSON.parse(localStorage.userData)
