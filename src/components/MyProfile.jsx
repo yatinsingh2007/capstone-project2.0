@@ -54,7 +54,7 @@ const MyProfile = () => {
   return (
     <>
       <Helmet>
-        <title>{userData.user.Name}'s Profile</title>
+        <title>{userData.user.name}'s Profile</title>
         <meta name="description" content="View and edit your profile information." />
       </Helmet>
       <Nav />
@@ -95,7 +95,7 @@ const MyProfile = () => {
                 educationSetShow(!educationshow);
               }}> <Plus/></button>
 
-              <div className="flex items-center float-start">
+              <div className="flex items-center fixed w-[60%] h-[60%] bg-slate-400">
               {educationshow && (<container ref = {educationRef} className="flex flex-col" onClick = {handleEduToggleClick}>
                 <label className="mr-2">title:(*)</label><br/>
                 <input type="text" placeholder="Type here..." className="ml-4 p-1 border border-gray-300 rounded" onChange={(e) => {
