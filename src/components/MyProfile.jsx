@@ -88,12 +88,13 @@ const MyProfile = () => {
         {/* Education & Experience */}
         <div className="mt-6 grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
           <div>
-            <div className="flex items-center justify-between mb-2">
+            <div className="flex items-center justify-between mb-2 flex-col">
               <p className="font-semibold">Education</p>
               <button onClick={(e) => {
                 e.preventDefault();
                 educationSetShow(!educationshow);
               }}> <Plus/></button>
+
               <div className="flex items-center">
               {educationshow && (<container ref = {educationRef} className="flex flex-col" onClick = {handleEduToggleClick}>
                 <label className="mr-2">title:(*)</label><br/>
