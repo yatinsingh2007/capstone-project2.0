@@ -1,5 +1,6 @@
 import { ToastContainer } from 'react-toastify';
 import './App.css';
+import "react-toastify/dist/ReactToastify.css";
 import LoginPage from './components/LoginPage';
 import LandingPage from './components/LandingPage';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
@@ -16,6 +17,7 @@ import CreatePostForm from './components/CreatePostForm.jsx'
 import ContactForm from './components/ContactForm.jsx';
 import MyProfile from './components/MyProfile.jsx';
 import FAQSection from './components/FAQSection.jsx';
+import EducationModal from './components/EducationModel.jsx';
 
 
 function App() {
@@ -37,6 +39,7 @@ function App() {
               <Route path = '/contact' element = {<ContactForm/>} />
               <Route path='/myProfile' element = {<MyProfile/>} />
               <Route path='/faqs' element={<FAQSection />} />
+              <Route path='/education' element={<EducationModal />} />
             </Routes>
           </CardContextProvider>
         </ConnectionsProvider>
