@@ -25,7 +25,7 @@ const MyProfile = () => {
   }
   return (
     <>
-      <div className="min-h-screen flex justify-between">
+      <div className="min-h-screen flex flex-col justify-between">
         <div><Helmet>
           <title>{userData.user?.name || `Client`}</title>
           <meta name="description" content="View and edit your profile information." />
