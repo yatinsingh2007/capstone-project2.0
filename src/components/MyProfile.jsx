@@ -1,12 +1,8 @@
 import { useContext } from "react";
 import { ThemeContext } from "../context/ThemeProvider";
 import Nav from "./Nav";
-import { useNavigate } from "react-router-dom";
-import { Plus } from 'lucide-react';
 import { Helmet } from "react-helmet";
-import 'react-calendar/dist/Calendar.css';
 const MyProfile = () => {
-  const navigate = useNavigate();
   const { theme } = useContext(ThemeContext);
   let userData = JSON.parse(localStorage.userData)
   if(!userData) {
@@ -62,23 +58,12 @@ const MyProfile = () => {
           <div>
             <div className="flex items-center justify-between mb-2 ">
               <p className="font-semibold">Education</p>
-              <button onClick={(e) => {
-                e.preventDefault();
-                navigate('/education');
-              }}> <Plus/></button>
               </div>
             </div>
             <p>{userData.user.education || "Not specified"}</p>
             
           </div>
           <div>
-            <div className="flex items-center justify-between mb-2">
-              <p className="font-semibold">Work Experience</p>
-              <button onClick={(e) => {
-                e.preventDefault();
-                navigate('/addExperience');
-              }}> <Plus/> </button>
-            </div>
             {userData.user?.work && userData.user?.work.length > 0 ? (
               userData.user.work.map((work, index) => (
                 <p key={index} className="text-sm">
