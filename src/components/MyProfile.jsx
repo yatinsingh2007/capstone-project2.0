@@ -54,7 +54,7 @@ const MyProfile = () => {
   return (
     <>
       <Helmet>
-        <title>{userData.user.name}</title>
+        <title>{userData.user?.name || `Client`}</title>
         <meta name="description" content="View and edit your profile information." />
       </Helmet>
       <Nav />
