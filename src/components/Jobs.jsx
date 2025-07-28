@@ -10,7 +10,7 @@ const Jobs = () => {
   const { theme , setTheme } = React.useContext(ThemeContext);
 
   React.useEffect(() => {
-    fetch("https://mocki.io/v1/2ff3c85e-218f-4180-9242-59f0be3fc271")
+    fetch("https://mocki.io/v1/2eaaffc2-52be-4174-b23e-d09445f6706f")
       .then((resp) => resp.json())
       .then((data) => setJobs(data))
       .catch((error) => console.error("Error fetching jobs:", error));
