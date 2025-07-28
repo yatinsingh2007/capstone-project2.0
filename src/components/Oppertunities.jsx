@@ -47,7 +47,9 @@ const Opportunities = () => {
         <div className="max-w-7xl mx-auto w-full pt-32">
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10 place-items-center">
             {persons.length === 0 && (
-              <div className={`rounded-full w-4 h-4 border-2 ${theme === "light" ? 'border-t-black border-white' : 'border-t-white border-black'} border-2 animate-spin`}></div>
+              <div className='flex justify-center'>
+                <div className={`rounded-full w-4 h-4 border-2 ${theme === "light" ? 'border-t-black border-white' : 'border-t-white border-black'} border-2 animate-spin`}></div>
+              </div>
             )}
             {persons.map((person , i) => (
               <OpportunityCard
