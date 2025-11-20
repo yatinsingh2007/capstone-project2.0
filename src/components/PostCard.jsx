@@ -25,51 +25,56 @@ const PostCard = ({ post }) => {
 
   return (
     <section
-      className={`border p-4 md:p-6 transition duration-300 shadow-sm hover:shadow-xl bg-opacity-90 min-w-[60vw] mx-auto mb-6 rounded-2xl relative ${
-        isDark ? 'bg-black text-white' : 'bg-white text-black'
-      }`}
+      className={`border p-6 md:p-8 transition-all duration-300 shadow-lg hover:shadow-2xl backdrop-blur-xl rounded-3xl relative group ${isDark
+          ? 'bg-gray-900/60 border-gray-700/50 text-white hover:bg-gray-900/80'
+          : 'bg-white/70 border-white/50 text-gray-900 hover:bg-white/90'
+        }`}
     >
-      <div className="flex items-center gap-3 mb-4">
+      <div className="flex items-center gap-4 mb-6">
         <img
           src={post.companyLogo}
           alt="Company Logo"
-          className={`w-12 h-12 rounded-full object-cover border ${
-            isDark ? 'border-gray-600' : 'border-gray-300'
-          }`}
+          className={`w-14 h-14 rounded-xl object-cover shadow-md border-2 ${isDark ? 'border-gray-700' : 'border-white'
+            }`}
         />
         <div>
-          <h2 className="text-lg md:text-xl font-semibold tracking-tight">{post.title}</h2>
-          <p className={`text-sm ${isDark ? 'text-gray-400' : 'text-gray-600'}`}>
+          <h2 className="text-xl md:text-2xl font-bold tracking-tight leading-tight">{post.title}</h2>
+          <p className={`text-sm font-medium ${isDark ? 'text-gray-400' : 'text-gray-500'}`}>
             {post.company}
           </p>
         </div>
       </div>
+
       {post.postImage && (
-        <img
-          src={post.postImage}
-          alt="Post Visual"
-          className="w-full h-60 object-cover rounded-lg mb-4"
-        />
+        <div className="mb-6 overflow-hidden rounded-2xl shadow-md">
+          <img
+            src={post.postImage}
+            alt="Post Visual"
+            className="w-full h-64 md:h-80 object-cover transform transition-transform duration-700 group-hover:scale-105"
+          />
+        </div>
       )}
-      <p className={`text-sm mb-4 ${isDark ? 'text-gray-400' : 'text-gray-600'}`}>
+
+      <p className={`text-base leading-relaxed mb-6 ${isDark ? 'text-gray-300' : 'text-gray-700'}`}>
         {post.description}
       </p>
-      <div className="flex flex-wrap gap-2 mb-4">
+
+      <div className="flex flex-wrap gap-2 mb-6">
         {post.tags?.map((tag, idx) => (
           <span
             key={idx}
-            className={`flex items-center gap-1 px-2 py-1 rounded-full ${
-              isDark
-                ? 'border border-gray-700 text-gray-300'
-                : 'border border-gray-300 text-gray-600'
-            }`}
+            className={`flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold tracking-wide ${isDark
+                ? 'bg-gray-800 text-gray-300 border border-gray-700'
+                : 'bg-gray-100 text-gray-600 border border-gray-200'
+              }`}
           >
             <Tag size={12} /> {tag}
           </span>
         ))}
       </div>
-      <div className="flex flex-col md:flex-row md:justify-between items-start md:items-center gap-3 text-sm">
-        <div className="flex gap-4">
+
+      <div className="flex flex-col md:flex-row md:justify-between items-start md:items-center gap-4 pt-4 border-t border-opacity-10 border-gray-500">
+        <div className="flex gap-3">
           <button
             onClick={(e) => {
               e.preventDefault();
@@ -88,16 +93,19 @@ const PostCard = ({ post }) => {
                   setDislike(data.updatedPost.dislikes);
                 });
             }}
-            className={`flex items-center gap-2 rounded-full px-3 py-1.5 transition ${
-              isLikeClicked
+            className={`flex items-center gap-2 rounded-full px-4 py-2 transition-all duration-200 font-medium ${isLikeClicked
                 ? isDark
-                  ? 'bg-white text-black'
-                  : 'bg-black text-white'
-                : 'border border-gray-400 hover:bg-gray-200 dark:hover:bg-gray-700'
-            }`}
+                  ? 'bg-blue-600 text-white shadow-lg shadow-blue-900/20'
+                  : 'bg-blue-600 text-white shadow-lg shadow-blue-200'
+                : isDark
+                  ? 'bg-gray-800 text-gray-300 hover:bg-gray-700'
+                  : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
+              }`}
           >
-            <ThumbsUp size={18} /> {like}
+            <ThumbsUp size={18} className={isLikeClicked ? 'fill-current' : ''} />
+            <span>{like}</span>
           </button>
+
           <button
             onClick={(e) => {
               e.preventDefault();
@@ -116,17 +124,20 @@ const PostCard = ({ post }) => {
                   setDislike(data.updatedPost.dislikes);
                 });
             }}
-            className={`flex items-center gap-2 rounded-full px-3 py-1.5 transition ${
-              isDisLikeClicked
+            className={`flex items-center gap-2 rounded-full px-4 py-2 transition-all duration-200 font-medium ${isDisLikeClicked
                 ? isDark
-                  ? 'bg-white text-black'
-                  : 'bg-black text-white'
-                : 'border border-gray-400 hover:bg-gray-200 dark:hover:bg-gray-700'
-            }`}
+                  ? 'bg-red-600 text-white shadow-lg shadow-red-900/20'
+                  : 'bg-red-600 text-white shadow-lg shadow-red-200'
+                : isDark
+                  ? 'bg-gray-800 text-gray-300 hover:bg-gray-700'
+                  : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
+              }`}
           >
-            <ThumbsDown size={18} /> {disLike}
+            <ThumbsDown size={18} className={isDisLikeClicked ? 'fill-current' : ''} />
+            <span>{disLike}</span>
           </button>
         </div>
+
         <button
           onClick={async (e) => {
             e.preventDefault();
@@ -148,15 +159,14 @@ const PostCard = ({ post }) => {
               toast.error('Error recording interest.');
             }
           }}
-          className={`px-4 py-2 rounded-full transition ${
-            interested
-              ? 'cursor-not-allowed bg-gray-700 text-gray-300 border border-gray-600'
+          className={`px-6 py-2.5 rounded-full font-semibold transition-all duration-300 transform active:scale-95 ${interested
+              ? 'cursor-not-allowed bg-gray-500/20 text-gray-400 border border-gray-500/30'
               : isDark
-              ? 'border border-gray-600 text-white hover:bg-white hover:text-black'
-              : 'border border-gray-600 text-black hover:bg-black hover:text-white'
-          }`}
+                ? 'bg-white text-black hover:bg-gray-200 shadow-lg hover:shadow-white/10'
+                : 'bg-black text-white hover:bg-gray-800 shadow-lg hover:shadow-black/20'
+            }`}
         >
-          Interested
+          {interested ? 'Interested' : 'I\'m Interested'}
         </button>
       </div>
     </section>
