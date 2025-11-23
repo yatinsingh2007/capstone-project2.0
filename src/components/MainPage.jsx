@@ -79,7 +79,6 @@ const MainPage = () => {
 
       <section className={`relative min-h-screen px-4 py-10 overflow-hidden transition-colors duration-500 ${theme === 'dark' ? 'dark bg-gray-950' : 'bg-gradient-to-br from-sky-50 to-emerald-50'}`}>
 
-        {/* Aceternity UI Backgrounds */}
         <div className="fixed inset-0 z-0 pointer-events-none">
           <AnimatedGridPattern className="opacity-30" />
           <Spotlight
@@ -87,14 +86,12 @@ const MainPage = () => {
             fill={theme === 'dark' ? '#10b981' : '#0ea5e9'}
           />
 
-          {/* Gradient Overlays */}
           <div className={`absolute top-[-10%] left-[-10%] w-[40%] h-[40%] rounded-full blur-[120px] opacity-20 ${theme === 'dark' ? 'bg-emerald-600' : 'bg-emerald-400'}`}></div>
           <div className={`absolute bottom-[-10%] right-[-10%] w-[40%] h-[40%] rounded-full blur-[120px] opacity-20 ${theme === 'dark' ? 'bg-sky-600' : 'bg-sky-400'}`}></div>
         </div>
 
         <Nav />
 
-        {/* Theme Toggle Button */}
         <div className="fixed md:top-6 md:right-6 z-50 bottom-5 right-5">
           <Button
             onClick={() => setTheme(theme === 'light' ? 'dark' : 'light')}
@@ -106,7 +103,6 @@ const MainPage = () => {
           </Button>
         </div>
 
-        {/* Create Post Floating Action Button */}
         <div className="fixed bottom-6 right-6 md:bottom-8 md:right-8 z-40">
           <Button
             onClick={() => navigate('/create-post')}
@@ -118,7 +114,6 @@ const MainPage = () => {
           </Button>
         </div>
 
-        {/* Main Content */}
         <div className="relative z-10 max-w-3xl mx-auto mt-24">
           {isLoading ? (
             <div className="flex flex-col gap-8 w-full">

@@ -14,7 +14,6 @@ const HeroSection = () => {
       className={`relative w-full min-h-screen flex items-center justify-center overflow-hidden transition-colors duration-500 ${theme === 'dark' ? 'dark bg-gray-950' : 'bg-gradient-to-br from-sky-50 to-emerald-50'}`}
       id="home"
     >
-      {/* Aceternity UI Backgrounds */}
       <div className="absolute inset-0 z-0">
         <AnimatedGridPattern className="opacity-30" />
         <Spotlight
@@ -22,12 +21,10 @@ const HeroSection = () => {
           fill={theme === 'dark' ? '#10b981' : '#0ea5e9'}
         />
 
-        {/* Gradient Overlays */}
         <div className={`absolute top-[-10%] left-[-10%] w-[40%] h-[40%] rounded-full blur-[120px] opacity-20 ${theme === 'dark' ? 'bg-emerald-600' : 'bg-sky-400'}`}></div>
         <div className={`absolute bottom-[-10%] right-[-10%] w-[40%] h-[40%] rounded-full blur-[120px] opacity-20 ${theme === 'dark' ? 'bg-sky-600' : 'bg-emerald-400'}`}></div>
       </div>
 
-      {/* Content */}
       <div className={`relative z-10 text-center max-w-4xl px-4 md:px-8 backdrop-blur-sm rounded-3xl p-8 md:p-12 ${theme === 'dark' ? 'bg-gray-900/40' : 'bg-white/40'} border ${theme === 'dark' ? 'border-gray-700/50' : 'border-white/50'} shadow-2xl`} style={{ fontFamily: "'Sora', sans-serif" }}>
         <h1 className={`text-4xl md:text-6xl font-bold mb-6 ${theme === 'dark' ? 'text-white' : 'text-gray-900'}`}>
           Welcome to NextHorizon
