@@ -1,88 +1,66 @@
+import { useContext } from 'react';
+import { ThemeContext } from '../context/ThemeProvider';
+import { AnimatedTestimonials } from './ui/animated-testimonials';
+
 const testimonials = [
   {
     name: "Jane Doe",
-    text: "NextHorizon transformed my job search experience!",
+    designation: "Software Engineer",
+    text: "NextHorizon transformed my job search experience! The platform connected me with amazing opportunities and mentors who helped me grow professionally.",
     photo: "https://randomuser.me/api/portraits/women/44.jpg",
   },
   {
     name: "John Smith",
-    text: "I connected with amazing mentors through this platform.",
+    designation: "Product Manager",
+    text: "I connected with amazing mentors through this platform. The quality of connections and opportunities here is unmatched in the industry.",
     photo: "https://randomuser.me/api/portraits/men/32.jpg",
   },
   {
     name: "Emily Johnson",
-    text: "Highly recommend it to anyone serious about their career.",
+    designation: "UX Designer",
+    text: "Highly recommend it to anyone serious about their career. The resources and community support are exceptional.",
     photo: "https://randomuser.me/api/portraits/women/68.jpg",
   },
   {
     name: "Michael Lee",
-    text: "The opportunities listed here helped me land my dream internship.",
+    designation: "Data Scientist",
+    text: "The opportunities listed here helped me land my dream internship. The platform's AI-powered matching is incredibly accurate.",
     photo: "https://randomuser.me/api/portraits/men/76.jpg",
   },
   {
     name: "Sophia Patel",
-    text: "A very intuitive and supportive platform for freshers.",
+    designation: "Marketing Specialist",
+    text: "A very intuitive and supportive platform for freshers. The onboarding process was smooth and the community is welcoming.",
     photo: "https://randomuser.me/api/portraits/women/21.jpg",
   },
   {
     name: "Daniel Garcia",
-    text: "The UI is clean, and the mentors are amazing!",
+    designation: "Full Stack Developer",
+    text: "The UI is clean, and the mentors are amazing! I've learned so much from the experienced professionals on this platform.",
     photo: "https://randomuser.me/api/portraits/men/45.jpg",
-  },
-  {
-    name: "Priya Verma",
-    text: "I never expected such high-quality resources in one place.",
-    photo: "https://randomuser.me/api/portraits/women/12.jpg",
-  },
-  {
-    name: "Liam Wright",
-    text: "From workshops to mentorship, it covers everything I needed.",
-    photo: "https://randomuser.me/api/portraits/men/53.jpg",
-  },
-  {
-    name: "Aisha Ahmed",
-    text: "This platform helped me transition from student to working professional.",
-    photo: "https://randomuser.me/api/portraits/women/50.jpg",
-  },
-  {
-    name: "Ethan Kim",
-    text: "NextHorizon gave me the confidence to approach real-world projects.",
-    photo: "https://randomuser.me/api/portraits/men/64.jpg",
-  },
-  {
-    name: "Chloe Anderson",
-    text: "I love how personalized the experience feels.",
-    photo: "https://randomuser.me/api/portraits/women/5.jpg",
-  },
-  {
-    name: "Raj Malhotra",
-    text: "Game-changer for anyone looking to grow in tech.",
-    photo: "https://randomuser.me/api/portraits/men/15.jpg",
   },
 ];
 
-const TestimonialCarousel = () => (
-  <section className="py-12 bg-gray-50" style={{ fontFamily: "'Sora', sans-serif" }} id="testimonials">
-    <h2 className="text-3xl font-bold text-center mb-8">What Our Users Say</h2>
-    <div className="flex overflow-x-auto space-x-6 px-4 pb-4 snap-x snap-mandatory">
-      {testimonials.map((t, idx) => (
-        <div
-          key={idx}
-          className="max-w-[250px] bg-white rounded shadow p-6 flex-shrink-0 snap-center"
-        >
-          {t.photo && (
-            <img
-              src={t.photo}
-              alt={t.name}
-              className="w-16 h-16 rounded-full object-cover mb-4"
-            />
-          )}
-          <p className="italic mb-2">"{t.text}"</p>
-          <h4 className="font-semibold">{t.name}</h4>
-        </div>
-      ))}
-    </div>
-  </section>
-);
+const TestimonialCarousel = () => {
+  const { theme } = useContext(ThemeContext);
+
+  return (
+    <section
+      className={`py-20 transition-colors duration-500 ${theme === 'dark' ? 'dark bg-gray-950' : 'bg-gray-50'}`}
+      style={{ fontFamily: "'Sora', sans-serif" }}
+      id="testimonials"
+    >
+      <div className="text-center mb-12">
+        <h2 className={`text-4xl font-bold mb-4 ${theme === 'dark' ? 'text-white' : 'text-gray-900'}`}>
+          What Our Users Say
+        </h2>
+        <p className={`text-lg ${theme === 'dark' ? 'text-gray-400' : 'text-gray-600'}`}>
+          Hear from professionals who transformed their careers with NextHorizon
+        </p>
+      </div>
+      <AnimatedTestimonials testimonials={testimonials} autoplay={true} />
+    </section>
+  );
+};
 
 export default TestimonialCarousel;

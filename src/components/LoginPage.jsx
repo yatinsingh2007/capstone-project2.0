@@ -4,6 +4,11 @@ import { useNavigate } from 'react-router-dom';
 import { ThemeContext } from '../context/ThemeProvider';
 import { toast } from 'react-toastify';
 import { Helmet } from 'react-helmet';
+import { Input } from './ui/input';
+import { Button } from './ui/button';
+import { Card, CardHeader, CardTitle, CardDescription, CardContent } from './ui/card';
+import { GridBackground, AnimatedGridPattern } from './ui/grid-background';
+import { Spotlight } from './ui/spotlight';
 
 const LoginPage = () => {
   const { theme, setTheme } = useContext(ThemeContext);
@@ -43,91 +48,109 @@ const LoginPage = () => {
         <title>Login - NextHorizon</title>
         <meta name="description" content="Login to your NextHorizon account to connect with professionals and explore opportunities." />
       </Helmet>
-      <section className={`relative flex flex-col items-center justify-center min-h-screen px-4 overflow-hidden transition-colors duration-500 ${theme === 'dark' ? 'bg-gray-900' : 'bg-gray-50'}`}>
 
-        {/* Background Gradients */}
+      <section className={`relative flex flex-col items-center justify-center min-h-screen px-4 overflow-hidden transition-colors duration-500 ${theme === 'dark' ? 'dark bg-gray-950' : 'bg-gray-50'}`}>
+
+        {/* Aceternity UI Backgrounds */}
         <div className="absolute inset-0 z-0">
-          <div className={`absolute top-[-10%] left-[-10%] w-[40%] h-[40%] rounded-full blur-[120px] opacity-50 ${theme === 'dark' ? 'bg-emerald-900' : 'bg-emerald-300'}`}></div>
-          <div className={`absolute bottom-[-10%] right-[-10%] w-[40%] h-[40%] rounded-full blur-[120px] opacity-50 ${theme === 'dark' ? 'bg-sky-900' : 'bg-sky-300'}`}></div>
+          <AnimatedGridPattern className="opacity-50" />
+          <Spotlight
+            className="-top-40 left-0 md:left-60 md:-top-20"
+            fill={theme === 'dark' ? '#10b981' : '#3b82f6'}
+          />
+
+          {/* Gradient Overlays */}
+          <div className={`absolute top-[-10%] left-[-10%] w-[40%] h-[40%] rounded-full blur-[120px] opacity-30 ${theme === 'dark' ? 'bg-emerald-600' : 'bg-emerald-400'}`}></div>
+          <div className={`absolute bottom-[-10%] right-[-10%] w-[40%] h-[40%] rounded-full blur-[120px] opacity-30 ${theme === 'dark' ? 'bg-sky-600' : 'bg-sky-400'}`}></div>
         </div>
 
         {/* Theme Toggle */}
         <div className="absolute top-6 right-6 z-20">
-          <button
+          <Button
             onClick={() => setTheme(theme === 'light' ? 'dark' : 'light')}
-            className={`p-3 rounded-full shadow-lg transition-all duration-300 hover:scale-110 ${theme === 'dark' ? 'bg-gray-800 text-yellow-400 hover:bg-gray-700' : 'bg-white text-gray-600 hover:bg-gray-50'}`}
+            variant="outline"
+            size="icon"
+            className={`rounded-full shadow-lg transition-all duration-300 hover:scale-110 ${theme === 'dark' ? 'bg-gray-800/80 border-gray-700 text-yellow-400 hover:bg-gray-700' : 'bg-white/80 border-gray-200 text-gray-600 hover:bg-gray-50'}`}
           >
             {theme === 'light' ? <Moon size={20} /> : <Sun size={20} />}
-          </button>
+          </Button>
         </div>
 
         {/* Back Button */}
         <div className="absolute top-6 left-6 z-20">
-          <button
+          <Button
             onClick={() => navigate('/')}
-            className={`p-3 rounded-full shadow-lg transition-all duration-300 hover:scale-110 ${theme === 'dark' ? 'bg-gray-800 text-white hover:bg-gray-700' : 'bg-white text-gray-900 hover:bg-gray-50'}`}
+            variant="outline"
+            size="icon"
+            className={`rounded-full shadow-lg transition-all duration-300 hover:scale-110 ${theme === 'dark' ? 'bg-gray-800/80 border-gray-700 text-white hover:bg-gray-700' : 'bg-white/80 border-gray-200 text-gray-900 hover:bg-gray-50'}`}
           >
             <MoveLeft size={20} />
-          </button>
+          </Button>
         </div>
 
         {/* Login Card */}
-        <main className={`relative z-10 flex flex-col p-8 md:p-12 w-full max-w-md rounded-3xl shadow-2xl backdrop-blur-xl border transition-all duration-500 ${theme === 'dark' ? 'bg-gray-900/60 border-gray-700/50 text-white' : 'bg-white/70 border-white/50 text-gray-900'}`}>
-
-          <div className="mb-8 text-center">
-            <h1 className="text-4xl font-extrabold mb-2 tracking-tight" style={{ fontFamily: "'Sora', sans-serif" }}>
+        <Card className={`relative z-10 w-full max-w-md backdrop-blur-xl border transition-all duration-500 ${theme === 'dark' ? 'bg-gray-900/60 border-gray-700/50' : 'bg-white/70 border-white/50'}`}>
+          <CardHeader className="text-center space-y-2">
+            <CardTitle className="text-4xl font-extrabold tracking-tight" style={{ fontFamily: "'Sora', sans-serif" }}>
               Welcome Back
-            </h1>
-            <p className={`text-sm ${theme === 'dark' ? 'text-gray-400' : 'text-gray-500'}`}>
+            </CardTitle>
+            <CardDescription className={`text-sm ${theme === 'dark' ? 'text-gray-400' : 'text-gray-500'}`}>
               Enter your details to access your account
-            </p>
-          </div>
+            </CardDescription>
+          </CardHeader>
 
-          <form className="flex flex-col gap-5 w-full" onSubmit={handleLogin}>
-            <div className="flex flex-col gap-1.5">
-              <label className={`text-xs font-semibold uppercase tracking-wider ${theme === 'dark' ? 'text-gray-400' : 'text-gray-500'}`}>Email Address</label>
-              <input
-                type="email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                className={`rounded-xl p-3.5 w-full transition-all duration-200 outline-none border ${theme === 'dark' ? 'bg-gray-800/50 border-gray-700 focus:border-blue-500 focus:bg-gray-800 text-white placeholder-gray-500' : 'bg-gray-50 border-gray-200 focus:border-blue-500 focus:bg-white text-gray-900 placeholder-gray-400'} focus:ring-4 focus:ring-blue-500/10`}
-                placeholder="name@example.com"
-                required
-              />
-            </div>
-
-            <div className="flex flex-col gap-1.5">
-              <label className={`text-xs font-semibold uppercase tracking-wider ${theme === 'dark' ? 'text-gray-400' : 'text-gray-500'}`}>Password</label>
-              <div className="relative">
-                <input
-                  type={!togglePassword ? "text" : "password"}
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}
-                  className={`rounded-xl p-3.5 w-full transition-all duration-200 outline-none border ${theme === 'dark' ? 'bg-gray-800/50 border-gray-700 focus:border-blue-500 focus:bg-gray-800 text-white placeholder-gray-500' : 'bg-gray-50 border-gray-200 focus:border-blue-500 focus:bg-white text-gray-900 placeholder-gray-400'} focus:ring-4 focus:ring-blue-500/10`}
-                  placeholder="••••••••"
+          <CardContent>
+            <form className="flex flex-col gap-5 w-full" onSubmit={handleLogin}>
+              <div className="flex flex-col gap-2">
+                <label className={`text-xs font-semibold uppercase tracking-wider ${theme === 'dark' ? 'text-gray-400' : 'text-gray-500'}`}>
+                  Email Address
+                </label>
+                <Input
+                  type="email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  className={`h-12 rounded-xl transition-all duration-200 ${theme === 'dark' ? 'bg-gray-800/50 border-gray-700 focus:border-emerald-500 text-white placeholder:text-gray-500' : 'bg-gray-50 border-gray-200 focus:border-sky-500 text-gray-900 placeholder:text-gray-400'}`}
+                  placeholder="name@example.com"
                   required
                 />
-                <div
-                  className={`absolute top-1/2 -translate-y-1/2 right-4 cursor-pointer hover:opacity-80 transition-opacity ${theme === 'dark' ? 'text-gray-400' : 'text-gray-500'}`}
-                  onClick={() => setTogglePassword(!togglePassword)}
-                >
-                  {!togglePassword ? <Eye size={20} /> : <EyeOff size={20} />}
+              </div>
+
+              <div className="flex flex-col gap-2">
+                <label className={`text-xs font-semibold uppercase tracking-wider ${theme === 'dark' ? 'text-gray-400' : 'text-gray-500'}`}>
+                  Password
+                </label>
+                <div className="relative">
+                  <Input
+                    type={!togglePassword ? "text" : "password"}
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                    className={`h-12 rounded-xl pr-12 transition-all duration-200 ${theme === 'dark' ? 'bg-gray-800/50 border-gray-700 focus:border-emerald-500 text-white placeholder:text-gray-500' : 'bg-gray-50 border-gray-200 focus:border-sky-500 text-gray-900 placeholder:text-gray-400'}`}
+                    placeholder="••••••••"
+                    required
+                  />
+                  <div
+                    className={`absolute top-1/2 -translate-y-1/2 right-4 cursor-pointer hover:opacity-80 transition-opacity ${theme === 'dark' ? 'text-gray-400' : 'text-gray-500'}`}
+                    onClick={() => setTogglePassword(!togglePassword)}
+                  >
+                    {!togglePassword ? <Eye size={20} /> : <EyeOff size={20} />}
+                  </div>
                 </div>
               </div>
-            </div>
 
-            <button
-              type="submit"
-              className={`rounded-xl p-4 font-bold mt-4 w-full transition-all duration-300 transform hover:-translate-y-0.5 hover:shadow-lg flex justify-center items-center ${theme === 'dark' ? 'bg-white text-black hover:bg-gray-100' : 'bg-black text-white hover:bg-gray-900'}`}
-            >
-              {isSubmitted ? (
-                <div className={`w-5 h-5 border-2 border-t-transparent rounded-full animate-spin ${theme === 'dark' ? 'border-black' : 'border-white'}`}></div>
-              ) : (
-                'Sign In'
-              )}
-            </button>
-          </form>
-        </main>
+              <Button
+                type="submit"
+                disabled={isSubmitted}
+                className={`h-12 rounded-xl font-bold mt-2 w-full transition-all duration-300 transform hover:-translate-y-0.5 hover:shadow-lg ${theme === 'dark' ? 'bg-white text-black hover:bg-gray-100' : 'bg-black text-white hover:bg-gray-900'}`}
+              >
+                {isSubmitted ? (
+                  <div className={`w-5 h-5 border-2 border-t-transparent rounded-full animate-spin ${theme === 'dark' ? 'border-black' : 'border-white'}`}></div>
+                ) : (
+                  'Sign In'
+                )}
+              </Button>
+            </form>
+          </CardContent>
+        </Card>
       </section>
     </>
   );
