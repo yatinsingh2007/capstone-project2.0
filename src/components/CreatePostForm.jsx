@@ -43,7 +43,7 @@ const PostForm = () => {
       formDataToSend.append("postImage", formData.postImage);
       formDataToSend.append("companyLogo", formData.companyLogo);
 
-      const response = await fetch("https://nexthorizon-backend-1.onrender.com/post", {
+      const response = await fetch("https://nexthorizon-backend-1.onrender.com/create/post", {
         method: "POST",
         body: formDataToSend
       });
