@@ -86,7 +86,7 @@ const PostForm = () => {
       {/* Form Card */}
       <form
         onSubmit={handleSubmit}
-        className={`relative z-10 w-full max-w-2xl backdrop-blur-xl border rounded-3xl p-8 md:p-10 shadow-2xl transition-all duration-500 animate-fade-in ${isDark ? 'bg-gray-900/60 border-gray-700/50 text-white' : 'bg-white/70 border-white/50 text-gray-900'
+        className={`relative z-10 w-full max-w-2xl backdrop-blur-xl border rounded-3xl p-8 md:p-10 shadow-2xl transition-all duration-500 ${isDark ? 'bg-gray-900/60 border-gray-700/50 text-white' : 'bg-white/70 border-white/50 text-gray-900'
           }`}
         encType="multipart/form-data"
       >
