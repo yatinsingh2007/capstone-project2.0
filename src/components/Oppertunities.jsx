@@ -34,7 +34,7 @@ const Opportunities = () => {
         <meta property="og:title" content="Opportunities - NextHorizon" />
         <meta property="og:description" content="Explore professional opportunities and connect with potential collaborators on NextHorizon." />
       </Helmet>
-      <div className={`relative min-h-screen px-4 md:px-16 py-10 font-sans transition-colors duration-500 overflow-hidden ${theme === 'dark' ? 'bg-gray-900' : 'bg-gray-50'}`}>
+      <div className={`relative min-h-screen px-4 md:px-16 py-10 font-sans transition-colors duration-500 overflow-hidden ${theme === 'dark' ? 'bg-gradient-to-br from-slate-950 to-slate-900' : 'bg-gray-50'}`}>
 
         {/* Background Gradients */}
         <div className="fixed inset-0 z-0 pointer-events-none">

@@ -8,18 +8,18 @@ const Nav = () => {
 
   const linkClasses = (path) =>
     `flex flex-col justify-center gap-1 items-center rounded-xl px-4 py-2 transition-all duration-300 ${location.pathname === path
-      ? `bg-opacity-20 ${theme === 'dark' ? 'bg-white text-white' : 'bg-black text-black'} scale-105`
-      : `hover:bg-opacity-10 ${theme === 'dark' ? 'hover:bg-white text-gray-400 hover:text-white' : 'hover:bg-black text-gray-500 hover:text-black'}`
+      ? `${theme === 'dark' ? 'bg-gradient-to-br from-emerald-500/20 to-cyan-500/20 text-white border border-emerald-500/30' : 'bg-opacity-20 bg-black text-black'} scale-105`
+      : `hover:bg-opacity-10 ${theme === 'dark' ? 'hover:bg-emerald-500/10 text-slate-400 hover:text-emerald-300' : 'hover:bg-black text-gray-500 hover:text-black'}`
     }`;
 
-  const iconClasses = ""; // Handled by parent class
+  const iconClasses = "";
   const textClasses = "md:text-xs text-[10px] font-semibold tracking-wide";
 
   return (
     <nav
       className={`fixed left-1/2 -translate-x-1/2 md:top-6 top-auto bottom-6 md:bottom-auto z-50 border backdrop-blur-xl shadow-2xl rounded-full px-6 py-3 transition-all duration-500 ${theme === 'dark'
-          ? 'bg-gray-900/70 border-gray-700/50'
-          : 'bg-white/70 border-white/50'
+        ? 'bg-slate-900/80 border-slate-700/70 shadow-emerald-500/10'
+        : 'bg-white/70 border-white/50'
         }`}
     >
       <div className="flex items-center gap-2 md:gap-6">

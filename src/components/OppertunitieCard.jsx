@@ -40,7 +40,7 @@ const OpportunityCard = ({ photo, name, job, company, bio, _id }) => {
   return (
     <div
       className={`rounded-3xl p-6 w-full max-w-sm transition-all duration-300 hover:scale-[1.02] hover:shadow-2xl backdrop-blur-xl border flex flex-col items-center text-center group ${theme === "dark"
-        ? "bg-gray-900/60 border-gray-700/50 text-white hover:bg-gray-900/80"
+        ? "bg-slate-900/70 border-slate-700/60 text-white hover:bg-slate-900/90"
         : "bg-white/70 border-white/50 text-gray-900 hover:bg-white/90"
         }`}
     >

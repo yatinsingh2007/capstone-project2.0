@@ -43,7 +43,7 @@ const Jobs = () => {
         <meta property="og:title" content="Job Opportunities - NextHorizon" />
         <meta property="og:description" content="Explore the latest job opportunities available at Next" />
       </Helmet>
-      <div className={`relative min-h-screen px-4 md:px-16 py-10 font-['Montserrat'] transition-colors duration-500 overflow-hidden ${isDark ? 'bg-gray-900' : 'bg-gray-50'}`}>
+      <div className={`relative min-h-screen px-4 md:px-16 py-10 font-['Montserrat'] transition-colors duration-500 overflow-hidden ${isDark ? 'bg-gradient-to-br from-slate-950 to-slate-900' : 'bg-gray-50'}`}>
 
         {/* Background Gradients */}
         <div className="fixed inset-0 z-0 pointer-events-none">
@@ -76,8 +76,8 @@ const Jobs = () => {
             <div
               key={job.id}
               className={`rounded-3xl p-6 transition-all duration-300 hover:scale-[1.02] hover:shadow-2xl flex flex-col justify-between backdrop-blur-xl border group ${isDark
-                  ? 'bg-gray-900/60 border-gray-700/50 text-white hover:bg-gray-900/80'
-                  : 'bg-white/70 border-white/50 text-gray-900 hover:bg-white/90'
+                ? 'bg-slate-900/70 border-slate-700/60 text-white hover:bg-slate-900/90'
+                : 'bg-white/70 border-white/50 text-gray-900 hover:bg-white/90'
                 }`}
             >
               <div className="flex items-center gap-4 mb-6">
@@ -116,8 +116,8 @@ const Jobs = () => {
 
               <button
                 className={`mt-auto py-3 px-6 rounded-xl font-bold transition-all duration-300 transform active:scale-95 shadow-lg ${isDark
-                    ? 'bg-white text-black hover:bg-gray-200 hover:shadow-white/10'
-                    : 'bg-black text-white hover:bg-gray-800 hover:shadow-black/20'
+                  ? 'bg-white text-black hover:bg-gray-200 hover:shadow-white/10'
+                  : 'bg-black text-white hover:bg-gray-800 hover:shadow-black/20'
                   }`}
               >
                 Apply Now

@@ -29,12 +29,12 @@ const MyProfile = () => {
         <title>{userData.user?.name || `Client`}</title>
         <meta name="description" content="View and edit your profile information." />
       </Helmet>
-      <div className={`relative min-h-screen flex flex-col justify-between transition-colors duration-500 overflow-hidden ${theme === 'dark' ? 'bg-gray-900' : 'bg-gray-50'}`}>
-
-        {/* Background Gradients */}
+      <div className={`relative min-h-screen flex flex-col justify-between transition-colors duration-500 overflow-hidden ${theme === 'dark' ? 'bg-gradient-to-br from-slate-950 to-slate-900' : 'bg-gray-50'}`}>
+        {/* Background Effects */}
         <div className="fixed inset-0 z-0 pointer-events-none">
-          <div className={`absolute top-[-10%] left-[-10%] w-[40%] h-[40%] rounded-full blur-[120px] opacity-50 ${theme === 'dark' ? 'bg-emerald-900' : 'bg-emerald-300'}`}></div>
-          <div className={`absolute bottom-[-10%] right-[-10%] w-[40%] h-[40%] rounded-full blur-[120px] opacity-50 ${theme === 'dark' ? 'bg-sky-900' : 'bg-sky-300'}`}></div>
+          {/* Gradient Overlays */}
+          <div className={`absolute top-[-10%] left-[-10%] w-[40%] h-[40%] rounded-full blur-[120px] ${theme === 'dark' ? 'opacity-30 bg-emerald-500' : 'opacity-50 bg-emerald-300'}`}></div>
+          <div className={`absolute bottom-[-10%] right-[-10%] w-[40%] h-[40%] rounded-full blur-[120px] ${theme === 'dark' ? 'opacity-30 bg-cyan-500' : 'opacity-50 bg-sky-300'}`}></div>
         </div>
 
         <Nav />
@@ -42,7 +42,7 @@ const MyProfile = () => {
         <div className="relative z-10 flex-grow flex items-center justify-center px-4 py-20">
           <div
             className={`w-full max-w-3xl mt-10 p-8 md:p-10 rounded-3xl shadow-2xl backdrop-blur-xl border transition-all duration-300 ${theme === "dark"
-              ? "bg-gray-900/60 border-gray-700/50 text-white"
+              ? "bg-slate-900/70 border-slate-700/60 text-white"
               : "bg-white/70 border-white/50 text-gray-900"
               }`}
           >

@@ -26,20 +26,20 @@ const PostCard = ({ post }) => {
   return (
     <section
       className={`border p-6 md:p-8 transition-all duration-300 shadow-lg hover:shadow-2xl backdrop-blur-xl rounded-3xl relative group ${isDark
-          ? 'bg-gray-900/60 border-gray-700/50 text-white hover:bg-gray-900/80'
-          : 'bg-white/70 border-white/50 text-gray-900 hover:bg-white/90'
+        ? 'bg-slate-900/70 border-slate-700/60 text-white hover:bg-slate-900/90 hover:border-slate-600/70'
+        : 'bg-white/70 border-white/50 text-gray-900 hover:bg-white/90'
         }`}
     >
       <div className="flex items-center gap-4 mb-6">
         <img
           src={post.companyLogo}
           alt="Company Logo"
-          className={`w-14 h-14 rounded-xl object-cover shadow-md border-2 ${isDark ? 'border-gray-700' : 'border-white'
+          className={`w-14 h-14 rounded-xl object-cover shadow-md border-2 ${isDark ? 'border-slate-700' : 'border-white'
             }`}
         />
         <div>
           <h2 className="text-xl md:text-2xl font-bold tracking-tight leading-tight">{post.title}</h2>
-          <p className={`text-sm font-medium ${isDark ? 'text-gray-400' : 'text-gray-500'}`}>
+          <p className={`text-sm font-medium ${isDark ? 'text-slate-400' : 'text-gray-500'}`}>
             {post.company}
           </p>
         </div>
@@ -55,7 +55,7 @@ const PostCard = ({ post }) => {
         </div>
       )}
 
-      <p className={`text-base leading-relaxed mb-6 ${isDark ? 'text-gray-300' : 'text-gray-700'}`}>
+      <p className={`text-base leading-relaxed mb-6 ${isDark ? 'text-slate-200' : 'text-gray-700'}`}>
         {post.description}
       </p>
 
@@ -64,8 +64,8 @@ const PostCard = ({ post }) => {
           <span
             key={idx}
             className={`flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold tracking-wide ${isDark
-                ? 'bg-gray-800 text-gray-300 border border-gray-700'
-                : 'bg-gray-100 text-gray-600 border border-gray-200'
+              ? 'bg-slate-800/80 text-emerald-300 border border-emerald-500/30'
+              : 'bg-gray-100 text-gray-600 border border-gray-200'
               }`}
           >
             <Tag size={12} /> {tag}
@@ -94,12 +94,12 @@ const PostCard = ({ post }) => {
                 });
             }}
             className={`flex items-center gap-2 rounded-full px-4 py-2 transition-all duration-200 font-medium ${isLikeClicked
-                ? isDark
-                  ? 'bg-blue-600 text-white shadow-lg shadow-blue-900/20'
-                  : 'bg-blue-600 text-white shadow-lg shadow-blue-200'
-                : isDark
-                  ? 'bg-gray-800 text-gray-300 hover:bg-gray-700'
-                  : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
+              ? isDark
+                ? 'bg-gradient-to-r from-blue-500 to-cyan-500 text-white shadow-lg shadow-cyan-500/30'
+                : 'bg-blue-600 text-white shadow-lg shadow-blue-200'
+              : isDark
+                ? 'bg-slate-800/80 text-slate-300 hover:bg-slate-700 hover:text-cyan-300'
+                : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
               }`}
           >
             <ThumbsUp size={18} className={isLikeClicked ? 'fill-current' : ''} />
@@ -125,12 +125,12 @@ const PostCard = ({ post }) => {
                 });
             }}
             className={`flex items-center gap-2 rounded-full px-4 py-2 transition-all duration-200 font-medium ${isDisLikeClicked
-                ? isDark
-                  ? 'bg-red-600 text-white shadow-lg shadow-red-900/20'
-                  : 'bg-red-600 text-white shadow-lg shadow-red-200'
-                : isDark
-                  ? 'bg-gray-800 text-gray-300 hover:bg-gray-700'
-                  : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
+              ? isDark
+                ? 'bg-gradient-to-r from-red-500 to-pink-500 text-white shadow-lg shadow-red-500/30'
+                : 'bg-red-600 text-white shadow-lg shadow-red-200'
+              : isDark
+                ? 'bg-slate-800/80 text-slate-300 hover:bg-slate-700 hover:text-pink-300'
+                : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
               }`}
           >
             <ThumbsDown size={18} className={isDisLikeClicked ? 'fill-current' : ''} />
@@ -160,10 +160,10 @@ const PostCard = ({ post }) => {
             }
           }}
           className={`px-6 py-2.5 rounded-full font-semibold transition-all duration-300 transform active:scale-95 ${interested
-              ? 'cursor-not-allowed bg-gray-500/20 text-gray-400 border border-gray-500/30'
-              : isDark
-                ? 'bg-white text-black hover:bg-gray-200 shadow-lg hover:shadow-white/10'
-                : 'bg-black text-white hover:bg-gray-800 shadow-lg hover:shadow-black/20'
+            ? 'cursor-not-allowed bg-slate-500/20 text-slate-500 border border-slate-600/30'
+            : isDark
+              ? 'bg-gradient-to-r from-emerald-500 to-cyan-500 text-white hover:from-emerald-400 hover:to-cyan-400 shadow-lg hover:shadow-emerald-500/30'
+              : 'bg-black text-white hover:bg-gray-800 shadow-lg hover:shadow-black/20'
             }`}
         >
           {interested ? 'Interested' : 'I\'m Interested'}

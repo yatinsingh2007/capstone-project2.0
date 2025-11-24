@@ -68,17 +68,17 @@ const Notifications = () => {
 
   return (
     <>
-      <section className={`relative min-h-screen px-4 py-10 overflow-hidden transition-colors duration-500 ${isDark ? 'bg-gray-950' : 'bg-gradient-to-br from-sky-50 to-emerald-50'}`}>
+      <section className={`relative min-h-screen px-4 py-10 overflow-hidden transition-colors duration-500 ${isDark ? 'bg-gradient-to-br from-slate-950 to-slate-900' : 'bg-gradient-to-br from-sky-50 to-emerald-50'}`}>
 
         {/* Background Effects */}
         <div className="fixed inset-0 z-0 pointer-events-none">
           <AnimatedGridPattern className="opacity-30" />
           <Spotlight
             className="-top-40 left-0 md:left-60 md:-top-20"
-            fill={theme === 'dark' ? '#10b981' : '#0ea5e9'}
+            fill={theme === 'dark' ? '#34d399' : '#0ea5e9'}
           />
-          <div className={`absolute top-[-10%] left-[-10%] w-[40%] h-[40%] rounded-full blur-[120px] opacity-20 ${isDark ? 'bg-emerald-600' : 'bg-emerald-400'}`}></div>
-          <div className={`absolute bottom-[-10%] right-[-10%] w-[40%] h-[40%] rounded-full blur-[120px] opacity-20 ${isDark ? 'bg-sky-600' : 'bg-sky-400'}`}></div>
+          <div className={`absolute top-[-10%] left-[-10%] w-[40%] h-[40%] rounded-full blur-[120px] ${isDark ? 'opacity-30 bg-emerald-500' : 'opacity-20 bg-emerald-400'}`}></div>
+          <div className={`absolute bottom-[-10%] right-[-10%] w-[40%] h-[40%] rounded-full blur-[120px] ${isDark ? 'opacity-30 bg-cyan-500' : 'opacity-20 bg-sky-400'}`}></div>
         </div>
 
         <Nav />
@@ -89,7 +89,7 @@ const Notifications = () => {
             onClick={() => setTheme(theme === 'light' ? 'dark' : 'light')}
             variant="outline"
             size="icon"
-            className={`rounded-full shadow-lg transition-all duration-300 hover:scale-110 ${isDark ? 'bg-gray-800/80 border-gray-700 text-yellow-400 hover:bg-gray-700' : 'bg-white/80 border-gray-200 text-gray-600 hover:bg-gray-50'}`}
+            className={`rounded-full shadow-lg transition-all duration-300 hover:scale-110 ${isDark ? 'bg-slate-800/90 border-cyan-500/30 text-yellow-400 hover:bg-slate-700 hover:border-cyan-400/50' : 'bg-white/80 border-gray-200 text-gray-600 hover:bg-gray-50'}`}
           >
             {theme === 'light' ? <Moon size={20} /> : <Sun size={20} />}
           </Button>
@@ -122,12 +122,12 @@ const Notifications = () => {
                   initial={{ opacity: 0, scale: 0.95 }}
                   animate={{ opacity: 1, scale: 1 }}
                   exit={{ opacity: 0, scale: 0.95 }}
-                  className={`backdrop-blur-xl border rounded-3xl p-12 text-center shadow-lg ${isDark ? 'bg-gray-900/60 border-gray-700/50' : 'bg-white/70 border-white/50'
+                  className={`backdrop-blur-xl border rounded-3xl p-12 text-center shadow-lg ${isDark ? 'bg-slate-900/70 border-slate-700/60' : 'bg-white/70 border-white/50'
                     }`}
                 >
-                  <div className={`w-20 h-20 mx-auto mb-6 rounded-full flex items-center justify-center ${isDark ? 'bg-gray-800/50' : 'bg-gray-100/50'
+                  <div className={`w-20 h-20 mx-auto mb-6 rounded-full flex items-center justify-center ${isDark ? 'bg-slate-800/50' : 'bg-gray-100/50'
                     }`}>
-                    <Bell className={`w-10 h-10 ${isDark ? 'text-gray-600' : 'text-gray-400'}`} />
+                    <Bell className={`w-10 h-10 ${isDark ? 'text-slate-600' : 'text-gray-400'}`} />
                   </div>
                   <p className={`text-lg font-medium ${isDark ? 'text-gray-400' : 'text-gray-500'}`}>
                     You're all caught up!
@@ -144,7 +144,7 @@ const Notifications = () => {
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0, x: -100 }}
                     transition={{ duration: 0.3, delay: index * 0.1 }}
-                    className={`backdrop-blur-xl border rounded-3xl p-6 shadow-lg hover:shadow-2xl transition-all duration-300 ${isDark ? 'bg-gray-900/60 border-gray-700/50 hover:bg-gray-900/80' : 'bg-white/70 border-white/50 hover:bg-white/90'
+                    className={`backdrop-blur-xl border rounded-3xl p-6 shadow-lg hover:shadow-2xl transition-all duration-300 ${isDark ? 'bg-slate-900/70 border-slate-700/60 hover:bg-slate-900/90 hover:border-slate-600/70' : 'bg-white/70 border-white/50 hover:bg-white/90'
                       }`}
                   >
                     <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
@@ -155,7 +155,7 @@ const Notifications = () => {
                           <img
                             src={user.profilePic || 'https://via.placeholder.com/64'}
                             alt={user.name}
-                            className={`relative w-16 h-16 rounded-full object-cover border-4 shadow-lg ${isDark ? 'border-gray-700' : 'border-white'}`}
+                            className={`relative w-16 h-16 rounded-full object-cover border-4 shadow-lg ${isDark ? 'border-slate-700' : 'border-white'}`}
                           />
                         </div>
                         <div>
@@ -177,7 +177,7 @@ const Notifications = () => {
                       <div className="flex gap-3">
                         <Button
                           onClick={() => handleAccept(user._id)}
-                          className="flex items-center gap-2 px-6 py-2.5 bg-gradient-to-r from-emerald-500 to-emerald-600 text-white rounded-xl font-semibold shadow-lg hover:shadow-emerald-500/30 hover:scale-105 transition-all duration-300"
+                          className="flex items-center gap-2 px-6 py-2.5 bg-gradient-to-r from-emerald-500 to-cyan-500 text-white rounded-xl font-semibold shadow-lg hover:from-emerald-400 hover:to-cyan-400 hover:shadow-emerald-500/40 hover:scale-105 transition-all duration-300"
                         >
                           <Check size={18} />
                           Accept
@@ -185,7 +185,7 @@ const Notifications = () => {
                         <Button
                           onClick={() => handleReject(user._id)}
                           variant="outline"
-                          className={`flex items-center gap-2 px-6 py-2.5 rounded-xl font-semibold transition-all duration-300 hover:scale-105 ${isDark ? 'border-gray-700 text-gray-300 hover:bg-gray-800' : 'border-gray-300 text-gray-700 hover:bg-gray-100'
+                          className={`flex items-center gap-2 px-6 py-2.5 rounded-xl font-semibold transition-all duration-300 hover:scale-105 ${isDark ? 'border-slate-700 text-slate-300 hover:bg-slate-800' : 'border-gray-300 text-gray-700 hover:bg-gray-100'
                             }`}
                         >
                           <X size={18} />

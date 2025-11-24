@@ -16,12 +16,12 @@ import { motion } from 'framer-motion';
 const PostSkeleton = ({ theme }) => {
   const isDark = theme === 'dark';
   return (
-    <div className={`border p-6 md:p-8 rounded-3xl ${isDark ? 'bg-gray-900/60 border-gray-700/50' : 'bg-white/70 border-white/50'}`}>
+    <div className={`border p-6 md:p-8 rounded-3xl ${isDark ? 'bg-slate-900/70 border-slate-700/60' : 'bg-white/70 border-white/50'}`}>
       <div className="flex items-center gap-4 mb-6">
-        <Skeleton className={`w-14 h-14 rounded-xl ${isDark ? 'bg-gray-800' : 'bg-gray-200'}`} />
+        <Skeleton className={`w-14 h-14 rounded-xl ${isDark ? 'bg-slate-800' : 'bg-gray-200'}`} />
         <div className="flex-1">
-          <Skeleton className={`h-6 w-48 mb-2 ${isDark ? 'bg-gray-800' : 'bg-gray-200'}`} />
-          <Skeleton className={`h-4 w-32 ${isDark ? 'bg-gray-800' : 'bg-gray-200'}`} />
+          <Skeleton className={`h-6 w-48 mb-2 ${isDark ? 'bg-slate-800' : 'bg-gray-200'}`} />
+          <Skeleton className={`h-4 w-32 ${isDark ? 'bg-slate-800' : 'bg-gray-200'}`} />
         </div>
       </div>
       <Skeleton className={`h-64 w-full mb-6 rounded-2xl ${isDark ? 'bg-gray-800' : 'bg-gray-200'}`} />
@@ -77,17 +77,17 @@ const MainPage = () => {
         <meta property="og:description" content="Connect with professionals, share insights, and explore opportunities on NextHorizon." />
       </Helmet>
 
-      <section className={`relative min-h-screen px-4 py-10 overflow-hidden transition-colors duration-500 ${theme === 'dark' ? 'dark bg-gray-950' : 'bg-gradient-to-br from-sky-50 to-emerald-50'}`}>
+      <section className={`relative min-h-screen px-4 py-10 overflow-hidden transition-colors duration-500 ${theme === 'dark' ? 'dark bg-gradient-to-br from-slate-950 to-slate-900' : 'bg-gradient-to-br from-sky-50 to-emerald-50'}`}>
 
         <div className="fixed inset-0 z-0 pointer-events-none">
           <AnimatedGridPattern className="opacity-30" />
           <Spotlight
             className="-top-40 left-0 md:left-60 md:-top-20"
-            fill={theme === 'dark' ? '#10b981' : '#0ea5e9'}
+            fill={theme === 'dark' ? '#34d399' : '#0ea5e9'}
           />
 
-          <div className={`absolute top-[-10%] left-[-10%] w-[40%] h-[40%] rounded-full blur-[120px] opacity-20 ${theme === 'dark' ? 'bg-emerald-600' : 'bg-emerald-400'}`}></div>
-          <div className={`absolute bottom-[-10%] right-[-10%] w-[40%] h-[40%] rounded-full blur-[120px] opacity-20 ${theme === 'dark' ? 'bg-sky-600' : 'bg-sky-400'}`}></div>
+          <div className={`absolute top-[-10%] left-[-10%] w-[40%] h-[40%] rounded-full blur-[120px] ${theme === 'dark' ? 'opacity-30 bg-emerald-500' : 'opacity-20 bg-emerald-400'}`}></div>
+          <div className={`absolute bottom-[-10%] right-[-10%] w-[40%] h-[40%] rounded-full blur-[120px] ${theme === 'dark' ? 'opacity-30 bg-cyan-500' : 'opacity-20 bg-sky-400'}`}></div>
         </div>
 
         <Nav />
@@ -97,7 +97,7 @@ const MainPage = () => {
             onClick={() => setTheme(theme === 'light' ? 'dark' : 'light')}
             variant="outline"
             size="icon"
-            className={`rounded-full shadow-lg transition-all duration-300 hover:scale-110 ${theme === 'dark' ? 'bg-gray-800/80 border-gray-700 text-yellow-400 hover:bg-gray-700' : 'bg-white/80 border-gray-200 text-gray-600 hover:bg-gray-50'}`}
+            className={`rounded-full shadow-lg transition-all duration-300 hover:scale-110 ${theme === 'dark' ? 'bg-slate-800/90 border-cyan-500/30 text-yellow-400 hover:bg-slate-700 hover:border-cyan-400/50' : 'bg-white/80 border-gray-200 text-gray-600 hover:bg-gray-50'}`}
           >
             {theme === 'light' ? <Moon size={20} /> : <Sun size={20} />}
           </Button>

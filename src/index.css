@@ -36,25 +36,25 @@ html {
   }
 
   .dark {
-    --background: 222.2 84% 4.9%;
+    --background: 215 25% 6%;
     --foreground: 210 40% 98%;
-    --card: 222.2 84% 4.9%;
+    --card: 215 25% 8%;
     --card-foreground: 210 40% 98%;
-    --popover: 222.2 84% 4.9%;
+    --popover: 215 25% 8%;
     --popover-foreground: 210 40% 98%;
     --primary: 210 40% 98%;
-    --primary-foreground: 222.2 47.4% 11.2%;
-    --secondary: 217.2 32.6% 17.5%;
+    --primary-foreground: 215 25% 6%;
+    --secondary: 215 20% 15%;
     --secondary-foreground: 210 40% 98%;
-    --muted: 217.2 32.6% 17.5%;
-    --muted-foreground: 215 20.2% 65.1%;
-    --accent: 217.2 32.6% 17.5%;
+    --muted: 215 20% 15%;
+    --muted-foreground: 215 15% 70%;
+    --accent: 215 20% 15%;
     --accent-foreground: 210 40% 98%;
-    --destructive: 0 62.8% 30.6%;
+    --destructive: 0 70% 50%;
     --destructive-foreground: 210 40% 98%;
-    --border: 217.2 32.6% 17.5%;
-    --input: 217.2 32.6% 17.5%;
-    --ring: 212.7 26.8% 83.9%;
+    --border: 215 20% 20%;
+    --input: 215 20% 15%;
+    --ring: 180 80% 60%;
   }
 }
 
@@ -68,7 +68,7 @@ html {
   }
 }
 
-/* Custom Animations */
+
 @keyframes fadeIn {
   from {
     opacity: 0;
@@ -117,7 +117,7 @@ html {
   }
 }
 
-/* Utility Classes */
+
 @layer utilities {
   .animate-fade-in {
     animation: fadeIn 0.6s ease-out forwards;
@@ -132,7 +132,7 @@ html {
   }
 
   .glass-effect {
-    @apply backdrop-blur-xl bg-white/70 dark:bg-gray-900/60 border border-white/50 dark:border-gray-700/50;
+    @apply backdrop-blur-xl bg-white/70 dark:bg-slate-900/70 border border-white/50 dark:border-slate-700/60;
   }
 
   .gradient-emerald-sky {
@@ -140,7 +140,11 @@ html {
   }
 
   .gradient-emerald-sky-dark {
-    @apply bg-gradient-to-br from-emerald-600 to-sky-600;
+    @apply bg-gradient-to-br from-emerald-500 to-cyan-500;
+  }
+
+  .gradient-emerald-cyan-vibrant {
+    @apply bg-gradient-to-br from-emerald-400 via-teal-400 to-cyan-400;
   }
 
   .text-gradient {
@@ -148,11 +152,23 @@ html {
   }
 
   .shadow-glow-emerald {
-    box-shadow: 0 0 20px rgba(16, 185, 129, 0.3);
+    box-shadow: 0 0 30px rgba(52, 211, 153, 0.4);
+  }
+
+  .shadow-glow-cyan {
+    box-shadow: 0 0 30px rgba(34, 211, 238, 0.4);
   }
 
   .shadow-glow-sky {
     box-shadow: 0 0 20px rgba(14, 165, 233, 0.3);
+  }
+
+  .dark-card {
+    @apply backdrop-blur-xl bg-slate-900/70 border border-slate-700/60 shadow-xl;
+  }
+
+  .dark-card-hover {
+    @apply hover:bg-slate-900/90 hover:border-slate-600/70 hover:shadow-2xl;
   }
 
   .transition-smooth {
@@ -160,14 +176,13 @@ html {
   }
 }
 
-/* Enhanced Focus States for Accessibility */
 @layer base {
   *:focus-visible {
-    @apply outline-none ring-2 ring-offset-2 ring-emerald-500 dark:ring-sky-500 ring-offset-white dark:ring-offset-gray-900;
+    @apply outline-none ring-2 ring-offset-2 ring-emerald-500 dark:ring-cyan-400 ring-offset-white dark:ring-offset-slate-900;
   }
 
   button:focus-visible,
   a:focus-visible {
-    @apply outline-none ring-2 ring-offset-2 ring-emerald-500 dark:ring-sky-500;
+    @apply outline-none ring-2 ring-offset-2 ring-emerald-500 dark:ring-cyan-400;
   }
 }
